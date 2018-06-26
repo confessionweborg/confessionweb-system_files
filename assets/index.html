@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <!--Newsletter Form-->
+    <script type="text/javascript" src="//downloads.mailchimp.com/js/signup-forms/popup/embed.js" data-dojo-config="usePlainJson: true, isDebug: false"></script><script type="text/javascript">require(["mojo/signup-forms/Loader"], function(L) { L.start({"baseUrl":"mc.us12.list-manage.com","uuid":"1b11eff4553751a89d4bd9b44","lid":"0a2c488787"}) })</script>
+
+    <title>RENDERED - We bring information to you!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/blog-home.css" rel="stylesheet">
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-9876070497017426",
+    enable_page_level_ads: true
+  });
+</script>
+   
+<style>
+/* Center the loader */
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Add animation to "page content" */
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
+
+#myDiv {
+  display: none;
+  text-align: center;
+}
+
+#inner {
+  display: table;
+  margin: 0 auto;
+}
+
+body {
+background-color: lightgrey;
+}
+</style>
+
+   
+<link rel="apple-touch-icon" sizes="57x57" href="favicon/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="favicon/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="favicon/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="favicon/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="favicon/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="favicon/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="favicon/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="favicon/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="favicon/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="favicon/favicon-16x16.png">
+<link rel="manifest" href="favicon/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+
+
+<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-6407309481180448",
+    enable_page_level_ads: true
+  });
+</script>
+    
+<script>    
+$(function(){ /* to make sure the script runs after page load */
+
+	$('.item').each(function(event){ /* select all divs with the item class */
+	
+		var max_length = 380; /* set the max content length before a read more link will be added */
+		
+		if($(this).html().length > max_length){ /* check for content length */
+			
+			var short_content 	= $(this).html().substr(0,max_length); /* split the content in two parts */
+			var long_content	= $(this).html().substr(max_length);
+			
+			$(this).html(short_content+
+						 '<a href="#" class="read_more">...Read More</a>'+
+						 '<span class="more_text" style="display:none;">'+long_content+'</span>'); /* Alter the html to allow the read more functionality */
+						 
+			$(this).find('a.read_more').click(function(event){ /* find the a.read_more element within the new html and bind the following code to it */
+ 
+				event.preventDefault(); /* prevent the a from changing the url */
+				$(this).hide(); /* hide the read more button */
+				$(this).parents('.item').find('.more_text').show(); /* show the .more_text span */
+		 
+			});
+			
+		}
+		
+	});
+ 
+ 
+});
+</script>
+
+
+
+
+
+
+  </head>
+
+  <body onload="myFunction()" style="margin:0;">
+  
+  <div id="loader"></div>
+  <script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 1000);
+}
+
+function showPage() {
+  document.getElementById("loader").style.display = "none";
+  document.getElementById("myDiv").style.display = "block";
+}
+</script>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="index.html"><font face="verdana" size="6"><b>RENDERED</b></font></a>
+        <button class="navbar-toggler" type="button" data-toggle="dropdown" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html"><b><font size="4">Home</font></b>
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html"><font size="4"><b>About</b></font></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="freq_q_ans.html"><font size="4"><b>FAQ</b></font></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="privacy_policies.html"><font size="4"><b>Privacy Policies</b></font></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="login/index.php"><font size="4"><b>Join RENDERED</b></font></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+<div style="display:none;" id="myDiv" class="animate-bottom">
+    <!-- Page Content -->
+    <div class="container">
+
+<center><div style="width: 340px; height: 250px; overflow: "hidden">
+  <img src="img/logo_new.png" width="360" height="340">
+</div></center>
+
+      <div class="row">
+
+        <!-- Blog Entries Column -->
+        <div class="col-md-8">
+
+<br/> 
+            <br/><br/>
+
+<!-- Blog Post 8-->
+          <div class="card mb-4" id="mark_testimony">
+            <img class="card-img-top" src="img/mark_testimony.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Zuckerberg apologizes, promises reform as senators grill him over Facebook’s failings</h2><br/>
+   <hr><br/>
+              <div class="item">
+              <p class="card-text">
+              
+Facebook chief executive Mark Zuckerberg endured an hours-long grilling by dozens of U.S. senators Tuesday during which he repeatedly apologized and promised privacy reforms but also pointedly defended his company against the threat of new legislation.<br/><br/>
+
+Zuckerberg invoked Facebook’s unlikely journey — from a tiny start-up he co-founded in his Harvard dorm room 14 years ago to a social media behemoth — in explaining Facebook’s frequent privacy missteps and its failure to spot and defeat Russia’s aggressive campaign to manipulate American voters in 2016 and beyond.<br/><br/>
+
+Senators repeatedly challenged Zuckerberg’s explanations in the wide-ranging hearing, a rare joint session before two Senate panels — the Commerce and Judiciary committees — with 42 senators questioning the Facebook executive.<br/><br/>
+
+<span style="color: red">“If Facebook and other online companies will not or cannot fix these privacy invasions, then we will,”</span> said Sen. Bill Nelson (Fla.), the highest-ranking Democrat on the Commerce Committee.<br/><br/>
+
+But for more than four hours, there was no flash point or loss of composure for Zuckerberg, who was appearing in his first congressional hearing after avoiding such scrutiny for years. His steadiness in the face of tough questioning helped quell the air of crisis that surrounded not just Facebook but also Silicon Valley in general, where collecting user data is essential to many businesses.<br/><br/>
+
+Facebook’s stock price, sagging since last month’s revelations about how the political consultancy Cambridge Analytica improperly gained access to personal information on 87 million Facebook users, rose during his testimony to end up 4.5 percent for the day, outperforming a generally strong market.<br/><br/>
+
+Still, the issues raised in the hearing strike at deep problems for one of the most highflying technology companies. Gallup found in a poll released this week that 43 percent of Americans are “very concerned” about Facebook’s invasions of privacy — an increase of 13 percentage points since 2011, when Gallup conducted a similar poll.<br/><br/>
+
+Zuckerberg, who traded his trademark T-shirt and hoodie for the standard Capitol Hill garb of a dark suit and tie, had holed up with advisers in Washington over the weekend to prepare for the hearing. His tone was one of practiced and patient contrition as he described the company’s recent failings and efforts to remedy them.<br/><br/>
+
+“It’s clear now that we didn’t do enough to prevent these tools from being used for harm as well,” Zuckerberg said. “And that goes for fake news, foreign interference in elections and hate speech, as well as developers and data privacy.”<br/><br/>
+
+<span style="color: red"><i>As the company has mobilized to quell rising political opposition, Facebook also has wrestled government investigations in the United States and Europe. The Federal Trade Commission is investigating potential violations of a 2011 consent decree over privacy policy at Facebook that could lead to record fines for the company.</i></span>
+              </p>
+          </div>
+<br/>
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on April 11, 2018 at 1:46 PM
+              <br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+              <center>
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+               </center>
+<!-- AddToAny END -->
+
+
+            </div>
+
+<!--Comment Box-->
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+
+          </div>
+            <br/> 
+            <br/><hr><br/>
+
+
+            <!-- Blog Post 7-->
+          <div class="card mb-4" id="like_dislike">
+            <img class="card-img-top" src="img/like-dislike.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Introducing Like/Dislike and Comment feature on <b>RENDERED</b></h2><br/><hr><br/>
+              
+               <div class="item">
+              <p class="card-text">
+              Here on <b>RENDERED</b>, we always thrive to work hard and provide you guys the latest information from around the globe.<br><br>
+
+              Taking this thing in mind, we are introducing the Like/Dislike and Comment feature on our blog website to let our users express their opinions and what they like and dislike on our blogs.<br><br>
+
+              Expressing views and opinions is always important for people and without saying out anything, users won't be able to understand or get what other users think about the content.<br><br>
+
+              Liking and Disliking the content always tell us what our users think and what they would like to read on our blogs.<br><br>
+
+              User readibilty and interactivity has always been our first priority because we love our readers and we like how they will be interacting in the future itself and express themselves.<br><br>
+
+              Let us know what you think about our new features in the comments and do like the blogs by giving a thumbs up to it.<br><br>
+              </p>
+               </div>
+
+<!--jquery for read more feature-->
+
+
+
+
+
+
+<br/>
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on April 7, 2018 at 6:46 PM by
+              <a href="www.davnishsingh.me">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+              <center>
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+               </center>
+<!-- AddToAny END -->
+
+
+            </div>
+<!--Comment Box-->
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+
+          </div>
+            <br/> 
+            <br/><hr><br/>
+            <!-- Blog Post 6-->
+          <div class="card mb-4" id="ios_11">
+            <img class="card-img-top" src="img/ios113.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Apple releases iOS 11.3, the biggest update for iPhones since iOS 11 first launched</h2>
+              <br/><hr><br/>
+              <div class="item">
+              <p class="card-text">
+              Today, Apple released iOS 11.3 to all supported devices, including the iPad Air and later, the iPad mini 2 and later, the iPhone 5S and later, and the sixth-generation iPod touch. The update is available for download now in supported regions.<br/><br/>
+              
+              With several new features, it's arguably the biggest update to iOS since iOS 11 first released. iOS 11.3 addresses battery-based performance throttling on older devices, adds significant new capabilities for augmented reality, adds the ability to chat with customer support reps from companies in Messages, and lets users access their personal health records in the Health app.<br/><br/>
+              
+              Apple also released smaller updates for tvOS (tvOS 11.3) on the Apple TV and watchOS (watchOS 4.3), as well as macOS High Sierra 10.13.4, which adds eGPU support and Business Chat to Macs. Let's dive into what each of these updates adds for users.<br/><br/>
+              
+              As promised, Apple has made it possible to disable performance throttling on older iPhones whose batteries have degraded to the point that they pose a risk for unexpected shutdowns resulting from voltage shortages. Apple lists this as a beta feature.<br/><br/>
+              
+              This is a measure of battery capacity relative to when it was new. Lower capacity may result in fewer hours of usage between charges.<br/><br/>
+              
+              As always, there are numerous security updates for all three of these releases that are not included in the regular patch notes. Apple shares these notes in the security updates hub on its support site, with dedicated pages for iOS 11.3, watchOS 4.3, and tvOS 11.3.<br/><br/>
+              
+              Download your latest iOS <a href="https://www.apple.com/newsroom/2018/03/ios-11-3-is-available-today/">11.3.</a>
+              </p>
+</div>
+<br/>          
+
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 30, 2018 at 8:21 PM by
+              <a href="index.html">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+              <center>
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+               </center>
+<!-- AddToAny END -->
+
+
+            </div>
+
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+
+
+          </div>
+          <br/><hr><br/>
+            
+                   
+          <!-- Blog Post 5-->
+          <div class="card mb-4" id="facebook" href="#inner">
+            <video width="100%" poster="img/facebook_analytica.jpg" controls>
+  <source src="img/zuckerberg_interview.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+            <div class="card-body">
+              <h2 class="card-title">Mark Zuckerberg has regrets: 'I'm really sorry that this happened'</h2>
+<br/><hr><br/>
+              <div class="item">
+              <p class="card-text">"I'm really sorry that this happened," the Facebook (FB) CEO told CNN's Laurie Segall in an exclusive TV interview on Wednesday.<br/><br/>
+              
+              News broke this weekend that Cambridge Analytica, a data firm with ties to President Donald Trump's 2016 campaign, accessed information from 50 million Facebook users without their knowledge, and might have kept that data even after Facebook told the company to delete it.<br/><br/>
+              
+              Zuckerberg addressed the scandal publicly through a Facebook post on Wednesday. He wrote that the company made "mistakes" and outlined how it has changed its policies to make sure that user data is protected.<br/><br/>
+              
+              "I wish we'd taken those steps earlier," Zuckerberg told Segall. "That ... is probably the biggest mistake that we made here."<br/><br/>
+              
+              Aleksandr Kogan, the data scientist who passed along data to SCL Group and its affiliate Cambridge Analytica, built a Facebook app that drew data from users and their friends in 2013. He was allowed access to a broad range of data at the time.<br/><br/>
+              
+              Though Kogan's data was properly obtained, he breached Facebook's policy when he shared that information with a third party, Facebook has said. When Facebook learned about the information being shared, it asked Cambridge Analytica to destroy the data. Cambridge said it had.<br/><br/>
+              
+              <b>Zuckerberg said Facebook plans to alert everyone whose data was accessed by Cambridge Analytica. But he added that he wishes the company hadn't waited so long to tell people what happened.</b><br/><br/>
+              
+              "I started this when I was so young and inexperienced," the 33-year-old Zuckerberg said. "I made technical errors and business errors. I hired the wrong people. I trusted the wrong people," he said.<br/><br/>
+              
+              But ultimately, he said, he's learned from his missteps.
+              </p>
+              </div>
+<br/>
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 22, 2018 at 6:40 PM by
+              <a href="index.html">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+              <center>
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+               </center>
+<!-- AddToAny END -->
+
+
+            </div>
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+          </div>
+          <br/><hr><br/>
+          
+          <!-- Blog Post 4-->
+          <div class="card mb-4">
+            <video width="100%" controls>
+  <source src="img/red_notice.mp4" type="video/mp4">
+  <source src="mov_bbb.ogg" type="video/ogg">
+  Your browser does not support HTML5 video.
+</video>
+            <div class="card-body">
+              <h2 class="card-title">Red Notice Announcement - Universal Studios, Seven Bucks Productions & Davnish Editors Pvt. Ltd.</h2>
+<br/><hr><br/>
+               <div class="item">
+              <p class="card-text">Universal studios in association with Seven Bucks Productions and Davnish Editors Pvt. Ltd. announcing the official releasing date of another action-packed movie #RedNotice by Skyscraper director Rawson Thurber joining us with Dwayne Johnson.<br/><br/>
+              I’ve got to work with Universal Studios back in 2016 for Fate of the Furious (Furious 8) as a trailer editor. It was one of me and my team’s preeminent time there working with such brilliant editors and production department.<br/><br/>
+              Universal studios was my dream.<br/><br/>
+              And to live this dream again, Universal studios just announced the release date of a movie Red Notice in association with Seven Bucks Productions and Davnish Editors Pvt. Ltd. that is our team.<br/><br/>
+              Yes, we just got roped in for Red Notice movie’s official trailer and VFX. They loved our work and so they decided to get us onboard for this one.<br/><br/>
+              I was at home when this happened, when i got a call from Universal and they told me about this. We just had a meeting and it turned out successful.<br/><br/>
+              Red Notice is announced to release on June 12, 2020.
+              </p>
+              </div>
+
+<br/>
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 18, 2018 at 10:30 PM by
+              <a href="index.html">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+              <center>
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+               </center>
+<!-- AddToAny END -->
+
+
+
+            </div> 
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div> 
+          </div>
+          
+          <br/><hr><br/>
+          
+          <!-- Blog Post 3-->
+          <div class="card mb-4">
+            <img class="card-img-top" src="img/adrian_lamo.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Adrian Lamo, hacker who turned in Chelsea Manning, dies aged 37</h2>
+<br/><hr><br/>
+              <div class="item">
+              <p class="card-text"><b>Adrian Lamo, the computer hacker who turned in whistleblower Chelsea Manning to law enforcement, has died at the age of 37, according to authorities in Kansas.</b><br/><br/>
+              
+              Lamo, who testified about Manning’s release of documents to WikiLeaks, was confirmed dead on Friday by authorities in Sedgwick County. The coroner’s office has not responded to inquiries about the cause of his death.<br/><br/>
+              
+              Manning, a former soldier whose leaks exposed the nature of warfare in Afghanistan and Iraq, was released from military prison last year after Barack Obama commuted her 35-year sentence.<br/><br/>
+              
+              Lamo’s father, Mario, confirmed the death in a Facebook post on Friday that said: “With great sadness and a broken heart I have to let know all of Adrian’s friends and acquittances [sic] that he is dead. A bright mind and compassionate soul is gone, he was my beloved son.”<br/><br/>
+              
+              Called the “world’s most hated hacker” by some at the time, Lamo also said: “Had I done nothing, I would always have been left wondering whether the hundreds of thousands of documents that had been leaked to unknown third parties would end up costing lives, either directly or indirectly.”<br/><br/>
+        
+              </p>
+              </div>
+<br/>
+              <!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 16, 2018 at 9:04 PM by
+              <a href="index.html">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+
+
+            </div>
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+          </div>
+          <br/><hr><br/>
+          
+          <!-- Blog Post 2-->
+          <div class="card mb-4">
+            <img class="card-img-top" src="img/stephen_hawking.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">Stephen Hawking Died at Age 76</h2>
+<br/><hr><br/>
+              <div class="item">
+              <p class="card-text"><br>Stephen Hawking has died at the age of 76, his family has said.</br><br/>
+              The British physicist was known for his work with black holes and relativity, and wrote several popular science books including A Brief History of Time.<br/><br/>
+
+"We are deeply saddened that our beloved father passed away today," a family statement said.<br/>
+
+At the age of 22 Stephen Hawking was given only a few years to live after being diagnosed with a rare form of motor neurone disease.<br/><br/>
+
+The illness left him wheelchair-bound and largely unable to speak except through a voice synthesiser.<br/><br/>
+
+His family said that he died peacefully in his home near Cambridge University, where he did much of his ground-breaking work on black holes.<br/><br/>
+
+He has always inspired me through his ground-breaking achievements and work done by him throughout his life.<br/><br/>
+
+Today we all should remember him and pay our respect.<br/><br/>
+
+You will always be our inspiration. GoodBye!!</p>
+</div>
+<br/>
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+              
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 13, 2018 at 9:52 PM by
+              <a href="index.html">Davnish Singh</a><br/>Share this article<br/>
+              <!-- AddToAny BEGIN -->
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+
+
+            </div>
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+          </div>
+          
+          <br/><hr><br/>
+
+          <!-- Blog Post 1-->
+          <div class="card mb-4">
+            <img class="card-img-top" src="img/collage.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h2 class="card-title">About Me</h2>
+<br/><hr><br/>
+              <div class="item">
+              <p class="card-text">Davnish Singh is currently doing undergraduation in Computer Science from Kwantlen Polytechnic University. He is also an undergraduate scholar at Stanford University currently working on some research papers on Artificial Intelligence and Machine Learning under Neural Networks in computer vision and pattern recognition.<br/><br/> 
+
+Before starting his journey in Computer Science, he was doing under-graduation in Mechanical Engineering. But, he has always been inspired from algorithms and how computer systems works.<br/><br/>
+
+So, he took a turn and taught himself basics of Web Development in 6 months in which he created many websites and projects. After gaining an experience in APIs and Development, he took various MOOCs on Algorithms.<br/><br/>
+
+As a machine learning enthusiast, he always believed that by applying ML in the every field one can make a change and automate the regular tasks on hand to focus on other ones as well.<br/><br/>
+
+In addition to his passion for Machine Learning and software technologies, he has got a strong passion for algorithms because he thinks that problems have to be solved instead of getting only discovered.<br/><br/>
+
+He consider himself to be a very ambitious and dynamic person with a great curiosity for all those things which involve new technologies with a massive effect on people life.<br/><br/>
+
+Actively looking for Software Engineering internship.
+Graduate in June 2019.</p>
+</div>
+
+              
+            </div>
+            <div class="card-footer text-muted">
+              Posted on March 13, 2018 at 6:35 PM by
+              <a href="index.html">Davnish Singh</a>
+              <!-- AddToAny BEGIN -->
+<div id="inner" class="a2a_kit a2a_kit_size_32 a2a_default_style">
+<a class="a2a_dd" href="https://www.addtoany.com/share"></a>
+<a class="a2a_button_facebook"></a>
+<a class="a2a_button_twitter"></a>
+<a class="a2a_button_google_plus"></a>
+</div>
+<script async src="https://static.addtoany.com/menu/page.js"></script>
+<!-- AddToAny END -->
+<br/>
+<!-- LikeBtn.com BEGIN -->
+<span class="likebtn-wrapper" data-theme="drop" data-identifier="item_1"></span>
+<script>(function(d,e,s){if(d.getElementById("likebtn_wjs"))return;a=d.createElement(e);m=d.getElementsByTagName(e)[0];a.async=1;a.id="likebtn_wjs";a.src=s;m.parentNode.insertBefore(a, m)})(document,"script","//w.likebtn.com/js/w/widget.js");</script>
+<!-- LikeBtn.com END -->
+
+
+            </div>
+<script src="//www.powr.io/powr.js?external-type=html"></script> 
+ <div class="powr-comments" id="d453c2df_1523396025"></div>
+          </div>
+
+        </div>
+
+        <!-- Sidebar Widgets Column -->
+        <div class="col-md-4" position="fixed">
+
+          
+          <br/><br/><br/>
+          
+          
+          <!-- start feed code --> 
+<script type="text/javascript" src="https://feed.mikle.com/js/fw-loader.js" data-fw-param="70885/"></script> 
+          <!-- end feed code -->
+<hr>
+          <!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Updates...</h5>
+            <div class="card-body">
+              • <a href="#like_dislike"><b>RENDERED</b></a> introduced their Like/Dislike and comment feature.<br/><br/>
+              • <a href="#mark_testimony"><b>Mark Zuckerberg</b></a> apologizes, promises reform as senators grill him over Facebook’s failings.
+            </div>
+          </div>
+          
+<hr>
+<!--Weather Widget-->
+
+<a class="weatherwidget-io" href="https://forecast7.com/en/49d28n123d12/vancouver/" data-label_1="VANCOUVER" data-label_2="WEATHER" data-theme="original" >VANCOUVER WEATHER</a>
+<script>
+!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src='https://weatherwidget.io/js/widget.min.js';fjs.parentNode.insertBefore(js,fjs);}}(document,'script','weatherwidget-io-js');
+</script>
+
+<br/>
+<hr>
+<!-- Side Widget -->
+          <div class="card my-4">
+            <h5 class="card-header">Visitors</h5>
+            <div class="card-body">
+            <a href="http://www.reliablecounter.com" target="_blank"><img src="http://www.reliablecounter.com/count.php?page=davnishsingh.me/index_blog.html4718038&digit=style/plain/1/&reloads=0" alt="" title="" border="0"></a><br /><a href="http:// dronecamera.org/review/dji-phantom-3-standard " target="_blank" style="font-family: Geneva, Arial; font-size: 9px; color: #330010; text-decoration: none;"></a>
+            </div>
+          </div>
+          <br/>
+
+        </div>
+
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer class="py-5 bg-dark">
+      <div class="container">
+        <p class="m-0 text-center text-white">Use of this Site is subject to express terms of use. By using this site, you signify that you agree to be bound by these <a href="privacy_policies.html">Universal Terms of Service.</a><br/>Copyright &copy; <a href = "index.html">RENDERED</a> 2018<br/>All Rights Reserved.</p>
+      </div>
+      <!-- /.container -->
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+<script type="text/javascript"> var infolinks_pid = 3087582; var infolinks_wsid = 0; </script> <script type="text/javascript" src="//resources.infolinks.com/js/infolinks_main.js"></script>
+
+    </div>
+  </body>
+
+</html>
