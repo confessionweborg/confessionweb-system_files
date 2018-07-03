@@ -11,17 +11,15 @@ $facebook=$_POST['facebook'];
 $linkedin=$_POST['linkedin'];
 $email=$_POST['email'];
 $number=$_POST['number'];
-$bio=addslashes($_POST['bio']);
-$position=addslashes($_POST['position']);
 $state=$_POST['state'];
 $country=$_POST['country'];
 
 
-$sql="UPDATE signup SET facebook = '$facebook', linkedin = '$linkedin', email = '$email', pass = '$pass', number='$number', bio = '$bio', position = '$position', state = '$state', country = '$country' where name = '$username'";
+$sql="UPDATE signup SET facebook = '$facebook', linkedin = '$linkedin', email = '$email', pass = '$pass', number='$number', state = '$state', country = '$country' where name = '$username'";
 
 $result=$conn->query($sql);
 
-header("Location:profile.php?user=profile?attr=success");
+header("Location:profile.php?user=profile?details=success");
 
 
 

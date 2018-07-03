@@ -19,7 +19,7 @@ $result=$conn->query($sql);
 $_SESSION['name']=$_POST['uname'];
 
 
-header("LOCATION:home.php?profile=user?login=success");
+header("LOCATION:home.php?profile=user?login=success?id='$id'");
 
 
 
