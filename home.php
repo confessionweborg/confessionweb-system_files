@@ -61,6 +61,71 @@ nav.navbar-findcond ul.dropdown-menu > li > a { color: #444; }
 nav.navbar-findcond ul.dropdown-menu > li > a:hover { background: #f14444; color: #fff; }
 nav.navbar-findcond span.badge { background: #f14444; font-weight: normal; font-size: 11px; margin: 0 4px; }
 nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #fff; }
+
+
+
+.Div1 {
+  
+  width: 19%;
+  
+  float: left;
+  margin-left: 82px;
+  margin-right: 3px;
+  min-height: 600px;
+  position: fixed;
+}
+
+.Div2 {
+  
+  width: 45%;
+  margin-right: 5px;
+  overflow: auto;
+  position: absolute;
+  left: 28.5%;
+}
+
+.Div3 {
+  
+  width: 20%;
+  
+  margin-right: 40px;
+  min-height: 900px;
+  position: fixed;
+  right: 0px;
+}
+
+
+
+
+#div1{
+    
+    float:left;
+}
+#div2{
+    
+    float:left;
+}
+
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+}
+
+
 </style>
 
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -106,7 +171,7 @@ $(function(){ /* to make sure the script runs after page load */
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 1450px" class="navbar navbar-expand-lg">
+<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 1450px; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
   <a style="display: inline; padding-right: 120px;" class="navbar-brand" href="#"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbuSURBVGhD7Zl5bBRVHMer8Uy84pH4h3/of8bEaEKMhsSsdI8us0uhnVlqw9EgLVBFATkUAWsRlKAoIBZaoSghhEOuEDmEckgBsYUWWtCC5RBasNAD2i1td2aev9/sbzs7O2/bvUqI4ZN8A8x7+3vf9+b3jnkk3eX/zhuS9LB9oJSc7JKm2QRphVUQt8Kfu62C9ItNEFdbXeJndpeUZh0y5Cn6yZ2B3S06rC5pvc0l3rK5JNaboGMK1D8AHcryeDwPUJjbT7KQPgBG+BjPZBS6BB3PycvLu5fC9j0Wj+cRGL2V0LgaYiZ2CeJh+yDpBWqi70hJyXgecvpProl4JUjNmI7UVOJxuNNfhNyt5zaeIMH86IS3MZSaTBwWZ9pz0ADkK7/hRAo7gasZNR0//fqNuR9zlNdYn0kQr+GgkYXYIfOruY30tWAPIRvRY7N5HocAM3AkuMFvl2KZD7jBgBoCQRyDhrKPZs5ma3/ewipPVrPrjU2so6ODqarKWlvbWO35C2zv/oNs4ZIiljEix2wiDuGKF/Ee4XQOe8y/o/p/7Bz8Nvu+sFgzHCmKorDSI0fZ6NyJJjOxyjpQdJPF8FgEz7Mw6hWBH+V/8TWrv3KVbEUPdmTHryVMzBxlMhStYFDXkU0+Tqf0DOR7NVbGdMFUSRQ4CNnvfsg1FrEE6abFYrmP7BrRVhmXdAgrYsocOVpGTScOb3s7m/7pHL65CGUXxNfJshF4PfMClXbt2UdNhkFuY2rjHqZc+JYpZ2cwpWYKU87NZWrdT0z1nqFKfNravCznvdjfRLIgjSbLOnbB8yrsejJWKFyxipri4GvWTMtlyUz+482wUqpGMrX5EP3ITF39lZjnBMzPOWRbBx6WYOHI7PHM55OpGSPqjWNMPu7iGg4npTYfZnEnRTCyfVcJ12BvgoEuINt+MKcChft/44+a2rQfRv0trsnepJzOhU50UCQdXJ1iWmIFsZCs+4GZvQILxn0wVduQQlG9NUwut3PNRSql9nOKZqT08FG+yR4E2ZJP1v0rDzy4gQXbtu+isMGoTDmVrZupSGXyiYzwOubU6+LfywZ0/1ttOUIxdWRZZkOHZ3ON9qDxZD8paYAg9seHdreHNTY1U1gdtXFvtwFcbbBDPaK0M7kyXROTvf63F/h9VRZVMrJwSSHPZE9KJfsweQVxEj4cNXYChTOinJke1IFP4EkvHQDT4TqAUr1nqaJOyb6DPJNc4UppGTz4CbIP+e8Sl2EBHhdMqF2Q+zaDgehSKMWQQii13rxE4wEw1GhYwbcIWfcDD7dgQUHRSgoXREedoXE0o/ydx5TzX0Wo+dp+EBxDOfclBdfBU6zBZE+CYz1Z9wMPdmPB8h9XUzgdtbXa2PiFb6gkCrqajDFqJlOBDi6nJqM8CWKrxZ35NFn3Azm1CQvxqByK2l5rbPxUjvYM30ykUv/dZIxxdiZF17l1q4NvOFSCuIBs6+CmgIWzeXPA12JoPBFSLi6i4DoN167zDQcJBroJj/lkWwc3Bawwcap5ZBD55DDdAExg9eoGeBNjjKZqYANs2MoVbmDBdXFZDqWisoprOlh2l+Qhy0bgDaRjhVRphJaLoSiXlulG/1miPcNDmsFU+zntORfcFwJ1y63a0hrKmvWbuKYDgk/JIrJrBj/YcW3FiierT1PIIDob9GOE9gbWRfkGZuv1Ln5HQY1M/jiPazwg8FcMVu/xO+YA3wGlWBF3RB7K5eUGwzHp+CCYUzcoog7mP54CQk2bJS4mu2agA7lYSUjL1AKaUBVt+eMai0Tw7aDerKBgRhYX/MAxyxd+cJFlIxZL1kNQqN1zLlhUQKFDgC+wmDpR7oA5U0pBjFyuq4dP1wyu2XCCRWcW2TYCk3kKVkhJzWB/nTGfVzTwTVwuNh8vwkg5Pc6/b3DAY/vM/Hlck73J6pYyyLaO0+l8EGZ7JVbIzBrLWlrM+dpN13VYnQqZXDXcbBwmPJ5a1aYDUDH8wW/Nuo1ccxEJBptsG0l2Si9BJ7xYadK0WdpZvVdgYuIyiscO1nkVPHdRQXgO/17WPXEhdfdaXem2SGVzpr3R4+0cBF0U6GnFiSpqMnFs37lHu7LxmxfL+6emPkpNxw+MvhPW3E4MnjthmnbnmSh8Pp923goMDiyLp/ASjZqOH/xPukD64J1Nj3MgCnCy4mXvsHdyu81D2hxwOKQnqen4wbyCidGKwfFapTGKC9xw4CXwlm07Qi+wfDBIc8NeDcaCw5X2CrzOlkAji5cuZ2s3bI5axavWaCmSN2c+y8p5P9i0JjC+0zpQepmaTRzwQbM5tLGESZCawXiR1Z32GjWXePwTV9qpfZnFKcjtjRBrKZifgJdlCU2Vu9xRJCX9B0vGCkHwNShQAAAAAElFTkSuQmCC"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
@@ -115,7 +180,7 @@ $(function(){ /* to make sure the script runs after page load */
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li style="display: inline; padding-right: 40px;" class="nav-item">
-        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVGhD7VlLTsMwFKzgEMDBCuxYJDkBILGBXAQkBDtEBYhELPiUgiggNixhWXEDaNyWj4xHePFUeRESx46iN9Is82bmxXEsvxaDwWA0C+0DORudiuUwzfaDNDt3SaW5F6RiKY7ljLZTDNHZcCFMxFOYCumZjyvJcF7b+h/wJlQ3HgxFPTHrF3ozf8vJVNAfscy0vfzAN0GLrF+OZOflUx6/uiG01pQm9YBvRtvLD/XQFS1yqAq/vf84JTSpB3jS9vIjSLJbWuRIdckkViWhST3Ak7aXHxzEIjkIRWODdDwEgSb1YCVIfDOW3cGX7A2+nRBaW72x/SB1oJUgkeJGdyQ3VZdcEFpUH7QSZOd5YlzHVRKa1IOVILz9liAHoeAgFslBKKaD+Nh+t6vYfsFG/BDrQCtBcGi8dnhohBY0qQcrQRpzjOfttwQ5CAUHsUgrQRpzZYoLY1oEF8oobLpwroLQWr2wcIldy7FCItraXn5g0KM60DcV9MOCgx4AozfVhXtzYXcM0uwuOPmY07aKAV0IE7GoOrI7PaysmtCEdulhKIPBYNQMrdYvnJsOnW3P0qkAAAAASUVORK5CYII=">&nbsp;Feed <span class="sr-only">(current)</span></a>
+        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;Feed <span class="sr-only">(current)</span></a>
       </li>
       <!--Notification system starts-->
 
@@ -191,7 +256,7 @@ if ($result->num_rows > 0) {
 
 <!----Notification system ends-->
       
-      <li style="display: inline; padding-right: 90px; padding-top: 8px;" class="nav-item">
+      <li style="display: inline; padding-right: 70px; padding-top: 8px;" class="nav-item">
         <form action="search.php" method="GET" class="form-inline my-2 my-lg-0">
   <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search confessions by title, post or user..." style="width: 470px; height: 33px;">
   <input type="submit" name="search" class="btn btn-primary btn-sm" style="background-color: blue;" value="Search">
@@ -234,13 +299,19 @@ if ($gendercheck == "Male") {
 
 
         <div style="background-color: #f1f1f1;" class="dropdown-menu" aria-labelledby="navbarDropdown">
-<ul>
-          <li><a style="color: black; font-size: 15px;" href="profile.php"><i class="fas fa-user-circle"></i>&nbsp;Profile</a></li>
-      <li><a style="color: black; font-size: 15px;" href="user_blog.php"><i class="fas fa-rss-square"></i>&nbsp;Your Blogs</a></li>
-      <li><a style="color: black; font-size: 15px;" href="profile.php"><i style="font-size: 17px;" class="fas fa-handshake"></i>&nbsp;Confessions</a></li>
-      <li><a style="color: black; font-size: 15px;" href="settings.php"><i class="fas fa-sliders-h"></i>&nbsp;Settings</a></li>
-      <li><a style="color: black; font-size: 15px;" href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign out</a></li>
-</ul>
+
+
+<img width="55px" height="55px" src="https://png.icons8.com/color/96/000000/user-male-circle.png"><span style="font-size: 20px; font-weight: bold;"><?php echo $username; ?></span>
+
+<center><a class="dropdown-item" href="profile.php">View Profile</a></center>
+<hr>
+<a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
+
+    <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
+    <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
+    <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
+
+
 
         </div>
       </li>
@@ -250,8 +321,9 @@ if ($gendercheck == "Male") {
 </nav>
 
 
-
 <!----Views Alert--->
+
+
 
 <?php 
 
@@ -297,6 +369,8 @@ $sum = $row['totalsum'];
 
 <?php } elseif($sum == 500) {?>
 
+  <br><br><br>
+
   <div class="alert alert-primary alert-dismissible fade show" role="alert">
   <img width="20px" height="20px" src="data:image/png;base64,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">&nbsp;<strong>Woah!</strong> You just crossed 500 views on your posts. Keep posting more confessions to increase your CW Rank.
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -322,27 +396,79 @@ $sum = $row['totalsum'];
 
 
 
-<br><br>
 
-  <div class="container">
-    <div class="section col-lg-7">
+<br><br><br><br>
 
-      <!--   Icon Section   -->
-      <div class="row">
+  
 
-        <!-- Modal Trigger -->
-  <div class="container">
-    <div style="position: fixed;"></div>
-  <div class="row">
+<div style="width: 100%; min-height: 200px;">
+  <div class="Div1">
+ 
 
-<div>
-    <div class="">
-      <div>
-      <p style="font-size: 17px; line-height: 4px;">Feeds</p>
+
+
+
+<span class="text-muted" style="margin-top: 2px; font-size: 14px;"><div class="dropdown">
+
+<?php
+
+include 'conn.php';
+
+
+$id = isset($_GET['id']);
+$sex = isset($_GET['sex']);
+
+
+ $result = mysqli_query($conn, "SELECT sex AS gender FROM signup WHERE name = '$username'");
+
+$row = mysqli_fetch_assoc($result);
+
+$gendercheck = $row['gender'];
+
+if ($gendercheck == "Male") {
+   ?>
+
+      
+        <img class="img-fluid" style="border-radius: 50%; width: 25px; height: 25px;" src="image/avatar.png">
+      
+
+
+<?php 
+ }else {   
+?>
+
+
+        <img class="img-fluid" style="border-radius: 50%; width: 25px; height: 25px;" src="image/avatar_female.png">
+        
+
+        <?php }?>
+
+<a href="settings.php" style="color: black;"><?php echo $username; ?></a>
+
+  &nbsp;<a style="float: right;" class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i style="color: black;" class="fas fa-ellipsis-h"></i></a>
+  <ul class="dropdown-menu dropdown-menu-right">
+  <center>
+      <a class="dropdown-item" href="settings.php">Edit Profile</a>
+
+
+    </center>
+  </div>
+</span>
+
+
+
+<br>
+
+
+
+
+
+
+<p style="font-size: 17px; line-height: 4px;">Feeds</p>
       <hr>
       <ul class="nav flex-column">
   <li class="nav-item">
-    <a style="background-color: #e4e4e4; border-radius: 7px; line-height: 4px;" class="nav-link active" href="home.php"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAGqSURBVGhD7VlLTsMwFKzgEMDBCuxYJDkBILGBXAQkBDtEBYhELPiUgiggNixhWXEDaNyWj4xHePFUeRESx46iN9Is82bmxXEsvxaDwWA0C+0DORudiuUwzfaDNDt3SaW5F6RiKY7ljLZTDNHZcCFMxFOYCumZjyvJcF7b+h/wJlQ3HgxFPTHrF3ozf8vJVNAfscy0vfzAN0GLrF+OZOflUx6/uiG01pQm9YBvRtvLD/XQFS1yqAq/vf84JTSpB3jS9vIjSLJbWuRIdckkViWhST3Ak7aXHxzEIjkIRWODdDwEgSb1YCVIfDOW3cGX7A2+nRBaW72x/SB1oJUgkeJGdyQ3VZdcEFpUH7QSZOd5YlzHVRKa1IOVILz9liAHoeAgFslBKKaD+Nh+t6vYfsFG/BDrQCtBcGi8dnhohBY0qQcrQRpzjOfttwQ5CAUHsUgrQRpzZYoLY1oEF8oobLpwroLQWr2wcIldy7FCItraXn5g0KM60DcV9MOCgx4AozfVhXtzYXcM0uwuOPmY07aKAV0IE7GoOrI7PaysmtCEdulhKIPBYNQMrdYvnJsOnW3P0qkAAAAASUVORK5CYII=">&nbsp;Feed</a>
+    <a style="background-color: #e4e4e4; border-radius: 7px; line-height: 4px;" class="nav-link active" href="home.php"><img src="https://png.icons8.com/office/16/000000/news.png">&nbsp;Feed</a>
   </li>
   <li class="nav-item">
     <a class="nav-link text-muted" href="trending.php"><i style="color: blue;" class="fas fa-check-circle"></i>&nbsp;Trending<span class="badge"><?php 
@@ -396,56 +522,6 @@ echo $rowcounts;
     <a class="nav-link text-muted" href="cpolicy.php"><img width="22px" height="22px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAc3SURBVHhe7Z1rbBRVFMeLz/iIGjW+EjUa3xpfBLp3l1LjIyCJBtH6QRCMdGe3i2gqqECUGoIRFd/RDxDU8FDeBdze2ULr8qgglvAWKhq1CWCNiaCICQYZz1lOE9KeXfZxZ+fO7v0l/7TZ3blzzn9mzr13dma2wmAwGAwGg8FgMBj8g9MnEpTTQZPpBUOxsPpuOt0KytmRoO2grKA9id4yuM3Y/vI82OvtbvPNRigisUDiOjB6V0/zuwXvfVRTs/BU+rhBJVFhD7KE/Qdn/ImyhFxm9V1xNi1mKJSG6uRpUHKmRIR9lDOclbC3RCpXXk9NGPKltqr5moiQ61mTTyIoR39aIXsYNWXIlXAg8QSayJmbveQxKFvv4KiJmjWcjJiIXw11fDlvaJ7CkhRK3EGrMHDU3LLwDBxKgv5hTSxY8l/sS+oDC86iVRq6CQfs+2Gv7+CNUywhO03fQEQCif4wo02wRrku+TVueAqlvIC9/T7oHJt4Y4oriGWtJZqGlvwEbnQgcSHU9ygkvb2nCVpIyJ9gY7xkhVZdRSH7n3CVfXkk0DQSElsGSR7plbSWgqFr0G6Dv/V1lfJ2POtK6ejJ2MHyzKhovqR2QNMNWFNhyPcclJcZUNt38An6TML+Hf42whHyGuQ0AvutugHxa8f0W3URjtzIBu/oFXCZiWzwDi6ochLZ4B0QhE9quys6QjZ4B9TIA0xgZSJ5kGzwDpxZ8sG5o0mPrnbmTNvprF7a6WxK/ppSckln6rWJw5LsMq4JcicbvAOGbGm/oVKpWFXCmffWTmfr2i5nW9tvrPC9uW/udGIDE2wb6iV3kw3eASWonQ9OndBQ+dmPrOmcmuCzxdgIsPNtJhu8Aw7Dr7jgVOqL6d+xRmcSHi1cWyoFE8wk2eAdcATM54JTJazrmcpOOm1d1+VMfMTdPgGOgEVkg3dAIO/2DEyl5kzbwRqcjWa/voNtU5VgZvwe2eAdEMiLPQNTKRzhcOZmo+TiTrZNZQrZE8kG74CRwHA2OEVqb93PmpuNcFmuTVWKCvtJssE7oA4KLjhV0nkDWCE5gGzwDqt6xcVccKqkcwkaE1x5BdngLXAUFHj5SHrhDJczNxu53AkfpvS9x83JmMbD0O2UvvdAR/wJE6Ay4aSKMzmT5r7h7hAUcp5H6XtPWNjP8kGqEZ5WwNMLnNGc4p+6fyoCyu4LlL73WCI+kAtSpdBQPNGW8WQclJ1inYzDq7Upfe+x+q46Hw7JY1ygqjVhaDLVueIIB4eZKPwfX8P3uGXcUKxf/DJKXw+gI/6eC7QUZQm5j9LWB7wSggu2JCXs+ZS2PqQu2eCCLUWFEs9Q2vqAV5SxwZaidL3UHS/vYwNWoHFDWp33n293Fn3Y4bQu+NnZ2Lzf2bKmy9m8uiv1P76G731Q3+7UD25h21AiYR9oqGg4hVLWC9gAM9mgC9Arj691Vszak9NsGD+Ly7xcs4Zts0A1Urr6YYXkQ0zAeal+UIuz9OMOGNvzJmcjXHYJtIFtcevIR+GgXUvp6gfefQJDtENc4Lno1eHrnA32XtbUfLRB7k21ya0rF8Hs9z+8DpbS1RMIcikXfLaaFl6fquuckYUI28S2uXVmKxhqb6A09SUckqO44LPR1FFtrpjfLWx7ysg2dt3ZCI7uCZSmvuCNGBBszteLjh/S4mxcuY81TqW+ad7njHswvz6hrjJ+M6WpNxDswp7Bn0zLZ+5hDXNDy2fsYWPIJF+Un27wTCGXRCZxRrkpLoaMCtgRSk9/cKICnfEvbCJpxJnkprgYMugwPiaH0vMHVlA2MImkFWeSm+JiSCthz6G0/ENdVeJKCDzrJ5xwJrkpLoa0Ctn3UFr+Ao6Cz9mEfCQopZu1v1MyHTBrvA1nj1xivpGQj1E6/gQmL4vZxHwgiL1D2zOf2RIV8q5ifV/sgp6iNPwN9AVfMslpLRxGl8yDnmqD8Tt91xeE5GgKvzRw48satwQ7y7aSe3oKXkcDibl2Ea9KlexzhOAoiHEJ6yQY+SygcEsPOkfUxiWuh+RBfMQOhVuaRIP2jZDs4d7Jey/Y+y0Ks7SBowCfnMWa4JVwqOzbUw75AHsbPkWLNaP4kl2jK1supdDKg1HVjRfAXvcDb0gRJeyjUdF0L4VVXtSG7FvBgL9YY4olIcdTOOUJdMoP5/K9gUpZwp5bVnU/HeGgrOMMclMwEGjV4qF7upDrV5gFajve1UOrNnQDJWEqY5ZSwZ6/q+xGPLkAQ8LJnHFqJHdrd2+XjqRue1XfMX9r9vwcOD46kn8zRuYsnOWOeKD5HGrakC3hgH03bIQC7rqRx2D5t81PWxUAzpjBzMbe5maWJeQh6NRrqBlDYTh98M7ErEuSsNstkbiJFjaoAp9aDnt2kjX9uI7AMHMS/vYYLWJQj9MnKuTTcDTsP9F83DDHn/dvKAqx6uS5OHED4zvMj/IYDAaDwWAwGAwG/1BR8T/u7mzlFCQkxwAAAABJRU5ErkJggg==">&nbsp;CW Policy</a>
   </li>
   
-  <br>
-
-<p style="font-size: 17px; line-height: 5px;">Most Viewed</p>
-<div class="divider">
-<ul class="nav flex-column">
-
-
-<?php $sql6 = "SELECT * FROM posts WHERE views >= '25' ORDER BY id desc LIMIT 5";
-$result6 = $conn->query($sql6);
-
-if ($result6->num_rows > 0) {
-    // output data of each row
-    while($row = $result6->fetch_assoc()) {
-
-      $id = $row['id'];
-      $name = $row['name'];
-      $title = $row['title'];
-      $post = $row['post'];
-      $views = $row['views'];
-      $time = $row['time'];
-      $len = strlen($row['post']);
-
-   ?>
-
-<?php
-
-if ($views >= 25) {
-
- ?>
-
-<li class="nav-item" style="line-height: 30px;">
-
-
-
-    <a class="text-muted" href="post_view.php?id=<?php echo $id; ?>"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG2SURBVGhD7dk/T8JAGMdx3pluRjd1VF+Gg6OJWBGEwVUTQETxz4hDOzr4BoyDsVUcnZztUO+HNNbmqbkrd9wTck/yXbC93Cfo8ceKGzdu3MzHBGHc8qOvgFPY02R78uNH8X0QxQmnsKfJ9uTHQQzmINRiNrMGaQxGye7Js3KnwQe5njVI/+EzWdkKkoXVoVI7x0/ketYgqAyGJQQBs7wpj2ELQcAsbfjkxvOxhrRu35PF9Tty4/nYQpo38gjEEtK8HikhEDtIY/CmjECsIHgxLINAbCD1S4FYk0MAmz/NWEB+EH83WxQQOM3yrzPWIfUL8TehghAHQXpv9h2AVUjt/FUJcXT1i0hLMdYgtZ4iQvz6UesgYPbaL+TPjEK8XiSPEAcATjNqnWx+WPC4KYjXVUEMxwcBtY5sRiCqiENxEFDrqKQdUu2EM0cgrRB8DFVC9PUgkPZnZLv1SG48GxAH4kim7i+bdgj6DzNGiCOZum+ajEAQhQHCO4vI66fNGARlMUDsd0PyOh0ZhSBggKi2zSGQcQgq+lJNZzOBzCIHoRazmYNQi9msFGRu/hnqxo0bNwynUvkGoyOViE1rERQAAAAASUVORK5CYII=">&nbsp;<?php echo substr($title, 0, 18)."..."; ?></a>
-
-    
-</li>
-
-<?php
-}
-?>
-
-<?php 
-    
-            }
-} else {
-    echo "No Confessions yet.<br> Start making confessions!";
-}
-?>
  
   
   
@@ -456,8 +532,8 @@ if ($views >= 25) {
 <p style="font-size: 17px; line-height: 5px;">Profile Stats</p>
 <hr>
 
-<ul class="nav flex-column">
-  <li class="nav-item">
+<ul class="nav flex-column" style="list-style-type: none;">
+  <li class="nav-item" style="list-style-type: none;">
     <a style="font-size: 15px; line-height: 4px;" class="nav-link text-muted"><img height="20px" width="20px" src="data:image/png;base64,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">&nbsp;Total Views<span style="font-size: 13px;" class="badge"><?php 
 $id = isset($_SESSION['id']);
 
@@ -485,7 +561,7 @@ if ($result->num_rows > 0) {
       ?>
       
 <li class="nav-item">
-    <a style="font-size: 15px; line-height: 4px;" class="nav-link text-muted"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALnSURBVGhD7ZVLaBNBGMfXouBBD4L0Vi3iyUNF6sFHspOIoIJtZjaIT1REih6E1lM8aMAHSC4qKCIWvQs+mswubXclSH1citZmS/Hq3R4Kgg80frN+kI075uFuYwLzgz+75P/tzPffmZ1oCoVCoYgKcqK4klCeIYzn4Xo7ZvANaHUQ2WyXTs0XhJllnxbJwPhGrGgdhFoxQs1bQgnD3Ik/14WQ4nKdWbk/QnjSKb+PZa1BZ+ZxCPCj0gT/SWj+DNpyYBXizDoKtR/8zfulM+5gdWuAbfFJ2gg1Z6DRmwnKU/HU0x5YtbNxg1/XWSEH3rzsmSpRfg2nWHoSA2MpaRMhBav8bsfgs9U4zdKiG+YR2FJfZY00K/ge3sBWG4YVHIF7o39oegVO0zjeB0fNfTDAUJIVNuPPNYEAF7xvQdJUk3qVMAp7cNh/hxworoLBXlcG9pq7iHYAERr8e5V6n6j5Ng7P7kqP9XmnGNzDC7Lh+q2qDgWn23kcNjywF6/IJoEPbRJCnYulrT7vhEmN95A0Pwy/v5TWM/OqppWX4bBVkIPFXkILC1X11HyCdjTgG/M3JNNnCOU7XiuCI/I7XE/jcH9lO5vohq17CWpHdWqdEi8HrWiAFXnob6xJLULAvTjU/yU2aG2ChuCNSxutIf5FT1tbcJhwFOd7NXtud0CTs1uxojFEGFj2B+KfFFYoF6P8GOzhO7X+tOKs8BgfD4/tZjTHLQdVmsKK8CSN5+vh7X/0hxDfRZLyfiwJTyuCCMj+/Fpo/i6cWO8hVJ4waxta0dCqIDXJlru0qdk1UgmvEdoiiO2ukzcBEl4jqCBRooL46JggdsmC+4WAnNLwb79TgoiG5H7G8yMJYrujoOmAHPckVtSmbYLUm6QeKojnqyBB6k3izFE4dR4F5JQue37HBKk3iQri+SpIEBVEBfH7KkgQFaTdgtjuDXjAluiQ54urzBfPCSZmuqW+kPAEYedQKBSKDkbTfgE/j0tbJ16LRAAAAABJRU5ErkJggg==">&nbsp;Performance<span style="font-size: 13px;" class="badge"><?php echo 
+    <a style="font-size: 15px; line-height: 4px;" class="nav-link text-muted"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAALnSURBVGhD7ZVLaBNBGMfXouBBD4L0Vi3iyUNF6sFHspOIoIJtZjaIT1REih6E1lM8aMAHSC4qKCIWvQs+mswubXclSH1citZmS/Hq3R4Kgg80frN+kI075uFuYwLzgz+75P/tzPffmZ1oCoVCoYgKcqK4klCeIYzn4Xo7ZvANaHUQ2WyXTs0XhJllnxbJwPhGrGgdhFoxQs1bQgnD3Ik/14WQ4nKdWbk/QnjSKb+PZa1BZ+ZxCPCj0gT/SWj+DNpyYBXizDoKtR/8zfulM+5gdWuAbfFJ2gg1Z6DRmwnKU/HU0x5YtbNxg1/XWSEH3rzsmSpRfg2nWHoSA2MpaRMhBav8bsfgs9U4zdKiG+YR2FJfZY00K/ge3sBWG4YVHIF7o39oegVO0zjeB0fNfTDAUJIVNuPPNYEAF7xvQdJUk3qVMAp7cNh/hxworoLBXlcG9pq7iHYAERr8e5V6n6j5Ng7P7kqP9XmnGNzDC7Lh+q2qDgWn23kcNjywF6/IJoEPbRJCnYulrT7vhEmN95A0Pwy/v5TWM/OqppWX4bBVkIPFXkILC1X11HyCdjTgG/M3JNNnCOU7XiuCI/I7XE/jcH9lO5vohq17CWpHdWqdEi8HrWiAFXnob6xJLULAvTjU/yU2aG2ChuCNSxutIf5FT1tbcJhwFOd7NXtud0CTs1uxojFEGFj2B+KfFFYoF6P8GOzhO7X+tOKs8BgfD4/tZjTHLQdVmsKK8CSN5+vh7X/0hxDfRZLyfiwJTyuCCMj+/Fpo/i6cWO8hVJ4waxta0dCqIDXJlru0qdk1UgmvEdoiiO2ukzcBEl4jqCBRooL46JggdsmC+4WAnNLwb79TgoiG5H7G8yMJYrujoOmAHPckVtSmbYLUm6QeKojnqyBB6k3izFE4dR4F5JQue37HBKk3iQri+SpIEBVEBfH7KkgQFaTdgtjuDXjAluiQ54urzBfPCSZmuqW+kPAEYedQKBSKDkbTfgE/j0tbJ16LRAAAAABJRU5ErkJggg==">&nbsp;Performance<span style="font-size: 13px; color: green;" class="badge"><?php echo 
 number_format($perf, 2)."%" ?></span></a>
   </li>  
   
@@ -570,18 +646,22 @@ elseif ($perf <= 60 && $perf >= 20) {
   <a style="display: inline; font-size: 13px; color: black;">ConfessionWeb © 2018</a>
 
 
-
-  
 </ul>
-</div>
-</div>
-    </div>
+
+  </div>
 
 
-<br>
 
-<div class="col-5">
-      <div style="width: 600px;" class="shadow-none card">
+
+
+
+
+
+  <div class="Div2">
+    
+
+
+<div style="width: 100%; height: 100%;" class="shadow-none card">
       <div class="card-body">
         <h5 style="font-size: 15px;" class="card-title">
 
@@ -642,7 +722,208 @@ elseif ($perf <= 60 && $perf >= 20) {
         
       </div>
     </div>
-<br>
+
+<div class="hr-sect">
+
+<span class="text-muted" style="margin-top: 2px; font-size: 14px;"><div class="dropdown">Sort By: <span style="color: black;">Recent</span>&nbsp;<a class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i class="fas fa-caret-down"></i></a>
+  <ul class="dropdown-menu dropdown-menu-right">
+  <center>
+      <a class="dropdown-item" href="home.php">Recent Confessions</a>
+    <a class="dropdown-item" href="top_posts.php">Top Confessions</a>
+
+
+    </center>
+    </ul>
+  </div>
+</span>
+
+
+</div>
+
+
+
+
+<?php $sql = "SELECT * FROM posts ORDER BY id desc";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $username = $row['name'];
+      $title = $row['title'];
+      $post = $row['post'];
+      $views = $row['views'];
+      $time = $row['time'];
+      $len = strlen($row['post']);
+
+   ?>
+
+   
+
+    
+
+<div style="width: 100%" class="shadow-none card rounded">
+      <div class="card-body">
+
+<?php
+
+if ($views >= 50) {
+
+ ?>
+
+<div class="text-muted" style="font-size: 13px;"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;Trending Post</div>
+
+<?php
+}
+?>
+
+
+        <h5 class="card-title"><a class="dropdown" data-toggle="dropdown"></a><img width="35px" height="35px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVpSURBVGhD7ZltUFRVGMeZyD70sayZxtSJ+tIoUToKGNjY0NiEm5CSL8042UxgqYCB6WIgJmkxjWPgzC5LmG0xq6CNK28Wb1nmBzJgEikLKNg3XnZJwb3TyzhP57meXfbluZd72RW/7H/mN7Pcc57/+d+z59x79xIVUUQRhS4AiHYOuxOcw0KByyGccTncV50OYdxpd/8rIn4WerAN+2BfVnMPL797clmF+Szghy67YGPhQCVWrHVa3I9yu9nThG1iLptVg9Ph/ocIpgr0YF469OT2d1auYWEzG9BFhQkF5jmG3nyY8At64D62jiupwcMJOxE92x9z+LDhkc0G9zPjRmrAOwEbqwHH5MOHJnHmZzG8F7tgDss3oXbZXOu6BqaycjiY9TrkZ6TCzjWrRCoPHiD7y4HLiceYmcZtwmuUMcWY7SbU6PSQszbFG9qXbM3zcOHceRge/Iusl2EDj6NOE/aJh9gMOAnDINj1HAzvF5PBA3n3VQ201J4lfShYhrEb1hsP8ljKhV8fZUhh/sxIhpWjyVRLepHYhWM8ljKJd1iFN6nBX22wK/1FMqQcWPPnLxbSMxDxZjfknsfjTS/x8YAwojitryQDenhv3XNgfDMROvYuhW92LYMczVSbueoE6UnBMh3m8eSFD1mswBpoIMXhHZl+gZGi9SuhOisBLmuXgLXkKbB9MEV99nK2oW/3O5KfS3pSsG9hSNEDILudJ1IGUuCmxDDFGSvBtC0euvct8QtMcfrteLFm/xubSU8p2Eks5zGlxR+JSQMKz6xTQeXAmrz1qaSnFOMOYS+PKS3W8avAQjlCOQGE8pShlseUFv/hQRWTGAu2+p2AJv5xeDnhCb+w1HGswVrKUwqW7QqPKS12/R+niqX4Pn8hnNqW4A22loVEPH9LHccarKU8pcAbK48pLaXXfw+9J4vBUhLrF1YJWNN7Ut3zEWbjMaWl9gQQhy6dDCmHQ/cK6SWHwhNQt4SQkbqPyZByDNcfIb3kULaE2EahimUZsICtdGofTEtpIqux0l4ysGw/85jSYh3PBBYqYfTiWRYuLjhsEHEweqmO9FCAgsuoyhuZL6M/nJPd0NgWQnhkD48pLXzpRBQq5mLuw9CjjYGB4ifFwAh+xmPYRtUoZczuXsZjSos/zFkCi5VyIXuuLFSNEtgVSNnDHAofXSkTKWx9k7D/rTZIWVQFzdsXkMERbHth8XE4sL0dHH9Mkl6S2N2HeLzpha/7lN4Pzn/RD++sboGkGAM8M68MPt24mgyPYBv2SWZ981NbocU0QHoGwrL8reoHDYpdc3WUmYcRy03QaTsha0WTSNpikxguPbYQ2nY+EhQej2Hb7T4mb52hsFv0osbwYhfKeSzlwh/SeOOgDNn1GHR7psIjmSsa4dnHKsSAGU9roXpLMlsyC0WqtyRBRpxWbMM+2Ne3Vl/QFTSGB5Zh9PrQ9Qd4LHViP242UaYNx/v8AnjYGl/nPQmKJNaGfaha9KTGYmTwODMTm4EKX8ORwUnIe6mFDIFkJjZCGlsiuCeWzj8mkhxTKS6bwJn3JTelOXhj24UyHmPmwleL+JrPY9pwgp79cNBk7PcNj68Wo3mM0CS+3LUL9Wh8NLuDHDwcfJL7oxiejVUXtpe7HrHZmMOWk16b1k4OHg60674VrzhsrHv5sOHXl4d6Snevab1FBQiF3Zq2W8aSK8re/YSq5s/7FxzN6ejeseprMowa0KMs73Jno+G32f9fWYO+L7ai4Kf2fE3rf1Q4ObDGsK+zzWz4fRG3u3uqqYHomvLejVVF3eaPMi9ZijZ958YlgbOL4Gc8hm2VhV3mU2VXN2ANL48ooohmrKio/wHi4HXZxnIVNAAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["name"];?></h5>
+        
+        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+        
+        <hr class="my-8">
+        
+        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+        
+    <p class="card-text" style="font-size: 15px; margin-left: 12px;">
+    
+    
+    <?php echo $row["post"]; ?>
+   
+    </p>
+                
+        <hr class="my-8">
+<ul class="nav">
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
+<li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div></li>
+
+<!-- Post Time read estimator-->
+<?php
+if ($len > 200 && $len < 400) {
+ ?>
+<li><div style="font-size: 12px;" class="text-muted"> • 2 Mins read</div></li>
+ <?php 
+}elseif ($len > 400 && $len < 600) {
+ ?>
+ <li><div style="font-size: 12px;" class="text-muted"> • 4 Mins read</div></li>
+<?php 
+}elseif ($len > 800 && $len < 1500) {
+?>
+<li><div style="font-size: 12px;" class="text-muted"> • 6 Mins read</div></li>
+<?php 
+}elseif ($len > 1500 && $len < 3500) {
+ ?>
+<li><div style="font-size: 12px;" class="text-muted"> • 8 Mins read</div></li>
+<?php 
+}elseif ($len > 3500 && $len < 5500) {
+?>
+<li><div style="font-size: 12px;" class="text-muted"> • 10 Mins read</div></li>
+<?php 
+}elseif ($len > 5500 && $len < 8500) {
+?>
+<li><div style="font-size: 12px;" class="text-muted"> • 12 Mins read</div></li>
+<?php 
+}elseif ($len > 10000) {
+?>
+<li><div style="font-size: 12px;" class="text-muted"> • 18 Mins read</div></li>
+<?php }?>
+
+
+</ul>
+      </div>
+    </div>
+    <br>
+<?php 
+    
+            }
+} else {
+    echo "No Confessions yet.<br> Start making confessions!";
+}
+
+?>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+  <div class="Div3">
+    
+
+<p style="font-size: 17px; line-height: 1px;"><i style="color: blue;" class="fas fa-bolt"></i>&nbsp;Most Viewed</p>
+<hr>
+<ul class="nav flex-column">
+
+
+<?php $sql6 = "SELECT * FROM posts WHERE views >= '25' ORDER BY views desc LIMIT 10";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $name = $row['name'];
+      $title = $row['title'];
+      $post = $row['post'];
+      $views = $row['views'];
+      $time = $row['time'];
+      $len = strlen($row['post']);
+
+   ?>
+
+<?php
+
+if ($views >= 25) {
+
+ ?>
+
+<li class="nav-item" style="line-height: 30px;">
+
+
+
+    <a class="text-muted" href="post_view.php?id=<?php echo $id; ?>"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG2SURBVGhD7dk/T8JAGMdx3pluRjd1VF+Gg6OJWBGEwVUTQETxz4hDOzr4BoyDsVUcnZztUO+HNNbmqbkrd9wTck/yXbC93Cfo8ceKGzdu3MzHBGHc8qOvgFPY02R78uNH8X0QxQmnsKfJ9uTHQQzmINRiNrMGaQxGye7Js3KnwQe5njVI/+EzWdkKkoXVoVI7x0/ketYgqAyGJQQBs7wpj2ELQcAsbfjkxvOxhrRu35PF9Tty4/nYQpo38gjEEtK8HikhEDtIY/CmjECsIHgxLINAbCD1S4FYk0MAmz/NWEB+EH83WxQQOM3yrzPWIfUL8TehghAHQXpv9h2AVUjt/FUJcXT1i0hLMdYgtZ4iQvz6UesgYPbaL+TPjEK8XiSPEAcATjNqnWx+WPC4KYjXVUEMxwcBtY5sRiCqiENxEFDrqKQdUu2EM0cgrRB8DFVC9PUgkPZnZLv1SG48GxAH4kim7i+bdgj6DzNGiCOZum+ajEAQhQHCO4vI66fNGARlMUDsd0PyOh0ZhSBggKi2zSGQcQgq+lJNZzOBzCIHoRazmYNQi9msFGRu/hnqxo0bNwynUvkGoyOViE1rERQAAAAASUVORK5CYII=">&nbsp;<?php echo substr($title, 0, 18)."..."; ?></a>
+
+    
+</li>
+
+<?php
+}
+?>
+
+<?php 
+    
+            }
+} else {
+    echo "No Confessions yet.<br> Start making confessions!";
+}
+?>
+
+
+
+
+  </div>
+
+
+
+
+</div>
+
+
 
 
 
@@ -754,113 +1035,7 @@ elseif ($perf <= 60 && $perf >= 20) {
 }
 ?>
 
-<?php $sql = "SELECT * FROM posts ORDER BY id desc";
-$result = $conn->query($sql);
 
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-
-      $id = $row['id'];
-      $username = $row['name'];
-      $title = $row['title'];
-      $post = $row['post'];
-      $views = $row['views'];
-      $time = $row['time'];
-      $len = strlen($row['post']);
-
-   ?>
-
-   <?php
-
-
-
-
-
-    ?>
-
-    
-
-<div style="width: 600px;" class="shadow-none card rounded">
-      <div class="card-body">
-
-<?php
-
-if ($views >= 50) {
-
- ?>
-
-<div class="text-muted" style="font-size: 13px;"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;Trending Post</div>
-
-<?php
-}
-?>
-
-
-        <h5 class="card-title"><a class="dropdown" data-toggle="dropdown"></a><img width="35px" height="35px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVpSURBVGhD7ZltUFRVGMeZyD70sayZxtSJ+tIoUToKGNjY0NiEm5CSL8042UxgqYCB6WIgJmkxjWPgzC5LmG0xq6CNK28Wb1nmBzJgEikLKNg3XnZJwb3TyzhP57meXfbluZd72RW/7H/mN7Pcc57/+d+z59x79xIVUUQRhS4AiHYOuxOcw0KByyGccTncV50OYdxpd/8rIn4WerAN+2BfVnMPL797clmF+Szghy67YGPhQCVWrHVa3I9yu9nThG1iLptVg9Ph/ocIpgr0YF469OT2d1auYWEzG9BFhQkF5jmG3nyY8At64D62jiupwcMJOxE92x9z+LDhkc0G9zPjRmrAOwEbqwHH5MOHJnHmZzG8F7tgDss3oXbZXOu6BqaycjiY9TrkZ6TCzjWrRCoPHiD7y4HLiceYmcZtwmuUMcWY7SbU6PSQszbFG9qXbM3zcOHceRge/Iusl2EDj6NOE/aJh9gMOAnDINj1HAzvF5PBA3n3VQ201J4lfShYhrEb1hsP8ljKhV8fZUhh/sxIhpWjyVRLepHYhWM8ljKJd1iFN6nBX22wK/1FMqQcWPPnLxbSMxDxZjfknsfjTS/x8YAwojitryQDenhv3XNgfDMROvYuhW92LYMczVSbueoE6UnBMh3m8eSFD1mswBpoIMXhHZl+gZGi9SuhOisBLmuXgLXkKbB9MEV99nK2oW/3O5KfS3pSsG9hSNEDILudJ1IGUuCmxDDFGSvBtC0euvct8QtMcfrteLFm/xubSU8p2Eks5zGlxR+JSQMKz6xTQeXAmrz1qaSnFOMOYS+PKS3W8avAQjlCOQGE8pShlseUFv/hQRWTGAu2+p2AJv5xeDnhCb+w1HGswVrKUwqW7QqPKS12/R+niqX4Pn8hnNqW4A22loVEPH9LHccarKU8pcAbK48pLaXXfw+9J4vBUhLrF1YJWNN7Ut3zEWbjMaWl9gQQhy6dDCmHQ/cK6SWHwhNQt4SQkbqPyZByDNcfIb3kULaE2EahimUZsICtdGofTEtpIqux0l4ysGw/85jSYh3PBBYqYfTiWRYuLjhsEHEweqmO9FCAgsuoyhuZL6M/nJPd0NgWQnhkD48pLXzpRBQq5mLuw9CjjYGB4ifFwAh+xmPYRtUoZczuXsZjSos/zFkCi5VyIXuuLFSNEtgVSNnDHAofXSkTKWx9k7D/rTZIWVQFzdsXkMERbHth8XE4sL0dHH9Mkl6S2N2HeLzpha/7lN4Pzn/RD++sboGkGAM8M68MPt24mgyPYBv2SWZ981NbocU0QHoGwrL8reoHDYpdc3WUmYcRy03QaTsha0WTSNpikxguPbYQ2nY+EhQej2Hb7T4mb52hsFv0osbwYhfKeSzlwh/SeOOgDNn1GHR7psIjmSsa4dnHKsSAGU9roXpLMlsyC0WqtyRBRpxWbMM+2Ne3Vl/QFTSGB5Zh9PrQ9Qd4LHViP242UaYNx/v8AnjYGl/nPQmKJNaGfaha9KTGYmTwODMTm4EKX8ORwUnIe6mFDIFkJjZCGlsiuCeWzj8mkhxTKS6bwJn3JTelOXhj24UyHmPmwleL+JrPY9pwgp79cNBk7PcNj68Wo3mM0CS+3LUL9Wh8NLuDHDwcfJL7oxiejVUXtpe7HrHZmMOWk16b1k4OHg60674VrzhsrHv5sOHXl4d6Snevab1FBQiF3Zq2W8aSK8re/YSq5s/7FxzN6ejeseprMowa0KMs73Jno+G32f9fWYO+L7ai4Kf2fE3rf1Q4ObDGsK+zzWz4fRG3u3uqqYHomvLejVVF3eaPMi9ZijZ958YlgbOL4Gc8hm2VhV3mU2VXN2ANL48ooohmrKio/wHi4HXZxnIVNAAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["name"];?></h5>
-        
-        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
-        
-        <hr class="my-8">
-        
-        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
-        
-    <p class="card-text" style="font-size: 15px; margin-left: 12px;">
-    
-    
-    <?php echo $row["post"]; ?>
-   
-    </p>
-                
-        <hr class="my-8">
-<ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
-<li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div></li>
-
-<!-- Post Time read estimator-->
-<?php
-if ($len > 200 && $len < 400) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 2 Mins read</div></li>
- <?php 
-}elseif ($len > 400 && $len < 600) {
- ?>
- <li><div style="font-size: 12px;" class="text-muted"> • 4 Mins read</div></li>
-<?php 
-}elseif ($len > 800 && $len < 1500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 6 Mins read</div></li>
-<?php 
-}elseif ($len > 1500 && $len < 3500) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 8 Mins read</div></li>
-<?php 
-}elseif ($len > 3500 && $len < 5500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 10 Mins read</div></li>
-<?php 
-}elseif ($len > 5500 && $len < 8500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 12 Mins read</div></li>
-<?php 
-}elseif ($len > 10000) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 18 Mins read</div></li>
-<?php }?>
-
-
-</ul>
-      </div>
-    </div>
-    <br>
-<?php 
-    
-            }
-} else {
-    echo "No Confessions yet.<br> Start making confessions!";
-}
-
-?>
 
 
 

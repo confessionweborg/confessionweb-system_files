@@ -96,6 +96,37 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 
 
 
+
+#div1{
+    
+    float:left;
+}
+#div2{
+    
+    float:left;
+}
+
+
+
+.hr-sect {
+  display: flex;
+  flex-basis: 100%;
+  align-items: center;
+  color: rgba(0, 0, 0, 0.35);
+  margin: 8px 0px;
+}
+.hr-sect::before,
+.hr-sect::after {
+  content: "";
+  flex-grow: 1;
+  background: rgba(0, 0, 0, 0.35);
+  height: 1px;
+  font-size: 0px;
+  line-height: 0px;
+  margin: 0px 8px;
+}
+
+
 </style>
 
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -373,16 +404,71 @@ $sum = $row['totalsum'];
 
 <div style="width: 100%; min-height: 200px;">
   <div class="Div1">
+
+
+
+<span class="text-muted" style="margin-top: 2px; font-size: 14px;"><div class="dropdown">
+
+<?php
+
+include 'conn.php';
+
+
+$id = isset($_GET['id']);
+$sex = isset($_GET['sex']);
+
+
+ $result = mysqli_query($conn, "SELECT sex AS gender FROM signup WHERE name = '$username'");
+
+$row = mysqli_fetch_assoc($result);
+
+$gendercheck = $row['gender'];
+
+if ($gendercheck == "Male") {
+   ?>
+
+      
+        <img class="img-fluid" style="border-radius: 50%; width: 25px; height: 25px;" src="image/avatar.png">
+      
+
+
+<?php 
+ }else {   
+?>
+
+
+        <img class="img-fluid" style="border-radius: 50%; width: 25px; height: 25px;" src="image/avatar_female.png">
+        
+
+        <?php }?>
+
+<a href="settings.php" style="color: black;"><?php echo $username; ?></a>
+
+  &nbsp;<a style="float: right;" class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i style="color: black;" class="fas fa-ellipsis-h"></i></a>
+  <ul class="dropdown-menu dropdown-menu-right">
+  <center>
+      <a class="dropdown-item" href="settings.php">Edit Profile</a>
+
+
+    </center>
+  </div>
+</span>
+
+
+
+<br>
+
+    
     
 
 <p style="font-size: 17px; line-height: 4px;">Feeds</p>
       <hr>
       <ul class="nav flex-column">
   <li class="nav-item">
-    <a style="line-height: 4px;" class="nav-link active" href="home.php"><img src="https://png.icons8.com/office/16/000000/news.png">&nbsp;Feed</a>
+    <a style="background-color: #e4e4e4; border-radius: 7px; line-height: 4px;" class="nav-link active" href="home.php"><img src="https://png.icons8.com/office/16/000000/news.png">&nbsp;Feed</a>
   </li>
   <li class="nav-item">
-    <a style="background-color: #e4e4e4; border-radius: 7px; line-height: 4px;" class="nav-link active" href="trending.php"><i class="fas fa-check-circle"></i>&nbsp;Trending<span class="badge"><?php 
+    <a class="nav-link text-muted" href="trending.php"><i style="color: blue;" class="fas fa-check-circle"></i>&nbsp;Trending<span class="badge"><?php 
 $id = isset($_SESSION['id']);
 
 $sql5 = "SELECT * FROM posts WHERE views >= '50'";
@@ -569,19 +655,91 @@ elseif ($perf <= 60 && $perf >= 20) {
 
 
   <div class="Div2">
-
-    <div style="width: 100%;" class="shadow-none card">
-      <div class="card-body">
-        <h5 style="font-size: 25px;" class="card-title"><span style="font-size: 25px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;
-Trending Confessions</h5>
-</div>
-</div>
-
-<br>
     
 
 
-<?php $sql = "SELECT * FROM posts WHERE views >= '50' ORDER BY id desc";
+<div style="width: 100%; height: 100%;" class="shadow-none card">
+      <div class="card-body">
+        <h5 style="font-size: 15px;" class="card-title">
+
+
+
+
+
+        
+        <b><p class="card-text text-muted"><a style="text-decoration: blue; font-size: 20px; font-family: 'Work Sans', sans-serif;" href="" data-toggle="modal" data-target="#exampleModalCenter"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARdSURBVHhe7Z1NixxVGIVbBMWNK3cOpGeYRIwLxZ3L+PUD8g+y1+BK1y4EEaJpTXXPKBE3mUggREHQKAgaNInmS1Fkgt9ZuJHAVHXL9HSc6307byzTnpnpnqpzZ9HngQeGrrr33Jzu+uheVBpCCCGEEEIIIYQQQmzF3hPhrma7ONjMivOz7aIbDVOm/ZvPWQfWhdeShplO7/7ZLL8ysqApNr9snXg9XOZb63c32/m3eCFTbPxAWjdeEw875OACZIin42e9Jh4x6NxosHSz4qzXxCMGTeMFdyzjEZB7TTxQsCz1mnigUFnqNfFAobLUa+KBQmWp18QDhcpSr4kHCpWlXhMPFJrSJ473wqtf9cOZa4Nw9fqNoWd+Hwxfe3ypB8ek1GvigUJTuGexCG983Q+/rfwdruVY2/Z63Gf3Ap4jhV4TDxTK1gp9b3kAS0eeivvu1JvgNfFAoWyPXOzDojfTjgQ0F1uviQcKZWrn9c1OOxv5axyzbweuCV4TDxTK9LX4SUYFj+Oh8+mPAq+JBwplanc4qNxx/DyORXMy9Zp4oFCmy/E2E5U7jjYWzcnUa+KBQpnqDRgBhTLVKWgEFMrUvuGicsdRF+Ea1G3oCCiU7ZELkx8Fh/VFrD4n/iniqn6KqF0r1H5e2Ox0ZKedVjxadqp802vigUJTuu9Yb3hxtTscu8007W97zbahMSn1mnigUFnqNfFAobLUa+KBQmWp18QDhcpSr4kHCmX74JvdsP/kX+H5T1dDK34zPvbdWnh/eS2c/mkw1P621w7HbbaP7Wtj0FxsvSYeKJTlk/Gb7CtnV8NHseRPfp7MD38cDMfaHGhull4TDxRat08f74WFS31Y7HbsXOwneyO8Jh4otC4fWCzCC/EU8vE2PvFbaXPa3JaBsuvSa+KBQuvwkaPdcPTKGiyvTi3DstAa6tBr4oFCq/ro293w7vf88m+5FC/YlonWUlWviQcKreJDb3XDO9+kK/+WlrmXcKfkNfFAoVV86YtVWFAKLRutqYpeEw8UWkVUTErRmqroNfFAoVVEpaQUramKXhMPFFpFVEpK0Zqq6DXxQKFVRKWkFK2pil4TDxQqS70mHihUlnpNPFCoLPWaeKBQWeo18UChstRr4oFCZanXxAOFypvqYR07baLH1eBwGWY7xTNeEw8YLKP55SQP78PhU26WX0r20D64gCnULrjxnP+lnXaSPrYSLWYis7zVCOEOn05MCix1fF/0acR2AaVubZav72oXz/kUogqw4M3M8htz2coBHy6qAkvewGaW9+eyfL8PFXWAit7AbrxDeMqHiboARf/frLi+a2HlMR8i6gQWfpv5H81O92HfXdQNLt3Nil/mOiu7fVfBABZvZsUP863ejO8mWKDym+38wp7F/D7fRTABb8Bn860/7/XNgs1/y2+2iw9mDq3f45tECsry86Xk/3mN+PcN6DROhDv9JZGSWP7L+jlZCCGEEEIIIYQQQohJaTT+AVY1TQ7lzeOWAAAAAElFTkSuQmCC"><span class="text-muted">Want to confess something, <?php echo $username."?"; ?><br><small>Confess your experiences, emotions and everything inside you</small></span></a></p></b>
+        
+        
+   <hr>
+
+<div>
+        <a style="text-decoration: none; color: grey; line-height: 4px;" href="#collapse1" class="nav-toggle">Looking for Confessions?</a>
+      </div>
+      <div id="collapse1" style="display:none">
+        
+        <ul>
+          <li>I want to confess about my life</li>
+          <li>My life is totally...</li>
+          <li>How to be the best version of myself?</li>
+          <li>Love and Relationships.</li>
+          <li>Studies and Career related.</li>
+          <li>Jobs and Professional life.</li>
+          <li>Personal and Private(Follow Platform's Respect <a href="cpolicy.php">Policy</a>)</li>
+        </ul>
+
+      </div>
+
+      <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.nav-toggle').click(function(){
+      //get collapse content selector
+      var collapse_content_selector = $(this).attr('href');         
+          
+      //make the collapse content to be shown or hide
+      var toggle_switch = $(this);
+      $(collapse_content_selector).toggle(function(){
+        if($(this).css('display')=='none'){
+                                //change the button label to be 'Show'
+        toggle_switch.html('Looking for Confessions?');
+        }else{
+                                //change the button label to be 'Hide'
+        toggle_switch.html('Use these examples to Confess');
+        }
+      });
+      });
+        
+    }); 
+    </script>     
+        
+        
+        
+        
+        
+        
+      </div>
+    </div>
+
+
+
+
+<div class="hr-sect">
+
+<span class="text-muted" style="margin-top: 2px; font-size: 14px;"><div class="dropdown">Sort By: <span style="color: black;">Top</span>&nbsp;<a class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i class="fas fa-caret-down"></i></a>
+  <ul class="dropdown-menu dropdown-menu-right">
+  <center>
+      <a class="dropdown-item" href="home.php">Recent Confessions</a>
+    <a class="dropdown-item" href="#">Top Confessions</a>
+
+
+    </center>
+    </ul>
+  </div>
+</span>
+</div>
+
+
+<?php $sql = "SELECT * FROM posts ORDER BY views desc";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -597,6 +755,10 @@ if ($result->num_rows > 0) {
       $len = strlen($row['post']);
 
    ?>
+
+   
+
+    
 
 <div style="width: 100%" class="shadow-none card rounded">
       <div class="card-body">
@@ -614,19 +776,24 @@ if ($views >= 50) {
 ?>
 
 
-        <h5 class="card-title"><img width="35px" height="35px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVpSURBVGhD7ZltUFRVGMeZyD70sayZxtSJ+tIoUToKGNjY0NiEm5CSL8042UxgqYCB6WIgJmkxjWPgzC5LmG0xq6CNK28Wb1nmBzJgEikLKNg3XnZJwb3TyzhP57meXfbluZd72RW/7H/mN7Pcc57/+d+z59x79xIVUUQRhS4AiHYOuxOcw0KByyGccTncV50OYdxpd/8rIn4WerAN+2BfVnMPL797clmF+Szghy67YGPhQCVWrHVa3I9yu9nThG1iLptVg9Ph/ocIpgr0YF469OT2d1auYWEzG9BFhQkF5jmG3nyY8At64D62jiupwcMJOxE92x9z+LDhkc0G9zPjRmrAOwEbqwHH5MOHJnHmZzG8F7tgDss3oXbZXOu6BqaycjiY9TrkZ6TCzjWrRCoPHiD7y4HLiceYmcZtwmuUMcWY7SbU6PSQszbFG9qXbM3zcOHceRge/Iusl2EDj6NOE/aJh9gMOAnDINj1HAzvF5PBA3n3VQ201J4lfShYhrEb1hsP8ljKhV8fZUhh/sxIhpWjyVRLepHYhWM8ljKJd1iFN6nBX22wK/1FMqQcWPPnLxbSMxDxZjfknsfjTS/x8YAwojitryQDenhv3XNgfDMROvYuhW92LYMczVSbueoE6UnBMh3m8eSFD1mswBpoIMXhHZl+gZGi9SuhOisBLmuXgLXkKbB9MEV99nK2oW/3O5KfS3pSsG9hSNEDILudJ1IGUuCmxDDFGSvBtC0euvct8QtMcfrteLFm/xubSU8p2Eks5zGlxR+JSQMKz6xTQeXAmrz1qaSnFOMOYS+PKS3W8avAQjlCOQGE8pShlseUFv/hQRWTGAu2+p2AJv5xeDnhCb+w1HGswVrKUwqW7QqPKS12/R+niqX4Pn8hnNqW4A22loVEPH9LHccarKU8pcAbK48pLaXXfw+9J4vBUhLrF1YJWNN7Ut3zEWbjMaWl9gQQhy6dDCmHQ/cK6SWHwhNQt4SQkbqPyZByDNcfIb3kULaE2EahimUZsICtdGofTEtpIqux0l4ysGw/85jSYh3PBBYqYfTiWRYuLjhsEHEweqmO9FCAgsuoyhuZL6M/nJPd0NgWQnhkD48pLXzpRBQq5mLuw9CjjYGB4ifFwAh+xmPYRtUoZczuXsZjSos/zFkCi5VyIXuuLFSNEtgVSNnDHAofXSkTKWx9k7D/rTZIWVQFzdsXkMERbHth8XE4sL0dHH9Mkl6S2N2HeLzpha/7lN4Pzn/RD++sboGkGAM8M68MPt24mgyPYBv2SWZ981NbocU0QHoGwrL8reoHDYpdc3WUmYcRy03QaTsha0WTSNpikxguPbYQ2nY+EhQej2Hb7T4mb52hsFv0osbwYhfKeSzlwh/SeOOgDNn1GHR7psIjmSsa4dnHKsSAGU9roXpLMlsyC0WqtyRBRpxWbMM+2Ne3Vl/QFTSGB5Zh9PrQ9Qd4LHViP242UaYNx/v8AnjYGl/nPQmKJNaGfaha9KTGYmTwODMTm4EKX8ORwUnIe6mFDIFkJjZCGlsiuCeWzj8mkhxTKS6bwJn3JTelOXhj24UyHmPmwleL+JrPY9pwgp79cNBk7PcNj68Wo3mM0CS+3LUL9Wh8NLuDHDwcfJL7oxiejVUXtpe7HrHZmMOWk16b1k4OHg60674VrzhsrHv5sOHXl4d6Snevab1FBQiF3Zq2W8aSK8re/YSq5s/7FxzN6ejeseprMowa0KMs73Jno+G32f9fWYO+L7ai4Kf2fE3rf1Q4ObDGsK+zzWz4fRG3u3uqqYHomvLejVVF3eaPMi9ZijZ958YlgbOL4Gc8hm2VhV3mU2VXN2ANL48ooohmrKio/wHi4HXZxnIVNAAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["name"];?></h5>
+        <h5 class="card-title"><a class="dropdown" data-toggle="dropdown"></a><img width="35px" height="35px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAVpSURBVGhD7ZltUFRVGMeZyD70sayZxtSJ+tIoUToKGNjY0NiEm5CSL8042UxgqYCB6WIgJmkxjWPgzC5LmG0xq6CNK28Wb1nmBzJgEikLKNg3XnZJwb3TyzhP57meXfbluZd72RW/7H/mN7Pcc57/+d+z59x79xIVUUQRhS4AiHYOuxOcw0KByyGccTncV50OYdxpd/8rIn4WerAN+2BfVnMPL797clmF+Szghy67YGPhQCVWrHVa3I9yu9nThG1iLptVg9Ph/ocIpgr0YF469OT2d1auYWEzG9BFhQkF5jmG3nyY8At64D62jiupwcMJOxE92x9z+LDhkc0G9zPjRmrAOwEbqwHH5MOHJnHmZzG8F7tgDss3oXbZXOu6BqaycjiY9TrkZ6TCzjWrRCoPHiD7y4HLiceYmcZtwmuUMcWY7SbU6PSQszbFG9qXbM3zcOHceRge/Iusl2EDj6NOE/aJh9gMOAnDINj1HAzvF5PBA3n3VQ201J4lfShYhrEb1hsP8ljKhV8fZUhh/sxIhpWjyVRLepHYhWM8ljKJd1iFN6nBX22wK/1FMqQcWPPnLxbSMxDxZjfknsfjTS/x8YAwojitryQDenhv3XNgfDMROvYuhW92LYMczVSbueoE6UnBMh3m8eSFD1mswBpoIMXhHZl+gZGi9SuhOisBLmuXgLXkKbB9MEV99nK2oW/3O5KfS3pSsG9hSNEDILudJ1IGUuCmxDDFGSvBtC0euvct8QtMcfrteLFm/xubSU8p2Eks5zGlxR+JSQMKz6xTQeXAmrz1qaSnFOMOYS+PKS3W8avAQjlCOQGE8pShlseUFv/hQRWTGAu2+p2AJv5xeDnhCb+w1HGswVrKUwqW7QqPKS12/R+niqX4Pn8hnNqW4A22loVEPH9LHccarKU8pcAbK48pLaXXfw+9J4vBUhLrF1YJWNN7Ut3zEWbjMaWl9gQQhy6dDCmHQ/cK6SWHwhNQt4SQkbqPyZByDNcfIb3kULaE2EahimUZsICtdGofTEtpIqux0l4ysGw/85jSYh3PBBYqYfTiWRYuLjhsEHEweqmO9FCAgsuoyhuZL6M/nJPd0NgWQnhkD48pLXzpRBQq5mLuw9CjjYGB4ifFwAh+xmPYRtUoZczuXsZjSos/zFkCi5VyIXuuLFSNEtgVSNnDHAofXSkTKWx9k7D/rTZIWVQFzdsXkMERbHth8XE4sL0dHH9Mkl6S2N2HeLzpha/7lN4Pzn/RD++sboGkGAM8M68MPt24mgyPYBv2SWZ981NbocU0QHoGwrL8reoHDYpdc3WUmYcRy03QaTsha0WTSNpikxguPbYQ2nY+EhQej2Hb7T4mb52hsFv0osbwYhfKeSzlwh/SeOOgDNn1GHR7psIjmSsa4dnHKsSAGU9roXpLMlsyC0WqtyRBRpxWbMM+2Ne3Vl/QFTSGB5Zh9PrQ9Qd4LHViP242UaYNx/v8AnjYGl/nPQmKJNaGfaha9KTGYmTwODMTm4EKX8ORwUnIe6mFDIFkJjZCGlsiuCeWzj8mkhxTKS6bwJn3JTelOXhj24UyHmPmwleL+JrPY9pwgp79cNBk7PcNj68Wo3mM0CS+3LUL9Wh8NLuDHDwcfJL7oxiejVUXtpe7HrHZmMOWk16b1k4OHg60674VrzhsrHv5sOHXl4d6Snevab1FBQiF3Zq2W8aSK8re/YSq5s/7FxzN6ejeseprMowa0KMs73Jno+G32f9fWYO+L7ai4Kf2fE3rf1Q4ObDGsK+zzWz4fRG3u3uqqYHomvLejVVF3eaPMi9ZijZ958YlgbOL4Gc8hm2VhV3mU2VXN2ANL48ooohmrKio/wHi4HXZxnIVNAAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["name"];?></h5>
         
         <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
         
         <hr class="my-8">
         
-        <a style="color: black; font-size: 20px;" href="post_view.php?id='<?php echo $id; ?>'"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
-        <div class="item">
-    <p class="card-text" style="font-size: 15px; margin-left: 12px;"><?php echo $row["post"]; ?></p>
-                </div>
+        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+        
+    <p class="card-text" style="font-size: 15px; margin-left: 12px;">
+    
+    
+    <?php echo $row["post"]; ?>
+   
+    </p>
+                
         <hr class="my-8">
 <ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." People read this • "?></div></li>&nbsp;
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
 <li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div></li>
 
 <!-- Post Time read estimator-->
