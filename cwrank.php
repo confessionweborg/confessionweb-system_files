@@ -94,7 +94,10 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
   right: 0px;
 }
 
-
+.dropdown-item:hover {
+ background-color: #283e4a;
+ color: white;
+}
 
 </style>
 
@@ -141,7 +144,7 @@ $(function(){ /* to make sure the script runs after page load */
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 1450px; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
+<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 1450px; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
   <a style="display: inline; padding-right: 120px;" class="navbar-brand" href="#"><img width="30px" height="30px" src="data:image/png;base64,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"></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
@@ -150,7 +153,7 @@ $(function(){ /* to make sure the script runs after page load */
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li style="display: inline; padding-right: 40px;" class="nav-item">
-        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;Feed <span class="sr-only">(current)</span></a>
+        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: white;">Feed</span> <span class="sr-only">(current)</span></a>
       </li>
       <!--Notification system starts-->
 
@@ -160,7 +163,7 @@ $(function(){ /* to make sure the script runs after page load */
 
         <a style="font-size: 20px; color: #545454; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;Updates
+          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white;">Updates</span>
         </a>
 
 
@@ -186,7 +189,7 @@ echo $rowcounts;
 <hr>
 <ul>
 
-<?php $sql = "SELECT * FROM posts ORDER BY time desc LIMIT 5";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY time DESC LIMIT 5";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -205,7 +208,13 @@ if ($result->num_rows > 0) {
 
 
           <li style="min-width: 400px; max-height:150px;
-  overflow: auto;"><i style="font-size: 18px; color: blue;" class="fas fa-portrait"></i>&nbsp;&nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
+  overflow: auto;">
+
+  <img class="img-fluid" style="border-radius: 50%; width: 20px; height: 20px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+
+
+
+  &nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
           
           
           
@@ -233,38 +242,31 @@ if ($result->num_rows > 0) {
 </form>
       </li>
 
-      <?php
+      <?php 
+          $username=$_SESSION['name'];
 
-include 'conn.php';
+           $sql = "SELECT * FROM signup where name='$username'";
+              $result = $conn->query($sql);
 
+               if ($result->num_rows > 0) {
+                // output data of each row
+               while($row = $result->fetch_assoc()) {
+           $location= $row["image"];
 
-$id = isset($_GET['id']);
-$sex = isset($_GET['sex']);
-
-
- $result = mysqli_query($conn, "SELECT sex AS gender FROM signup WHERE name = '$username'");
-
-$row = mysqli_fetch_assoc($result);
-
-$gendercheck = $row['gender'];
-
-if ($gendercheck == "Male") {
-   ?>
-
-      <li class="nav-item dropdown">
-        <a class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/avatar.png">
-        </a>
-
-
-<?php 
- }else {   
-?>
+           ?>
 
 <li class="nav-item dropdown">
-        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/avatar_female.png">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="<?php echo $location; ?>">
         </a>
 
-        <?php }?>
+<?php
+
+}
+             } else {
+            echo "0 results";
+           }
+
+ ?>
 
 
 
@@ -643,13 +645,14 @@ ConfessionWeb Rank (CW Rank)</h5></center>
 
   <div class="Div3">
     
-
-<p style="font-size: 17px; line-height: 1px;"><i style="color: blue;" class="fas fa-bolt"></i>&nbsp;Most Viewed</p>
+<div class="card" style="width: 100%;">
+  <div class="card-body">
+<p style="font-size: 12px; line-height: 1px;"><i style="color: blue;" class="fas fa-bolt"></i>&nbsp;What People are talking about<i style="color: blue; float: right; data-toggle="tooltip" data-placement="top" title="These confessions are selected based on the maximum interaction among the users."" class="fas fa-info-circle"></i></p>
 <hr>
 <ul class="nav flex-column">
 
 
-<?php $sql6 = "SELECT * FROM posts WHERE views >= '25' ORDER BY views desc LIMIT 10";
+<?php $sql6 = "SELECT * FROM posts ORDER BY views desc LIMIT 6";
 $result6 = $conn->query($sql6);
 
 if ($result6->num_rows > 0) {
@@ -666,24 +669,21 @@ if ($result6->num_rows > 0) {
 
    ?>
 
-<?php
 
-if ($views >= 25) {
 
- ?>
 
 <li class="nav-item" style="line-height: 30px;">
 
 
 
-    <a class="text-muted" href="post_view.php?id=<?php echo $id; ?>"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG2SURBVGhD7dk/T8JAGMdx3pluRjd1VF+Gg6OJWBGEwVUTQETxz4hDOzr4BoyDsVUcnZztUO+HNNbmqbkrd9wTck/yXbC93Cfo8ceKGzdu3MzHBGHc8qOvgFPY02R78uNH8X0QxQmnsKfJ9uTHQQzmINRiNrMGaQxGye7Js3KnwQe5njVI/+EzWdkKkoXVoVI7x0/ketYgqAyGJQQBs7wpj2ELQcAsbfjkxvOxhrRu35PF9Tty4/nYQpo38gjEEtK8HikhEDtIY/CmjECsIHgxLINAbCD1S4FYk0MAmz/NWEB+EH83WxQQOM3yrzPWIfUL8TehghAHQXpv9h2AVUjt/FUJcXT1i0hLMdYgtZ4iQvz6UesgYPbaL+TPjEK8XiSPEAcATjNqnWx+WPC4KYjXVUEMxwcBtY5sRiCqiENxEFDrqKQdUu2EM0cgrRB8DFVC9PUgkPZnZLv1SG48GxAH4kim7i+bdgj6DzNGiCOZum+ajEAQhQHCO4vI66fNGARlMUDsd0PyOh0ZhSBggKi2zSGQcQgq+lJNZzOBzCIHoRazmYNQi9msFGRu/hnqxo0bNwynUvkGoyOViE1rERQAAAAASUVORK5CYII=">&nbsp;<?php echo substr($title, 0, 18)."..."; ?></a>
+    <span style="content: '';"><a style="color: black; line-height: 1px;" href="post_view.php?id=<?php echo $id; ?>"><i style="font-size: 12px; color: #699cff;" class="fas fa-circle"></i>&nbsp;<span style="font-size: 16px;"><?php echo substr($title, 0, 24)."..."; ?></span></a>
+    <br style="">
+   <span class="text-muted" style="font-size: 11px; padding-left: 16px;"><?php echo time_ago_in_phppeople($time); ?> • <?php echo $views." readers"; ?></span></span>
 
     
 </li>
 
-<?php
-}
-?>
+
 
 <?php 
     
@@ -693,13 +693,201 @@ if ($views >= 25) {
 }
 ?>
 
+</div>
+</div>
+
+<?php
+          function time_ago_in_phppeople($timestamp){
+  
+  date_default_timezone_set("America/Los_Angeles");         
+  $time_ago        = strtotime($timestamp);
+  $current_time    = time();
+  $time_difference = $current_time - $time_ago;
+  $seconds         = $time_difference;
+  
+  $minutes = round($seconds / 60); // value 60 is seconds  
+  $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+  $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+  $weeks   = round($seconds / 604800); // 7*24*60*60;  
+  $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+  $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+                
+  if ($seconds <= 60){
+
+    return "Just Now";
+
+  } else if ($minutes <= 60){
+
+    if ($minutes == 1){
+
+      return "1 min ago";
+
+    } else {
+
+      return "$minutes mins ago";
+
+    }
+
+  } else if ($hours <= 24){
+
+    if ($hours == 1){
+
+      return "1 hour ago";
+
+    } else {
+
+      return "$hours hrs ago";
+
+    }
+
+  } else if ($days <= 7){
+
+    if ($days == 1){
+
+      return "yesterday";
+
+    } else {
+
+      return "$days days ago";
+
+    }
+
+  } else if ($weeks <= 4.3){
+
+    if ($weeks == 1){
+
+      return "1 week ago";
+
+    } else {
+
+      return "$weeks weeks ago";
+
+    }
+
+  } else if ($months <= 12){
+
+    if ($months == 1){
+
+      return "1 month ago";
+
+    } else {
+
+      return "$months months ago";
+
+    }
+
+  } else {
+    
+    if ($years == 1){
+
+      return "1 year ago";
+
+    } else {
+
+      return "$years years ago";
+
+    }
+  }
+}
+?>
+
+
+
+
+<!-- Your Blogs Section-->
+
+<br>
+
+<div class="card">
+  <div class="card-body">
+    
+    <span style="margin-top: 2px; font-size: 14px;"><div class="dropdown"><img width="20px" height="20px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png">&nbsp;<span style="font-size: 17px; line-height: 1px;">Your Blogs</span> &nbsp;<a class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i class="fas fa-caret-down"></i></a>
+  <ul class="dropdown-menu dropdown-menu-left" >
+  
+
+<?php $sql = "SELECT * FROM blogpost WHERE name = '$username'ORDER BY id DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $username = $row['name'];
+      $btitle = $row['btitle'];
+      $bpost = $row['bpost'];
+      $btime = $row['btime'];
+
+   ?>
+
+
+    <a class="dropdown-item" href="blog_view.php?id='<?php echo $id; ?>'"><img width="15px" height="15px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png"><?php echo $row["btitle"]; ?></a>
+
+
+<?php 
+    
+            }
+} else {
+    echo "No blogs posted yet.<br> You can start writing your blogs!";
+}
+?>
+
+
+    
+    </ul>
+  </div>
+</span>
+<hr>
+
+
+
+<ul class="nav flex-column">
+
+
+<?php $sql = "SELECT * FROM blogpost WHERE name = '$username'ORDER BY id DESC LIMIT 4";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $username = $row['name'];
+      $btitle = $row['btitle'];
+      $bpost = $row['bpost'];
+      $btime = $row['btime'];
+
+   ?>
+
+<li class="nav-item" style="line-height: 30px;">
+
+
+
+    <a style="color: black; font-size: 25px;" href="blog_view.php?id='<?php echo $id; ?>'"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG2SURBVGhD7dk/T8JAGMdx3pluRjd1VF+Gg6OJWBGEwVUTQETxz4hDOzr4BoyDsVUcnZztUO+HNNbmqbkrd9wTck/yXbC93Cfo8ceKGzdu3MzHBGHc8qOvgFPY02R78uNH8X0QxQmnsKfJ9uTHQQzmINRiNrMGaQxGye7Js3KnwQe5njVI/+EzWdkKkoXVoVI7x0/ketYgqAyGJQQBs7wpj2ELQcAsbfjkxvOxhrRu35PF9Tty4/nYQpo38gjEEtK8HikhEDtIY/CmjECsIHgxLINAbCD1S4FYk0MAmz/NWEB+EH83WxQQOM3yrzPWIfUL8TehghAHQXpv9h2AVUjt/FUJcXT1i0hLMdYgtZ4iQvz6UesgYPbaL+TPjEK8XiSPEAcATjNqnWx+WPC4KYjXVUEMxwcBtY5sRiCqiENxEFDrqKQdUu2EM0cgrRB8DFVC9PUgkPZnZLv1SG48GxAH4kim7i+bdgj6DzNGiCOZum+ajEAQhQHCO4vI66fNGARlMUDsd0PyOh0ZhSBggKi2zSGQcQgq+lJNZzOBzCIHoRazmYNQi9msFGRu/hnqxo0bNwynUvkGoyOViE1rERQAAAAASUVORK5CYII=">&nbsp;<span style="font-size: 15px;"><?php echo substr($btitle, 0, 18)."..."; ?></span></a>
+   
+
+    
+</li>
+
+<?php 
+    
+            }
+} else {
+    echo "No blogs posted yet.<br> You can start writing your blogs!";
+}
+?>
+
+
+
 
 
 
   </div>
+</div>
 
 
 
+  </div>
 
 </div>
 

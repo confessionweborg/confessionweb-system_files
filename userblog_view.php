@@ -4,7 +4,7 @@ session_start();
 
 include("conn.php"); 
 
-$username=$_SESSION['name'];
+$username=$_GET['name'];
 $position=isset($_SESSION['position']);
 ?>
 
@@ -15,18 +15,18 @@ $position=isset($_SESSION['position']);
 <head>
 
 
-	<meta http-equiv="Content-Type" content="text/html; charset=gb18030">
-	
-	<meta http-equiv="refresh" content="1800;url=https://www.confessionweb.com/logout.php" />
+  <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+  
+  <meta http-equiv="refresh" content="1800;url=https://www.confessionweb.com/logout.php" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-	<title><?php echo $username; ?> - ConfessionWeb</title>
+  <title><?php echo $username; ?> - ConfessionWeb</title>
 
 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
 
 
@@ -42,7 +42,7 @@ $position=isset($_SESSION['position']);
 
 
 <style type="text/css">
-	nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
+  nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
 nav.navbar-findcond a { color: #f14444; }
 nav.navbar-findcond ul.navbar-nav a { color: #f14444; border-style: solid; border-width: 0 0 2px 0; border-color: #fff; }
 nav.navbar-findcond ul.navbar-nav a:hover,
@@ -99,7 +99,7 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 
         <a style="font-size: 20px; color: #545454; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white">Updates</span>
+          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white;">Updates</span>
         </a>
 
 
@@ -183,67 +183,6 @@ echo $rowcounts;
 </form>
       </li>
 
-      <?php 
-          $username=$_SESSION['name'];
-
-           $sql = "SELECT * FROM signup where name='$username'";
-              $result = $conn->query($sql);
-
-               if ($result->num_rows > 0) {
-                // output data of each row
-               while($row = $result->fetch_assoc()) {
-           $location= $row["image"];
-
-           ?>
-
-<li class="nav-item dropdown">
-        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="<?php echo $location; ?>">
-        </a>
-
-<?php
-
-}
-             } else {
-            echo "0 results";
-           }
-
- ?>
-
-
-
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-
-<img width="40px" height="40px" src="https://png.icons8.com/color/96/000000/user-male-circle.png"><span style="font-size: 15px; font-weight: bold;"><?php echo $username; ?></span>
-
-<center><a class="dropdown-item" href="profile.php">View Profile</a></center>
-<hr>
-<a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
-
-    <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
-    <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
-    <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
-
-
-
-        </div>
-      </li>
-    </ul>
-    <button style="margin-right: 150px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
-  </div>
-</nav>
-
-<br>
-  
-
-<div style="padding-left: 40px; padding-right: 30px;" class="row">
-  <div class="col-sm-8">
-    <div class="card">
-      <div class="card-body">
-
-        <div style="background-image: url('image/background4.jpg'); height: 230px; width: 100%; padding-left: 12px;">
-        
-<br><br><br><br><br>
 
 <?php 
           $username=$_SESSION['name'];
@@ -258,9 +197,67 @@ echo $rowcounts;
 
            ?>
 
+<li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-color: 3px 3px white;" src="<?php echo $location; ?>">
+        </a>
+
+<?php
+
+}
+             } else {
+            echo "";
+           }
+
+ ?>
 
 
-<img src="<?php echo $location; ?>" width="200px" height="200px;" style="border-radius: 50%; border: 4px solid white; background-color: white; box-shadow: 0 8px 6px -6px black;
+
+        <div style="background-color: #f1f1f1;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+<ul>
+          <li><a style="color: black; font-size: 15px;" href="profile.php"><i class="fas fa-user-circle"></i>&nbsp;Profile</a></li>
+      <li><a style="color: black; font-size: 15px;" href="user_blog.php"><i class="fas fa-rss-square"></i>&nbsp;Your Blogs</a></li>
+      <li><a style="color: black; font-size: 15px;" href="profile.php"><i style="font-size: 17px;" class="fas fa-handshake"></i>&nbsp;Confessions</a></li>
+      <li><a style="color: black; font-size: 15px;" href="settings.php"><i class="fas fa-sliders-h"></i>&nbsp;Settings</a></li>
+      <li><a style="color: black; font-size: 15px;" href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign out</a></li>
+</ul>
+
+        </div>
+      </li>
+    </ul>
+    <button style="margin-right: 150px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
+  </div>
+</nav>
+
+<br>
+  
+
+<div style="padding-left: 40px; padding-right: 30px;" class="row">
+  <div class="col-sm-8">
+    <div class="card">
+
+      <div class="card-body">
+
+        <div class="card-img-top" style="background-image: url('image/background4.jpg'); height: 230px; width: 100%; padding-left: 12px;">
+        
+<br><br><br><br><br>
+
+
+<?php 
+          $username=$_GET['name'];
+
+           $sql = "SELECT * FROM signup where name= '$username'";
+              $result = $conn->query($sql);
+
+               if ($result->num_rows > 0) {
+                // output data of each row
+               while($row = $result->fetch_assoc()) {
+           $location= $row["image"];
+
+           ?>
+
+
+
+<img src="<?php echo $location; ?>" width="200px" height="200px;" style="border-radius: 50%; border: 3px solid white; background-color: white; -webkit-box-shadow: 0 8px 6px -6px black;
        -moz-box-shadow: 0 8px 6px -6px black;
             box-shadow: 0 8px 6px -6px black;">
 
@@ -268,38 +265,19 @@ echo $rowcounts;
 
 }
              } else {
-           echo "";
+            echo "";
            }
 
  ?>
- 
- 
- <?php 
-$id = isset($_SESSION['id']);
 
 
-$result = mysqli_query($conn, "SELECT SUM(VIEWS) AS totalsum FROM posts WHERE name = '$username'");
 
-$row = mysqli_fetch_assoc($result);
-
-$sum = $row['totalsum'];
-
-
-if ($sum >= 300) {
- ?>
-
-<i style="position: absolute; bottom: 1050px; left: 190px; font-size: 40px; color: #283e4a; background-color: white; border-color: 6px white; border-radius: 50%; border-width: 5px white; border-style: solid;
-    border-width: 4px; border-color: white;" class="fas fa-check-circle"></i>
-
-<?php }?>
- 
-<a style="color: black; font-size: 12px;" href="user_image.php">Update Image</a>
 
 
 
 </div>
 
-<?php $sql = "SELECT * FROM signup WHERE name='$username'";
+<?php $sql = "SELECT * FROM signup WHERE name= '$username'";
                         
                         
 $result = $conn->query($sql);
@@ -321,42 +299,10 @@ if ($result->num_rows > 0) {
     
         <h1 style="font-family: 'Song Myung', serif; font-weight: bold;"><?php echo $username; ?></h1>
         <h2 style="font-size: 15px;"><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPRSURBVHhe7ZrLblNnFIUPSDAAxrRMCZNyaaVKMEMmiTILV6mMoSLhImBU4CVAMIYn4BHgFdIACQy4TDrBEagjmsopAQ57O2tAzbK9s33kY8j6pE9Icbx+9B3bx4MUQgghhBBCCCGEEEIIIeqk0WjsGB8fv2bOm8sTExPlesRz5nxjenp6G2ZFBIs2Zr7sjDqAzycnJ3djXvRiampquwV71RFwYO2CvtA7IYDFutEZryrtIvyBY0Q3LNRcR7j7dj/4EQ+H8ef4czu25vCw6Ia9Sv93w7WPpJ14aN3Y83/4csu38ZDoxpfBXPw4TdV73z1VB6t6r3b+PbPnaGtm/6P3Fw6tfLx8uCyvHtnQegNv0Tq3f97bIFP1vLm0d0dr5sBCebVB/yPSvNIo241md1X7ddfj/3f+17/pofIrvZU3Q77BsY+cRXaQ7K41e4x8g/Hu3NhxfewktI+jSu4JfsOlB8i+tmb2/YmMefwOz8Zlf1cvHWohYx77mvWJjcv+ejtkzMOGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGa/He9bJsLpTlP3/11n/Hf5dt1CAy5mGjtbj0lAdnLi3yjRpExjxstBZZ6F6yjRpExjxstBZZ5F6yjRpExjyfRuWv31jkXrKNIevtkDHP6sWDdHzossi9ZBtD1tshY57l3/fQ8aHrN1YWmtl8wjeG7PLZscEvwNvT221sBP4wK/w11OLfHYGvoVca5dvT2wa/AM2ThV3JEXkXfEP6q9/bIWMeH1k6tblcmf2FHiS/dmX253azyi7AmpvW3gn21mKHStParL3yN6FZpRdgTb8n+CF+hx+Zr6g16g28hTfxNp29kDFP56Bcn8iYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiY5/XJ4h0blv31dsiY5/WJ4hkbl/21dk+RMU/zRHGbjcv+2gW4iYx5mseKvTb0gR0gu2sfP6v24v0JGQfDBu90HiB7axfgFvINzrPfiq12NR+ygyT1gTdDvmooZ4stNnyn/dbih254vY2/8r0VslVP+55gh/gd3v7d8F9RvUG7hd1wvQ0yCSGEEEIIIYQQglAUnwHh5Oyb9puTIwAAAABJRU5ErkJggg=="><?php echo $row["position"];; ?></h2>
-      <a style="font-size: 15px;" class="text-muted" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo" href="#">Edit</a>
+      
 
 
-      <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">Update Position</h4>
-      </div>
-      <div class="modal-body">
-        <form action="pos_update.php" method="post">
-          <div class="form-group">
-            <label for="message-text" class="control-label">Position</label>
-            <textarea name="position" type="text" id="editor2"><?php echo $row['position']; ?></textarea>
-    <script>
-      ClassicEditor
-        .create( document.querySelector( '#editor2' ) )
-        .then( editor2 => {
-          console.log( editor2 );
-        } )
-        .catch( error => {
-          console.error( error );
-        } );
-    </script>
-          </div>
-<div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
+      
       
   </div>
   <div class="col-sm-4">
@@ -385,55 +331,9 @@ if ($result->num_rows > 0) {
 
 <div id="js_sel1" style="display: inline-block;" class="clearfix">
 
-<p><img width="30px" height="30px" src="data:image/png;base64,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"><span style="font-size: 25px; font-weight: bold;">Intro</span><?php echo $row["bio"];; ?><a onclick="myFunction()" class="js_showform" data-id="1" href="#">Edit</a></p>
+<p><img width="30px" height="30px" src="data:image/png;base64,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"><span style="font-size: 25px; font-weight: bold;">Intro</span><?php echo $row["bio"];; ?></p>
 
-<form action="bio_update.php" method="post" id="js_form" class="js_hide_form">
-     <div id="myDIV">
-            <textarea name="bio" type="text" id="editor5"><?php echo $row['bio']; ?></textarea>
-    <script>
-      ClassicEditor
-        .create( document.querySelector( '#editor5' ) )
-        .then( editor5 => {
-          console.log( editor5 );
-        } )
-        .catch( error => {
-          console.error( error );
-        } );
-    </script>
-     <br>
-    <button class="btn btn-primary" style="background-color: blue; float: right;" type="submit">Update</button>
-  </div>
-</form>
 
-  <script>
-$(function() {
-    var par = $('.js_hide_form');
-    $(par).hide();
-    $('.js_showform').click(function(e) {
-      e.preventDefault();
-      var hide_ele = "#js_sel" + $(this).data("id");
-      var show_ele = "#js_form";
-      if($(show_ele).is(":visible"))
-        return;
-      
-      $(".js_hideform").data("id",$(this).data("id"));
-      $(hide_ele).hide();
-      $(hide_ele).after($(show_ele).detach()); 
-      $(show_ele).show();
-    });
-    $('.js_hideform').click(function(e) {
-      e.preventDefault();
-      var hide_ele = "#js_form";
-      var show_ele = "#js_sel" + $(this).data("id");
-      $(hide_ele).hide();
-      $(show_ele).show();
-      
-      
-      $("#js_sel3").after($(hide_ele).detach()); //js_sel3 is the id of element after which we want the form should go back
-      
-    });
-});
-</script>
 
 </div>
 
@@ -448,25 +348,33 @@ $(function() {
     <br><br>
     
     
-    <p style="line-height: 4px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif;"><?php 
+    
+
+
+<center><span style="font-size: 20px;" class="badge badge-primary">Blogs</span></center>
+
+    <br><br>
+
+
+<p style="line-height: 4px; font-weight: bold; font-family: 'Source Sans Pro', sans-serif;"><?php 
 $id = isset($_SESSION['id']);
 
-$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$sql2 = "SELECT * FROM blogpost WHERE name = '$username'";
 $result2 = mysqli_query($conn, $sql2);
 
 $rowcounts = mysqli_num_rows($result2);
 
 echo $rowcounts;
 
-    ?> Confessions</p>
+    ?> Blogs</p>
+
+
+    
 
 <hr>
-    
-    
-    
-    
-    
-    <?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.name = '$username' ORDER BY posts.id DESC";
+
+
+    <?php $sql = "SELECT * FROM signup INNER JOIN blogpost ON signup.name = blogpost.name WHERE blogpost.name = '$username' ORDER BY blogpost.id DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -474,44 +382,25 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
       $id = $row['id'];
-      $usernameposts = $row['name'];
-      $title = $row['title'];
-      $post = $row['post'];
-      $views = $row['views'];
-      $time = $row['time'];
+      $username = $row['name'];
+      $btitle = $row['btitle'];
+      $bpost = $row['bpost'];
+      $btime = $row['btime'];
+      $image = $row['image'];
 
    ?>
 
 <div class="shadow-none card rounded">
-      <div style="width:;" class="card-body">
+      <div style="width: 100%;" class="card-body">
+        
+        <a style="color: black; font-size: 25px;" href="blog_view.php?id='<?php echo $id; ?>'"><p class="card-text" >
 
-<?php
+<img width="35px" height="35px" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white; background-color: white;" src="<?php echo $row["image"]; ?>">
 
-if ($views >= 50) {
-
- ?>
-
-<div class="text-muted" style="font-size: 13px;"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;Trending Post</div>
-
-<?php
-}
-?>
-
-        <h5 class="card-title"><img width="35px" height="35px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white;" src="<?php echo $row["image"]; ?>">&nbsp;&nbsp;<?php echo $row["name"];?></h5>
-
-        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
-
-        <hr class="my-8">
-
-        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMdSURBVHhe7Z0/j0xhHIVHJESj0tFqNLo1d6ZQSdSS+QAS7jRW+Ag6rco3kNgSee9EJxF/EvGvUSplG4VoJGLdy1m/F4fdsXNeyb3nSZ7Gzux57zO7ZqK4RsYYY4wxxhhjjDHG7MTsxMaBi1VzuZ6kp/MqfZxPmq1B2V1z1TzpGnQtkKUM8/Hdo3WVXtKDDdGqedE1QR4t62fTwXb09W+HGLjdD2TXBpl0dL9y7AC2fREmaR2ZdHR/77Fx2/0WNI+RSccg33B3a9V8QCYddNj+EJl0sFEbIpMONmpDZNLBRm2ITDrYqA2RSQcbtSEy6WCjNkQmHWzUhsikg43aEJl0sFEbIpMONpr76uFmr2XXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42mss+uvVJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKO57KNbSdmZSopMOthoLotSUnamkiKTDjaay6KUlJ2ppMikg43msiglZWcqKTLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjVrom3X8X8vcroYMWzhdXEImHXTYfrtvXJGb99HxgVtPmufFbtrHDjBI2zfceZUedX/tFL1tJT3MUqYbo9HWPnw7syw86u5sPyVcw7cx/woLu7PpSz1OV/AtzF7ggf9i1Xyuq8V5PN3sFRr5z36qp805PNWsAhKZ291fdLo4g6eZVUFj/2L7Zvu+/Wxc4SlmlbDguW34d+1P/kk83KwaFn3bepLezk/dP46HGgUs/HfTmwtr6RgeZlSw+HWVntWn7xzBQ4wS8gI8WF9Lh/Flo+bn+One1fHtQ/iSKcF2/PYN91bx/7zG4AWo0s3ZbGM//siUpH0Brvufk40xxhhjjDHGGGOMWZbR6CvL66KIrCkasQAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["title"]; ?></p></a>
-        <div class="item">
-    <p class="card-text" style="font-size: 15px; margin-left: 12px;"><?php echo $row["post"]; ?></p>
-                </div>
-        <hr class="my-8">
-<ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views"?></div></li>&nbsp;
-
-</ul>
+          &nbsp;<?php echo $row["btitle"]; ?></p></a>
+        
+        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($btime);?></div>
+        
       </div>
     </div>
     <br>
@@ -519,10 +408,14 @@ if ($views >= 50) {
     
             }
 } else {
-    echo "No Confessions yet.<br> Start making confessions!";
+    echo $username." hasn't posted any blogs yet.";
 }
-
 ?>
+
+
+<br>
+
+
   </div>
 
 
@@ -542,7 +435,7 @@ if ($views >= 50) {
   </li>
 
   <li class="nav-item">
-    <a style="font-size: 15px;" class="nav-link" href="user_blog.php"><img width="20px" height="20px" src="data:image/png;base64,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">&nbsp;Blogs<span class="badge" style="font-size: 13px;"><?php 
+    <a style="font-size: 15px; background-color: #e4e4e4; border-radius: 7px;" class="nav-link" href="userblog_view.php?name=<?php echo $username; ?>"><img width="20px" height="20px" src="data:image/png;base64,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">&nbsp;Blogs<span class="badge" style="font-size: 13px;"><?php 
 $id = isset($_SESSION['id']);
 
 $sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
@@ -555,7 +448,7 @@ echo $rowcountsblog;
     ?></a></span>
   </li>
   <li class="nav-item">
-    <a style="font-size: 15px; background-color: #e4e4e4; border-radius: 7px;" class="nav-link" href="profile.php"><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAXFSURBVHhe7ZtNaFxVFMefVtpa8WPhRlp1YYVCLX6jUkFXIlSxUr9aTC12IZSCWPsFRSdVEN1V0IUoTmZio4lRk7RKbTtJDLT5mImIbl24cuOmNKm1jrzjuZn72pmX/8xk3ry5786d84cfCW/u3HfO/945c89M4olEIpFIJBKJRCKRy6K097jf46XpE2+VviQyKTZ/jHo88tPeb37Wu0tfFpmQ2v3K/ABejAt8bYd+WNRqBbs/jJQkAwrv/jBSklqsaru/HClJLVK93R9GSlLMWsruDyMlKSapkoIMXgpSkpoUG7h+wURgbiNISYogyni3sXF/IEOjICWpAfmfe3eyYb8jI5tBStISxOZvY7POhc2LEylJIdFR72Y2/lXe9WeRYa2g40uSLjMfx1nnG6VjSxInfZDNv4RMSYKOKkmc7AfIhKTpiJLESb6EkrcFp0sSJ7eaF2AeJW4THOekDtktsfmfooRtgxdguw7ZHfHLeh0vQBElbBMc45804C3XYbsjTqwfJWwbHOe7OmR3xLv/Hk7MRwnbBMd4ye/1btFhuyNO7BhK2DY4zq90yO7Iz3iPoGRthBfgYR22O+ITRQ4laxsc56wO2R1xV3kd76p5P7PMmo8cquHk0ZMXYC1K1jZ4k/zlf+it0GG7I//U5s9QwrbBC+De0dMvdKco9yJM2CbY/CIfPdfosN3QgvmFbqKTm2DSNsEL0K/DdkOXzVf88BhM2iZ4Adw5elaYrxi5HyZdly+uJ8q/dWWeFuHnU/Mc8xgVUpt1Cu2rReYrvl2HDa7HiScq5zEAL8Z7OpX2EzRf0b8aG1yL3pVE0wcXz2UAf/bw0zql9lFV8xV9N2GTa3F8I57LAPwqGNVptYdqmq/IXINNrkZmGdHUm3guA/iF1Hmdmv2qa/70fmxyLYbvw3MZwqoFoML7N/o/v3O3nz/8DJv9Or88j3CAQ/zzFz41nEMJVNBoE5a5iujMbjyXIYyWoKYNrsfQBmx0NdSJCc1jEM7/KW1P64UCiI2pvUTZRur/1bz7d+G5DMGb0OznQSiI2Bh+AJhcA9WwoXlajKr5fr47x1Vgk7bFnFBAsTCxg03lHY2MRvReW3rFoLmaoDi+l+a+3E7ns9sgFwZ30n8TBxbGctk13xGHA44FZeTRG7DREH7jHd2K52qSuT5sfrnxCF4MMx0xunlTqM9uBm4FJtfg+0fxXDEQXoB6xpdjpCNGN26K4XuxydX4bj0/7+3F88REcXwfl6BXGjI+wMhxFN04MieexCZXo8XmN4uRhgzdOBKq423kyKleKRabr2ivBZjaw8bymykyuwI+GSXwMXMU2q8Eqc9woOma3lVEYy/j51qIkY4Y3TgyM4eIvlmLzR+8g2jyDfw8CzHWEaObN0eqdKY/9hC/yW7gI+ZGbsp2gnH2kUhHjAJxiaV0wsWf9l003gEHQkG7RKOdsLEOOFA4ANeI0gkb/U4YBeASUTphI8fPQCiATsdIAxYIBdDpyAIkjJSghDHSAQdCAXQybn0n3CYk0gEHQgG5QLUOeK6vi/7N7fknsc43LBS8C6AO+O+h18ifqvxzd+Odb1jlwbhE+QKoXV8crf63pon+NTQKyAWCDhjt+jBGj51hoYCaIvc80de3E2WXl1C/q2u2jAMYbbzCQgFFZuRB/GWMQn0/kPS4KrixAKefLSWcXUl08gDR9GiJH/cTZVaUHju9JblxKGaNGyUo+DekU4eIZn+tRF1Tjw2sSW4cilljtPMNCwUUieC/YGYmFhuhrqnH1JikxqGYGeOdb1goqEioRBUjLxCdGSTKz/D1PNHZYaLjXVceT2pcWayJdr6tUoUZFqLDdFd+j3cRJV6OGpPUOB2mu+IkZ1Dy5fCYyaTG6TDdlZ/2ulDy5bARW5Map8N0W5zoR8gABRt1RA9LbFxHiM14jtLeOCc+r9C/b9EPX1ZS40QikUgkEolEIpFIJBLFJ8/7H0YTzis1LAqKAAAAAElFTkSuQmCC">&nbsp;Confessions<span style="font-size: 13px;" class="badge"><?php 
+    <a style="font-size: 15px;" class="nav-link active" href="profile_view.php?name=<?php echo $username; ?>"><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAXFSURBVHhe7ZtNaFxVFMefVtpa8WPhRlp1YYVCLX6jUkFXIlSxUr9aTC12IZSCWPsFRSdVEN1V0IUoTmZio4lRk7RKbTtJDLT5mImIbl24cuOmNKm1jrzjuZn72pmX/8xk3ry5786d84cfCW/u3HfO/945c89M4olEIpFIJBKJRCKRy6K097jf46XpE2+VviQyKTZ/jHo88tPeb37Wu0tfFpmQ2v3K/ABejAt8bYd+WNRqBbs/jJQkAwrv/jBSklqsaru/HClJLVK93R9GSlLMWsruDyMlKSapkoIMXgpSkpoUG7h+wURgbiNISYogyni3sXF/IEOjICWpAfmfe3eyYb8jI5tBStISxOZvY7POhc2LEylJIdFR72Y2/lXe9WeRYa2g40uSLjMfx1nnG6VjSxInfZDNv4RMSYKOKkmc7AfIhKTpiJLESb6EkrcFp0sSJ7eaF2AeJW4THOekDtktsfmfooRtgxdguw7ZHfHLeh0vQBElbBMc45804C3XYbsjTqwfJWwbHOe7OmR3xLv/Hk7MRwnbBMd4ye/1btFhuyNO7BhK2DY4zq90yO7Iz3iPoGRthBfgYR22O+ITRQ4laxsc56wO2R1xV3kd76p5P7PMmo8cquHk0ZMXYC1K1jZ4k/zlf+it0GG7I//U5s9QwrbBC+De0dMvdKco9yJM2CbY/CIfPdfosN3QgvmFbqKTm2DSNsEL0K/DdkOXzVf88BhM2iZ4Adw5elaYrxi5HyZdly+uJ8q/dWWeFuHnU/Mc8xgVUpt1Cu2rReYrvl2HDa7HiScq5zEAL8Z7OpX2EzRf0b8aG1yL3pVE0wcXz2UAf/bw0zql9lFV8xV9N2GTa3F8I57LAPwqGNVptYdqmq/IXINNrkZmGdHUm3guA/iF1Hmdmv2qa/70fmxyLYbvw3MZwqoFoML7N/o/v3O3nz/8DJv9Or88j3CAQ/zzFz41nEMJVNBoE5a5iujMbjyXIYyWoKYNrsfQBmx0NdSJCc1jEM7/KW1P64UCiI2pvUTZRur/1bz7d+G5DMGb0OznQSiI2Bh+AJhcA9WwoXlajKr5fr47x1Vgk7bFnFBAsTCxg03lHY2MRvReW3rFoLmaoDi+l+a+3E7ns9sgFwZ30n8TBxbGctk13xGHA44FZeTRG7DREH7jHd2K52qSuT5sfrnxCF4MMx0xunlTqM9uBm4FJtfg+0fxXDEQXoB6xpdjpCNGN26K4XuxydX4bj0/7+3F88REcXwfl6BXGjI+wMhxFN04MieexCZXo8XmN4uRhgzdOBKq423kyKleKRabr2ivBZjaw8bymykyuwI+GSXwMXMU2q8Eqc9woOma3lVEYy/j51qIkY4Y3TgyM4eIvlmLzR+8g2jyDfw8CzHWEaObN0eqdKY/9hC/yW7gI+ZGbsp2gnH2kUhHjAJxiaV0wsWf9l003gEHQkG7RKOdsLEOOFA4ANeI0gkb/U4YBeASUTphI8fPQCiATsdIAxYIBdDpyAIkjJSghDHSAQdCAXQybn0n3CYk0gEHQgG5QLUOeK6vi/7N7fknsc43LBS8C6AO+O+h18ifqvxzd+Odb1jlwbhE+QKoXV8crf63pon+NTQKyAWCDhjt+jBGj51hoYCaIvc80de3E2WXl1C/q2u2jAMYbbzCQgFFZuRB/GWMQn0/kPS4KrixAKefLSWcXUl08gDR9GiJH/cTZVaUHju9JblxKGaNGyUo+DekU4eIZn+tRF1Tjw2sSW4cilljtPMNCwUUieC/YGYmFhuhrqnH1JikxqGYGeOdb1goqEioRBUjLxCdGSTKz/D1PNHZYaLjXVceT2pcWayJdr6tUoUZFqLDdFd+j3cRJV6OGpPUOB2mu+IkZ1Dy5fCYyaTG6TDdlZ/2ulDy5bARW5Map8N0W5zoR8gABRt1RA9LbFxHiM14jtLeOCc+r9C/b9EPX1ZS40QikUgkEolEIpFIJBLFJ8/7H0YTzis1LAqKAAAAAElFTkSuQmCC">&nbsp;Confessions<span style="font-size: 13px;" class="badge"><?php 
 $id = isset($_SESSION['id']);
 
 $sql2 = "SELECT * FROM posts WHERE name = '$username'";
@@ -606,7 +499,7 @@ echo "     ".$sum; ?> Views last week</div>
 
   </li>
 
-<?php $sql = "SELECT  * FROM signup WHERE name='$username'";
+<?php $sql = "SELECT  * FROM signup WHERE name= '$username'";
                         
                         
 $result = $conn->query($sql);
@@ -681,7 +574,7 @@ elseif ($perf <= 60 && $perf >= 20) {
   <br>
   <a style="display: inline; font-size: 13px; color: black;">ConfessionWeb © 2018</a>
   
-<br>
+<br><br><br>
   
 
 
@@ -693,19 +586,20 @@ elseif ($perf <= 60 && $perf >= 20) {
 </ul>
       </div>
     </div>
-    
-  
-  
-  <!--Blogs Section Starts-->
+
+
+
+
+<!--Blogs Section Starts-->
 <br>
 <div class="card">
   <div class="card-body">
   
-<p style="font-size: 17px; line-height: 5px;">Your Recent Blogs</p>
+<p style="font-size: 17px; line-height: 5px;"><?php echo $username."'s"; ?> Recent Blogs</p>
 <hr>
 
 
-<?php $sql = "SELECT * FROM blogpost WHERE name = '$username'ORDER BY id DESC LIMIT 5";
+<?php $sql = "SELECT * FROM blogpost WHERE name = '$username' ORDER BY id DESC LIMIT 5";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -725,9 +619,8 @@ if ($result->num_rows > 0) {
 
 
 
-    <a style="color: black;" href="blog_view.php?id='<?php echo $id; ?>'"><img width="20px" height="20px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png">&nbsp;<span style="font-size: 15px;"><?php echo substr($btitle, 0, 32)."..."; ?></span></a>
-    
-    <span class="text-muted" style="font-size: 12px;">(<?php echo time_ago_in_phpblog($btime); ?>)</span>
+    <a style="color: black;" href="blog_view.php?id='<?php echo $id; ?>'"><img width="20px" height="20px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png">&nbsp;<span style="font-size: 15px;"><?php echo substr($btitle, 0, 28)."..."; ?></span></a>
+    <span class="text-muted" style="font-size: 10px;"><?php echo time_ago_in_phpblog($btime); ?></span>
 
 
 <?php 
@@ -740,61 +633,11 @@ if ($result->num_rows > 0) {
   </div>
 </div>
 <!--Blogs Section Finishes-->
-  
-  
-  
-  
-    
-    
-    <br>
 
-<?php 
-
-$id = isset($_SESSION['id']);
-
-
-$result = mysqli_query($conn, "SELECT SUM(VIEWS) AS totalsum FROM posts WHERE name = '$username'");
-
-$row = mysqli_fetch_assoc($result);
-
-$sum = $row['totalsum'];
- if ($sum > 5 && $sum < 700) {
- ?>
-
-
-    <div style="width: 100%;" class="alert alert-info alert-dismissible">
-  
-  <div class="card-body">
-
-    <h5 class="card-title"><img width="35px" height="35px" src="data:image/png;base64,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">&nbsp;Low on Views?</h5>
-
-    <hr>
-
-    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
-    <h6 class="card-subtitle mb-2 text-muted">Here are some tips to improve your performance:</h6>
-    
-    <ul>
-
-   <li><p class="card-text">Post as many Confessions you can.</p></li>
-
-   <li><p class="card-text">Because your performance determines your authenticity, views matters. Share your posts with others and let it be real.</p></li>
-
-   <li><p class="card-text">To get more views, increase your CW Rank which determines your confessions rate points and increases your post engagement.</p></li>
-
-
-  </ul>
-
-  </div>
-</div>
-
-<?php }?>
     
     
     
     
-    
-  </div>
-</div>
 
 
 
@@ -925,6 +768,9 @@ $(document).scroll(function() {
 
 
 
+
+
+
 <!--Time function for blogs--->
 
 <?php
@@ -1026,6 +872,8 @@ $(document).scroll(function() {
 
 
 
+
+
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -1073,17 +921,17 @@ if ($gendercheck == "Male") {
                 </div>
                 <div>
                   
-		<textarea name="des" type="text" id="editor" placeholder="Write your confession here..."></textarea>
-		<script>
-			ClassicEditor
-				.create( document.querySelector( '#editor' ) )
-				.then( editor => {
-					console.log( editor );
-				} )
-				.catch( error => {
-					console.error( error );
-				} );
-		</script>
+    <textarea name="des" type="text" id="editor" placeholder="Write your confession here..."></textarea>
+    <script>
+      ClassicEditor
+        .create( document.querySelector( '#editor' ) )
+        .then( editor => {
+          console.log( editor );
+        } )
+        .catch( error => {
+          console.error( error );
+        } );
+    </script>
                 </div>
 <br>
                 <div class="box-footer clearfix">
@@ -1104,7 +952,7 @@ if ($gendercheck == "Male") {
   </div>
         
     </div>
-	
+  
 
 </body>
 </html>

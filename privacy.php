@@ -6,6 +6,8 @@
 
 		<title>ConfessionWeb &mdash; Terms</title>
 		
+		<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+		
     
     <link href="https://fonts.googleapis.com/css?family=Crimson+Text:400,400i,600|Montserrat:200,300,400" rel="stylesheet">
 
@@ -70,17 +72,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
       <div class="container">
-        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<i class="fas fa-globe"></i>&nbsp;Web</a></b>
+        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<img src="https://png.icons8.com/ultraviolet/40/000000/globe.png" width="30px" height="30px">&nbsp;Web</a></b>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="probootstrap-navbar">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="https://www.confessionweb.com">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/about.php">About Us</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/privacy_policies.html">Privacy</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/termsofservice.html">Terms</a></li>
-            <li class="nav-item"><a class="nav-link" href="#section-faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/about.php">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/privacy.php">Privacy</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/terms.php">Terms</a></li>
+            <li class="nav-item"><a class="nav-link" href="status.php">Status</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
             <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="https://www.confessionweb.com/register.php" target="_blank"><span class="pb_rounded-4 px-4">Sign Up-It's Free!</span></a></li>
           </ul>
@@ -92,11 +94,11 @@
 
 
 
-    <section class="pb_cover_v3 overflow-hidden cover-bg-indigo cover-bg-opacity text-left pb_gradient_v1 pb_slant-light" id="section-home">
+    <section style="background-color: #994c80;" class="pb_cover_v3 text-left pb_slant-light" id="section-home">
       <div class="container">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-12">
-            <h2 class="heading mb-3"><i style="color: white;" class="fas fa-user-lock"></i>&nbsp;ConfessionWeb Terms and Policies</h2>
+            <h2 class="heading mb-3"><img src="https://png.icons8.com/nolan/96/000000/privacy.png">ConfessionWeb Terms and Policies</h2>
             <div class="sub-heading">
               <p class="mb-4">Everything you need to know, all in one place.</p>
               <i><p>Last Revised: June 14, 2018</p></i>
@@ -347,12 +349,11 @@ To read the official copy of our company's privacy policies, go <a href="https:/
     <!-- END section -->
 
 
-    <section class="pb_xl_py_cover overflow-hidden pb_slant-light pb_gradient_v1 cover-bg-opacity-8"  style="background-image: url(homepage_assets/images/1900x1200_img_5.jpg)">
-      <div class="container">
+    <section style="background-image: url('image/people8.jpg');" class="pb_xl_py_cover overflow-hidden pb_slant-light"  style="background-image: url(homepage_assets/images/1900x1200_img_5.jpg)">
         <div class="row align-items-center justify-content-center">
           <div class="col-md-5 justify-content-center">
-            <h2 class="heading mb-5 pb_font-40"><i class="far fa-hand-point-up"></i>&nbsp;Join ConfessionWeb to confess and connect to millions others!</h2>
-            <div class="sub-heading">
+            <h2 class="heading mb-5 pb_font-40" style="color: black;"><i class="far fa-hand-point-up"></i>&nbsp;Join ConfessionWeb to confess and connect to millions others!</h2>
+            <div class="sub-heading" style="color: black;">
               The world needs your creative energy. Let’s keep it flowing.
             </div>
           </div> 

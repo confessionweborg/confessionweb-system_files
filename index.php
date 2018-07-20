@@ -37,17 +37,17 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
       <div class="container">
-        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<i class="fas fa-globe"></i>&nbsp;Web</a></b>
+        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<img src="https://png.icons8.com/ultraviolet/40/000000/globe.png" width="30px" height="30px">&nbsp;Web</a></b>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
         </button>
         <div class="collapse navbar-collapse" id="probootstrap-navbar">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item active"><a class="nav-link" href="https://www.confessionweb.com">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/about.html">About Us</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/about.php">About</a></li>
             <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/privacy.php">Privacy</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/termsofservice.html">Terms</a></li>
-            <li class="nav-item"><a class="nav-link" href="#section-faq">FAQ</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/terms.php">Terms</a></li>
+            <li class="nav-item"><a class="nav-link" href="status.php">Status</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.php">Contact</a></li>
             <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="https://www.confessionweb.com/register.php" target="_blank"><span class="pb_rounded-4 px-4">Sign Up-It's Free!</span></a></li>
           </ul>
@@ -206,16 +206,58 @@
             <div class="row">
               <div class="col">
 
-            <label>Diversity</label>
-            <img style="width: 300px; height: 200px;" src="homepage_assets/images/image1.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label>Happy Work Environment</label>
-            <img style="width: 300px; height: 200px;" src="homepage_assets/images/image2.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label>Solving Problems</label>
-            <img style="width: 300px; height: 200px;" src="homepage_assets/images/image3.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label>Open Space</label>
-            <img style="width: 300px; height: 200px;" src="homepage_assets/images/image4.jpg">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            <label>Hack Your Time</label>
-            <img style="width: 300px; height: 200px;" src="homepage_assets/images/image5.jpg">
+<div class="row">
+              <div class="col-lg">
+                
+                <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                  <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"></div>
+                  <div class="media-body">
+                    <h3>Solving Problems</h3>
+                    <hr>
+
+<img src="homepage_assets/images/image1.jpg" width="100%" height="100%" style="border-radius: 12px;">
+
+
+
+
+                  </div>
+                </div> 
+                
+                <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                  <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"></div>
+                  <div class="media-body">
+                   <h3>Do what you love to do</h3> 
+<hr>
+<img src="homepage_assets/images/image2.jpg" width="100%" height="100%" style="border-radius: 12px;">
+
+
+                  </div>
+                </div> 
+
+              </div>
+              <div class="col-lg">
+                
+                <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                  <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"></div>
+                  <div class="media-body">
+                    <h3>Hack your time</h3>
+                    <hr>
+                    <img src="homepage_assets/images/image3.jpg" width="100%" height="100%" style="border-radius: 12px;">
+                  </div>
+                </div>
+
+                <div class="media pb_feature-v2 text-left mb-1 mt-5">
+                  <div class="pb_icon d-flex mr-3 align-self-start pb_w-15"></div>
+                  <div class="media-body">
+                    <h3>Transparent Culture</h3>
+                    <hr>
+                    <img src="homepage_assets/images/image4.jpg" width="100%" height="100%" style="border-radius: 12px;">
+                  </div>
+                </div>    
+
+              </div>
+            </div>
+            
           </div>
         </div>
       </div>
@@ -309,7 +351,9 @@
             <h2 class="heading mb-5 pb_font-40">Join ConfessionWeb to confess and connect to millions others!</h2>
             <div class="sub-heading">
               Joining is very easy, just enter your details, sign in and start making your confessions worth to help for!
+              
             </div>
+            <a class="btn btn-primary btn-lg pb_btn-pill smoothscroll" href="https://www.confessionweb.com/explore.php"><span class="pb_font-14 text-uppercase pb_letter-spacing-1">Explore</span></a>
           </div> 
           <br>
           <div class="col-md-1"></div>

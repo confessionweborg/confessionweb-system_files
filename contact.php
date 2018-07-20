@@ -37,7 +37,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-dark pb_navbar pb_scrolled-light" id="pb-navbar">
       <div class="container">
-        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<i class="fas fa-globe"></i>&nbsp;Web</a></b>
+        <b><a class="navbar-brand" href="index.php">Confession&nbsp;<img src="https://png.icons8.com/ultraviolet/40/000000/globe.png" width="30px" height="30px">&nbsp;Web</a></b>
         <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#probootstrap-navbar" aria-controls="probootstrap-navbar" aria-expanded="false" aria-label="Toggle navigation">
           <span><i class="ion-navicon"></i></span>
         </button>
@@ -46,7 +46,7 @@
             <li class="nav-item active"><a class="nav-link" href="https://www.confessionweb.com">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/about.html">About Us</a></li>
             <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/privacy.php">Privacy Policies</a></li>
-            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/assets/termsofservice.html">Terms of Services</a></li>
+            <li class="nav-item"><a class="nav-link" href="https://www.confessionweb.com/terms.php">Terms of Services</a></li>
             <li class="nav-item"><a class="nav-link" href="#section-faq">FAQ</a></li>
             <li class="nav-item cta-btn ml-xl-2 ml-lg-2 ml-md-0 ml-sm-0 ml-0"><a class="nav-link" href="https://www.confessionweb.com/register.php" target="_blank"><span class="pb_rounded-4 px-4">Sign Up-It's Free!</span></a></li>
           </ul>

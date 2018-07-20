@@ -74,42 +74,41 @@ $username=$_SESSION['name'];
         <li class="active"><a id="active" class="text-muted" style="color: black; text-decoration: none;" href="profile.php"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAP2SURBVGhD7ZdZSFRRGMePoekU0ioVoUT20EMZ0fIgkmZ7Mzert3qonnpoIVqmsaaYJKIwyyBbHopIs4Vspe4YRJbhTDm2EK2kpLQv2oZZlvfru7dPmZnOqRnvXDG6f/gzdzn3fL9vznfuPYeZMmXKlClTpv4nlS1jPT2r2VyvnTkq7GyOZznrTbciI0WW6hS3dEiRbYuUC9Zh4HJ1oVu6hKADETrfY2eN3tUM/PwJvaLMxaKpaZvwGYvXwdLwuZWYdAm2e0a3xAK3BP7GZBowmXMg27LRaYo8NZaahqSrDpaE0AUI0eQH/ZuxTY3aDkFd2HYvHlfhcXNwO+pWrOAE2uuvJydAzY4kuOboEgCg14QpFg8mHH85MR6qtycieBQXQK8JUyweVCj+UpIBj7cNNAy81YQpFg/uT248ng6P8gZg58aCt5owxeJB8tx8ZjI8zO0P+JbgBjLKhCkWD5bndwdHcQP8xT8418IyYYrFg+ValqCuIPmvI1C5Jhqq8xPh49FUaDqRWY9vpee8dqGaMMXiwv7BKtiDLQkBk1c9vrepD7zenwI/zk0LaN90Ul8ShCmWf7BwrII2lqRrkzoYOth6kiBMsXgBjXB7kyBMsXjBjHJ7kiBMsXiBjHS4SRCmWLwgRjucJAhTLF4A1Z+PpUHtzsFQXziGe1+vQ02CMMXC5XKCcl7KVEqlJbg32IMury8c/dnntMDj3SPhZk4vaCjqgCTsrAGX0+V4vAd/l1xzsMzyNSyBMEOXutHATt5Xro2FF4enaUnU7kzmAkTC+LF7W+mMycO/OooQ9EndFeHm4pv6r/jWWaBqfXeo2zVEW3k2FI3lQug1bqJmU/jICIdvMSVRf2djj6e3NvaBJ/tS4YYrHj9cGVyIkC3bPiDw/YDz0qxECh05yUtZbEU2G6ONBI7CyyPT4W5ukraoCwAK0xr8WVtf/M3BresBpdQ6gkJGXt5VLEVNQHWlMw5uuixwf3MC3M6J15vIBgphvLRNN05qtMfn7Nr4cMdQbXL71lvg+9kpPLgA41vNo7ht3oBrbukgdd9x8qxi81rL6XnxFJzc3eDrqYnQct4aABxsNQE4ldUTy8WtnbulN4aWjUi4D8hoLSd1O/kotx9UrYvD0oqFV/uGc+H9vACAReG3ZohyYVJ36rLjhfArsKQuee1RBZhES92BdJzcVrieHd02EtySkaX51EXnECaRp46EOrFr9o4CnzMGIW2/YN22K8rpGfF4fhjL5SPCF0PVwhh6tHOows5m+pVTS/BSA9/rqdS08wrXLjPwY7f1hituHEJfboOXbc3gzhpEzf4NqRMTSycfS+aiIltn0WVTpkyZMtXZxNhPg8o2NMXCFJsAAAAASUVORK5CYII=">&nbsp;Confessions</a></li>
         <li><a style="color: black; text-decoration: none;" href="">
           
-<?php
+<?php 
+          $username=$_SESSION['name'];
 
-include 'conn.php';
+           $sql = "SELECT * FROM signup where name='$username'";
+              $result = $conn->query($sql);
 
+               if ($result->num_rows > 0) {
+                // output data of each row
+               while($row = $result->fetch_assoc()) {
+           $location= $row["image"];
 
-$id = isset($_GET['id']);
-$sex = isset($_GET['sex']);
-
-
- $result = mysqli_query($conn, "SELECT sex AS gender FROM signup WHERE name = '$username'");
-
-$row = mysqli_fetch_assoc($result);
-
-$gendercheck = $row['gender'];
-
-if ($gendercheck == "Male") {
-   ?>
+           ?>
 
          <div class="dropdown">
 
-          <a class="dropdown" data-toggle="dropdown"><img style="border-radius: 10%; width: 30px; height: 30px;" src="image/avatar.png"></a>
-          <?php 
- }else {  
-?>
-<div class="dropdown">
+          <a class="dropdown" data-toggle="dropdown"><img style="border-radius: 10%; width: 30px; height: 30px;" src="<?php echo $location; ?>"></a>
+          <?php
 
-          <a class="dropdown" data-toggle="dropdown"><img style="border-radius: 10%; width: 30px; height: 30px;" src="image/avatar_female.png"></a>
+}
+             } else {
+            echo "0 results";
+           }
 
-        <?php }?>
+ ?>
 
           <ul class="dropdown-menu dropdown-menu-right" style="background-color: #f1f1f1;">
-      <li><a style="color: black; font-size: 15px;" href="profile.php"><i class="fas fa-user-circle"></i>&nbsp;Profile</a></li>
-      <li><a style="color: black; font-size: 15px;" href="user_blog.php"><i class="fas fa-rss-square"></i>&nbsp;Your Blogs</a></li>
-      <li><a style="color: black; font-size: 15px;" href="profile.php"><i style="font-size: 17px;" class="fas fa-handshake"></i>&nbsp;Confessions</a></li>
-      <li><a style="color: black; font-size: 15px;" href="settings.php"><i class="fas fa-sliders-h"></i>&nbsp;Settings</a></li>
-      <li><a style="color: black; font-size: 15px;" href="logout.php"><i class="fas fa-sign-out-alt"></i>&nbsp;Sign out</a></li>
+      <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="<?php echo $location; ?>"><span style="font-size: 15px; font-weight: bold;"><?php echo $username; ?></span>
+
+<center><a class="dropdown-item" href="profile.php">View Profile</a></center>
+<hr>
+<a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
+
+    <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
+    <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
+    <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
     </ul>
 </div>
 
@@ -127,7 +126,7 @@ if ($gendercheck == "Male") {
 
   
 
-<?php $sql = "SELECT * FROM posts WHERE id = ".$_GET['id'];
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.id = ".$_GET['id'];
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -138,6 +137,7 @@ if ($result->num_rows > 0) {
       $username = isset($_GET['name']);
       $title = isset($_GET['title']);
       $post = isset($_GET['post']);
+      $position = $row['position'];
 
 
 
@@ -152,9 +152,9 @@ if ($result->num_rows > 0) {
     <div class="card shadow-none card rounded">
       <div class="card-body">
         <p style="font-size: 12px;" class="mb-0 small font-weight-medium text-uppercase mb-1 lts-2px">
-      <small style="font-size: 12px;"><?php echo "Confessed by ".$row["name"]; ?></small><br>
+      <small style="font-size: 13px;"><img style="border-radius: 50%;" width="35px" height="35px" src="<?php echo $row['image']; ?>">&nbsp;&nbsp;<?php echo $row["name"]; ?><?php echo $position; ?></small><br>
     </p>
-    <div class="divider"></div><br>
+    
         <p class="card-text"><?php echo $row["post"]; ?></p>
         
       
@@ -276,7 +276,7 @@ if ($views < 10) {
   <?php echo $row["title"]; ?>&nbsp;
 
 <?php
-if ($views > 100) {
+if ($views > 20) {
 
  ?>
 <span style="font-size: 14px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span></a>
