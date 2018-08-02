@@ -548,7 +548,15 @@ $sum = $row['totalsum'];
 
 $perf = $sum/$rowcounts;
 
-echo "     ".$sum; ?></span>
+
+if($sum > 1000)
+ {
+ $views_count=$sum *1/1000; 
+ $views_k=round($views_count, 2);
+
+
+
+echo "     ".$views_k."k views";} else { echo $sum;}  ?></span>
 
 
 
@@ -562,7 +570,15 @@ $row = mysqli_fetch_assoc($result);
 
 $sum = $row['totalsum'];
 
-echo "     ".$sum; ?> Views last week</div>
+
+if($sum > 1000)
+ {
+ $views_count=$sum *1/1000; 
+ $views_k=round($views_count, 2);
+
+
+
+echo "     ".$views_k."k";} else { echo $sum;} ?> Views last week</div>
 
 
 

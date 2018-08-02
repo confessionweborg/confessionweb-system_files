@@ -189,7 +189,7 @@ echo $rowcounts;
 <hr>
 <ul>
 
-<?php $sql = "SELECT * FROM posts ORDER BY time desc LIMIT 5";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY time DESC LIMIT 5";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -208,7 +208,13 @@ if ($result->num_rows > 0) {
 
 
           <li style="min-width: 400px; max-height:150px;
-  overflow: auto;"><i style="font-size: 18px; color: blue;" class="fas fa-portrait"></i>&nbsp;&nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
+  overflow: auto;">
+
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+
+
+
+  &nbsp;<a href="profile_view.php?name=<?php echo $uname; ?>"><?php echo $uname; ?></a> recently posted <a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
           
           
           
@@ -451,9 +457,16 @@ $row = mysqli_fetch_assoc($result);
 
 $sum = $row['totalsum'];
 
+
+if($sum > 1000)
+ {$views_count=$sum *1/1000; 
+ $views_k=round($views_count,PHP_ROUND_HALF_UP);
+
+
+
 $perf = $sum/$rowcounts;
 
-echo "     ".$sum; ?></span></a>
+echo "     ".$views_k."k views"; } else{echo $sum;} ?></span></a>
   </li>
 
 <?php $sql = "SELECT  * FROM signup WHERE name='$username'";
@@ -577,7 +590,7 @@ Trending Confessions</h5>
     
 
 
-<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE views > '20' ORDER BY posts.views DESC";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE views > '50' ORDER BY posts.views DESC";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -596,10 +609,12 @@ if ($result->num_rows > 0) {
 
 <div style="width: 100%" class="shadow-none card rounded">
       <div class="card-body">
+      
+      
 
 <?php
 
-if ($views >= 20) {
+if ($views >= 50) {
 
  ?>
 
@@ -609,56 +624,163 @@ if ($views >= 20) {
 }
 ?>
 
+<?php 
+if(!empty($row['image'])) {
+?> 
 
-        <h5 class="card-title"><img width="35px" height="35px" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">&nbsp;<a href="profile_view.php?name=<?php echo $username; ?>"><?php echo $row["name"];?></a></h5>
+<div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="20px" height="20px" style="border-radius: 50%; height: 20px; width: 20px;" src="<?php echo $row["image"];?>"> <a class="text-muted" href="profile_view.php?name=<?php echo $row["name"]; ?>"><?php echo $row["name"];?></a> confessed this</div>&nbsp;
+
+<?php } else {?>
+
+<div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="20px" height="20px" style="border-radius: 50%; height: 20px; width: 20px;" src="image/unknown.png"> <a class="text-muted" href="profile_view.php?name=<?php echo $row["name"]; ?>"><?php echo $row["name"];?></a> confessed this</div>&nbsp;
+
+<?php
+} ?>
+
+        <div style="display: inline-block;">
         
-        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+        <?php 
+if(!empty($row['image'])) {
+?> 
         
-        <hr class="my-8">
+   <img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="<?php echo $row["image"]; ?>">
+
+<?php } else {?>
+
+<img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="image/unknown.png">
+
+<?php
+} ?>
+
         
-        <a style="color: black; font-size: 20px;" href="post_view.php?id='<?php echo $id; ?>'"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
-        <div class="item">
-    <p class="card-text" style="font-size: 15px; margin-left: 12px;"><?php echo $row["post"]; ?></p>
-                </div>
+        <h5 class="card-title" style="margin-left: 40px;">
+
+        &nbsp;
+
+        <a class="name" style="color: black; font-size: 17px;" href="profile_view.php?name=<?php echo $username; ?>"><?php echo $row["name"];?></a>
+
+        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo $position; ?></div>
+
+        <div class="text-muted" style="font-size: 11px; margin-left: 7px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+    </h5>
+
+</div>
+        
+        
+        
+        <a style="color: black; font-size: 20px; text-decoration: none;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+        
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+    
+                
         <hr class="my-8">
 <ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." People read this • "?></div></li>&nbsp;
-<li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div></li>
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
+<li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div>
 
-<!-- Post Time read estimator-->
-<?php
-if ($len > 200 && $len < 400) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 2 Mins read</div></li>
- <?php 
-}elseif ($len > 400 && $len < 600) {
- ?>
- <li><div style="font-size: 12px;" class="text-muted"> • 4 Mins read</div></li>
-<?php 
-}elseif ($len > 800 && $len < 1500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 6 Mins read</div></li>
-<?php 
-}elseif ($len > 1500 && $len < 3500) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 8 Mins read</div></li>
-<?php 
-}elseif ($len > 3500 && $len < 5500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 10 Mins read</div></li>
-<?php 
-}elseif ($len > 5500 && $len < 8500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 12 Mins read</div></li>
-<?php 
-}elseif ($len > 10000) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 18 Mins read</div></li>
-<?php }?>
+
+
+
+
+
+
 
 
 </ul>
+
+
+<ul class="nav">
+
+<?php if($views > 2) { ?>
+
+<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 2";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameimage = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+<?php 
+if(!empty($row['image'])) {
+?> 
+
+<li><div style="border-radius: 50%;"><a href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"></a></div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%;"><a class="text-muted" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown.png"></a></div></li>&nbsp;
+
+<?php
+} ?>
+
+
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+
+
+
+<?php $sql6 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY RAND() desc LIMIT 1";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameview = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+
+
+<?php if($views == 2) { ?>
+
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>"><?php echo $nameview; ?></a> viewed this</div></ul></li>
+
+<?php } else {?>
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>"><?php echo $nameview; ?></a> and <?php echo $views-1 ?> others viewed this</div></ul></li>
+
+<?php }?>
+
+
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+<?php } else echo ""; ?>
       </div>
+      
+      
+      
     </div>
     <br>
 <?php 

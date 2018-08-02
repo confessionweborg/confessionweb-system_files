@@ -40,6 +40,11 @@ $username=$_SESSION['name'];
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
 
 
 
@@ -130,7 +135,71 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
  background-color: #283e4a;
  color: white;
 }
+
+.b-description_readmore_wrapper {    
+    display: flex;
+    flex-flow: column wrap;
+      
+    max-width: none !important;
+    width: 100%;
+}
+
+.b-description_readmore {
+    width: 100%;
+    position: relative;
+    margin-bottom: 25px;
+    line-height: 25px;
+    font-size: 1em;
+    
+    box-sizing: border-box;
+    padding: 0 15px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.b-description_readmore_button {
+    display: inline-block;
+    
+     
+    cursor: pointer; 
+    
+}
+
+
+
+.b-description_readmore_ellipsis:after {    
+    content: '';
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 100%;
+    height: 25px;    
+    background: linear-gradient(to right, rgba(250, 250, 250, 0), rgba(250, 250, 250, 1) 65%);
+}
 </style>
+
+
+<script>
+$(function () {
+  $('[data-tooltip]').tooltip()
+});
+</script>
+
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover({
+  html: true,
+  trigger: "hover"
+});   
+});
+</script>
+
+
+
 
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -175,20 +244,20 @@ $(function(){ /* to make sure the script runs after page load */
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 1450px; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
-  <a style="display: inline; padding-right: 120px;" class="navbar-brand" href="#"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAbuSURBVGhD7Zl5bBRVHMer8Uy84pH4h3/of8bEaEKMhsSsdI8us0uhnVlqw9EgLVBFATkUAWsRlKAoIBZaoSghhEOuEDmEckgBsYUWWtCC5RBasNAD2i1td2aev9/sbzs7O2/bvUqI4ZN8A8x7+3vf9+b3jnkk3eX/zhuS9LB9oJSc7JKm2QRphVUQt8Kfu62C9ItNEFdbXeJndpeUZh0y5Cn6yZ2B3S06rC5pvc0l3rK5JNaboGMK1D8AHcryeDwPUJjbT7KQPgBG+BjPZBS6BB3PycvLu5fC9j0Wj+cRGL2V0LgaYiZ2CeJh+yDpBWqi70hJyXgecvpProl4JUjNmI7UVOJxuNNfhNyt5zaeIMH86IS3MZSaTBwWZ9pz0ADkK7/hRAo7gasZNR0//fqNuR9zlNdYn0kQr+GgkYXYIfOruY30tWAPIRvRY7N5HocAM3AkuMFvl2KZD7jBgBoCQRyDhrKPZs5ma3/ewipPVrPrjU2so6ODqarKWlvbWO35C2zv/oNs4ZIiljEix2wiDuGKF/Ee4XQOe8y/o/p/7Bz8Nvu+sFgzHCmKorDSI0fZ6NyJJjOxyjpQdJPF8FgEz7Mw6hWBH+V/8TWrv3KVbEUPdmTHryVMzBxlMhStYFDXkU0+Tqf0DOR7NVbGdMFUSRQ4CNnvfsg1FrEE6abFYrmP7BrRVhmXdAgrYsocOVpGTScOb3s7m/7pHL65CGUXxNfJshF4PfMClXbt2UdNhkFuY2rjHqZc+JYpZ2cwpWYKU87NZWrdT0z1nqFKfNravCznvdjfRLIgjSbLOnbB8yrsejJWKFyxipri4GvWTMtlyUz+482wUqpGMrX5EP3ITF39lZjnBMzPOWRbBx6WYOHI7PHM55OpGSPqjWNMPu7iGg4npTYfZnEnRTCyfVcJ12BvgoEuINt+MKcChft/44+a2rQfRv0trsnepJzOhU50UCQdXJ1iWmIFsZCs+4GZvQILxn0wVduQQlG9NUwut3PNRSql9nOKZqT08FG+yR4E2ZJP1v0rDzy4gQXbtu+isMGoTDmVrZupSGXyiYzwOubU6+LfywZ0/1ttOUIxdWRZZkOHZ3ON9qDxZD8paYAg9seHdreHNTY1U1gdtXFvtwFcbbBDPaK0M7kyXROTvf63F/h9VRZVMrJwSSHPZE9KJfsweQVxEj4cNXYChTOinJke1IFP4EkvHQDT4TqAUr1nqaJOyb6DPJNc4UppGTz4CbIP+e8Sl2EBHhdMqF2Q+zaDgehSKMWQQii13rxE4wEw1GhYwbcIWfcDD7dgQUHRSgoXREedoXE0o/ydx5TzX0Wo+dp+EBxDOfclBdfBU6zBZE+CYz1Z9wMPdmPB8h9XUzgdtbXa2PiFb6gkCrqajDFqJlOBDi6nJqM8CWKrxZ35NFn3Azm1CQvxqByK2l5rbPxUjvYM30ykUv/dZIxxdiZF17l1q4NvOFSCuIBs6+CmgIWzeXPA12JoPBFSLi6i4DoN167zDQcJBroJj/lkWwc3Bawwcap5ZBD55DDdAExg9eoGeBNjjKZqYANs2MoVbmDBdXFZDqWisoprOlh2l+Qhy0bgDaRjhVRphJaLoSiXlulG/1miPcNDmsFU+zntORfcFwJ1y63a0hrKmvWbuKYDgk/JIrJrBj/YcW3FiierT1PIIDob9GOE9gbWRfkGZuv1Ln5HQY1M/jiPazwg8FcMVu/xO+YA3wGlWBF3RB7K5eUGwzHp+CCYUzcoog7mP54CQk2bJS4mu2agA7lYSUjL1AKaUBVt+eMai0Tw7aDerKBgRhYX/MAxyxd+cJFlIxZL1kNQqN1zLlhUQKFDgC+wmDpR7oA5U0pBjFyuq4dP1wyu2XCCRWcW2TYCk3kKVkhJzWB/nTGfVzTwTVwuNh8vwkg5Pc6/b3DAY/vM/Hlck73J6pYyyLaO0+l8EGZ7JVbIzBrLWlrM+dpN13VYnQqZXDXcbBwmPJ5a1aYDUDH8wW/Nuo1ccxEJBptsG0l2Si9BJ7xYadK0WdpZvVdgYuIyiscO1nkVPHdRQXgO/17WPXEhdfdaXem2SGVzpr3R4+0cBF0U6GnFiSpqMnFs37lHu7LxmxfL+6emPkpNxw+MvhPW3E4MnjthmnbnmSh8Pp923goMDiyLp/ASjZqOH/xPukD64J1Nj3MgCnCy4mXvsHdyu81D2hxwOKQnqen4wbyCidGKwfFapTGKC9xw4CXwlm07Qi+wfDBIc8NeDcaCw5X2CrzOlkAji5cuZ2s3bI5axavWaCmSN2c+y8p5P9i0JjC+0zpQepmaTRzwQbM5tLGESZCawXiR1Z32GjWXePwTV9qpfZnFKcjtjRBrKZifgJdlCU2Vu9xRJCX9B0vGCkHwNShQAAAAAElFTkSuQmCC"></a>
+<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 100%; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
+  <a style="display: inline; padding-right: 70px; color: white; font-family: 'Anton', sans-serif; padding-left: 10px;" class="navbar-brand" href="home.php">ConfessionWeb</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
   </button>
 
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li style="display: inline; padding-right: 40px;" class="nav-item">
+      <li style="display: inline; padding-right: 50px;" class="nav-item">
         <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: white;">Feed</span> <span class="sr-only">(current)</span></a>
       </li>
       <!--Notification system starts-->
 
-      <li style="display: inline-block; padding right: 30px" class="nav-item dropdown">
+      <li style="display: inline-block; padding right: 50px" class="nav-item dropdown">
 
 
 
@@ -241,11 +310,26 @@ if ($result->num_rows > 0) {
           <li style="min-width: 400px; max-height:150px;
   overflow: auto;">
 
-  <img class="img-fluid" style="border-radius: 50%; width: 20px; height: 20px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
 
 
 
-  &nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
+  &nbsp;<a href="profile_view.php?name=<?php echo $uname; ?>" title="
+        
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
+        
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
+        
+        <?php }?>
+        
+        
+        
+        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php echo $row["position"]."<i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?>"><?php echo $uname; ?></a> recently posted <a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
           
           
           
@@ -266,9 +350,9 @@ if ($result->num_rows > 0) {
 
 <!----Notification system ends-->
       
-      <li style="display: inline; padding-right: 70px; padding-top: 8px;" class="nav-item">
+      <li style="display: inline; padding-right: 150px; padding-top: 8px;" class="nav-item">
         <form action="search.php" method="GET" class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search confessions by title, post or user..." style="width: 470px; height: 33px;">
+  <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search confessions by title, post or user..." style="width: 400px; height: 33px;">
   <input type="submit" name="search" class="btn btn-primary btn-sm" style="background-color: blue;" value="Search">
 </form>
       </li>
@@ -293,18 +377,23 @@ if ($result->num_rows > 0) {
 <?php
 
 }
-             } else {
-            echo "0 results";
+             } else { ?>
+             
+             <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/unknown2.png">
+        </a>
+             
+             <?php
            }
 
  ?>
 
 
 
-        <div style="background-color: #f1f1f1;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 
 
-<img width="55px" height="55px" src="https://png.icons8.com/color/96/000000/user-male-circle.png"><span style="font-size: 20px; font-weight: bold;"><?php echo $username; ?></span>
+<img width="40px" height="40px" src="https://png.icons8.com/color/96/000000/user-male-circle.png"><span style="font-size: 15px; font-weight: bold;"><?php echo $username; ?></span>
 
 <center><a class="dropdown-item" href="profile.php">View Profile</a></center>
 <hr>
@@ -319,7 +408,7 @@ if ($result->num_rows > 0) {
         </div>
       </li>
     </ul>
-    <button style="margin-right: 190px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
+    <button style="margin-right: 100px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
   </div>
 </nav>
 
@@ -535,9 +624,16 @@ $row = mysqli_fetch_assoc($result);
 
 $sum = $row['totalsum'];
 
+
+if($sum > 1000)
+ {$views_count=$sum *1/1000; 
+ $views_k=round($views_count,PHP_ROUND_HALF_UP);
+
+
+
 $perf = $sum/$rowcounts;
 
-echo "     ".$sum; ?></span></a>
+echo "     ".$views_k."k views"; } else{echo $sum;} ?></span></a>
   </li>
 
 <?php $sql = "SELECT  * FROM signup WHERE name='$username'";
@@ -661,50 +757,53 @@ elseif ($perf <= 60 && $perf >= 20) {
 
 
         
-        <b><p class="card-text text-muted"><a style="text-decoration: blue; font-size: 20px; font-family: 'Work Sans', sans-serif;" href="" data-toggle="modal" data-target="#exampleModalCenter"><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARdSURBVHhe7Z1NixxVGIVbBMWNK3cOpGeYRIwLxZ3L+PUD8g+y1+BK1y4EEaJpTXXPKBE3mUggREHQKAgaNInmS1Fkgt9ZuJHAVHXL9HSc6307byzTnpnpnqpzZ9HngQeGrrr33Jzu+uheVBpCCCGEEEIIIYQQQmzF3hPhrma7ONjMivOz7aIbDVOm/ZvPWQfWhdeShplO7/7ZLL8ysqApNr9snXg9XOZb63c32/m3eCFTbPxAWjdeEw875OACZIin42e9Jh4x6NxosHSz4qzXxCMGTeMFdyzjEZB7TTxQsCz1mnigUFnqNfFAobLUa+KBQmWp18QDhcpSr4kHCpWlXhMPFJrSJ473wqtf9cOZa4Nw9fqNoWd+Hwxfe3ypB8ek1GvigUJTuGexCG983Q+/rfwdruVY2/Z63Gf3Ap4jhV4TDxTK1gp9b3kAS0eeivvu1JvgNfFAoWyPXOzDojfTjgQ0F1uviQcKZWrn9c1OOxv5axyzbweuCV4TDxTK9LX4SUYFj+Oh8+mPAq+JBwplanc4qNxx/DyORXMy9Zp4oFCmy/E2E5U7jjYWzcnUa+KBQpnqDRgBhTLVKWgEFMrUvuGicsdRF+Ea1G3oCCiU7ZELkx8Fh/VFrD4n/iniqn6KqF0r1H5e2Ox0ZKedVjxadqp802vigUJTuu9Yb3hxtTscu8007W97zbahMSn1mnigUFnqNfFAobLUa+KBQmWp18QDhcpSr4kHCmX74JvdsP/kX+H5T1dDK34zPvbdWnh/eS2c/mkw1P621w7HbbaP7Wtj0FxsvSYeKJTlk/Gb7CtnV8NHseRPfp7MD38cDMfaHGhull4TDxRat08f74WFS31Y7HbsXOwneyO8Jh4otC4fWCzCC/EU8vE2PvFbaXPa3JaBsuvSa+KBQuvwkaPdcPTKGiyvTi3DstAa6tBr4oFCq/ro293w7vf88m+5FC/YlonWUlWviQcKreJDb3XDO9+kK/+WlrmXcKfkNfFAoVV86YtVWFAKLRutqYpeEw8UWkVUTErRmqroNfFAoVVEpaQUramKXhMPFFpFVEpK0Zqq6DXxQKFVRKWkFK2pil4TDxQqS70mHihUlnpNPFCoLPWaeKBQWeo18UChstRr4oFCZanXxAOFypvqYR07baLH1eBwGWY7xTNeEw8YLKP55SQP78PhU26WX0r20D64gCnULrjxnP+lnXaSPrYSLWYis7zVCOEOn05MCix1fF/0acR2AaVubZav72oXz/kUogqw4M3M8htz2coBHy6qAkvewGaW9+eyfL8PFXWAit7AbrxDeMqHiboARf/frLi+a2HlMR8i6gQWfpv5H81O92HfXdQNLt3Nil/mOiu7fVfBABZvZsUP863ejO8mWKDym+38wp7F/D7fRTABb8Bn860/7/XNgs1/y2+2iw9mDq3f45tECsry86Xk/3mN+PcN6DROhDv9JZGSWP7L+jlZCCGEEEIIIYQQQohJaTT+AVY1TQ7lzeOWAAAAAElFTkSuQmCC"><span class="text-muted">Want to confess something, <?php echo $username."?"; ?><br><small>Confess your experiences, emotions and everything inside you</small></span></a></p></b>
+        <b><p class="card-text text-muted"><a style="text-decoration: blue; font-size: 20px; font-family: 'Work Sans', sans-serif;" href="" data-toggle="modal" data-target="#exampleModalCenter">
         
         
-   <hr>
+        
+        
+        <?php 
+          $username=$_SESSION['name'];
 
-<div>
-        <a style="text-decoration: none; color: grey; line-height: 4px;" href="#collapse1" class="nav-toggle">Looking for Confessions?</a>
-      </div>
-      <div id="collapse1" style="display:none">
-        
-        <ul>
-          <li>I want to confess about my life</li>
-          <li>My life is totally...</li>
-          <li>How to be the best version of myself?</li>
-          <li>Love and Relationships.</li>
-          <li>Studies and Career related.</li>
-          <li>Jobs and Professional life.</li>
-          <li>Personal and Private(Follow Platform's Respect <a href="cpolicy.php">Policy</a>)</li>
-        </ul>
+           $sql = "SELECT * FROM signup where name='$username'";
+              $result = $conn->query($sql);
 
-      </div>
+               if ($result->num_rows > 0) {
+                // output data of each row
+               while($row = $result->fetch_assoc()) {
+           $location= $row["image"];
 
-      <script type="text/javascript" src="http://code.jquery.com/jquery-1.7.2.js"></script>
-  <script>
-    $(document).ready(function() {
-      $('.nav-toggle').click(function(){
-      //get collapse content selector
-      var collapse_content_selector = $(this).attr('href');         
-          
-      //make the collapse content to be shown or hide
-      var toggle_switch = $(this);
-      $(collapse_content_selector).toggle(function(){
-        if($(this).css('display')=='none'){
-                                //change the button label to be 'Show'
-        toggle_switch.html('Looking for Confessions?');
-        }else{
-                                //change the button label to be 'Hide'
-        toggle_switch.html('Use these examples to Confess');
-        }
-      });
-      });
+           ?>
+
+
+        <img class="img-fluid" style="border-radius: 50%; width: 45px; height: 45px;" src="<?php echo $location; ?>">
         
-    }); 
-    </script>     
+<?php
+
+}
+             } else {
+            ?>
+            <img class="img-fluid" style="border-radius: 50%; width: 45px; height: 45px;" src="image/user_image.jpg">
+            
+            <?php
+           }
+
+ ?>
+        
+        
+        
+        <span style="font-family: 'Merriweather', serif;" class="text-muted" style="margin-top: 5px;">Want to confess something, <?php echo $username."?"; ?></span></a></p></b>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      
         
         
         
@@ -730,7 +829,10 @@ elseif ($perf <= 60 && $perf >= 20) {
     </ul>
   </div>
 </span>
+
 </div>
+
+
 
 
 <?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY views DESC";
@@ -748,6 +850,7 @@ if ($result->num_rows > 0) {
       $time = $row['time'];
       $position = $row['position'];
       $len = strlen($row['post']);
+      $post_perf = ($views/122.2)*100;
 
    ?>
 
@@ -757,6 +860,8 @@ if ($result->num_rows > 0) {
 
 <div style="width: 100%" class="shadow-none card rounded">
       <div class="card-body">
+      
+   
 
 <?php
 
@@ -764,70 +869,231 @@ if ($views >= 50) {
 
  ?>
 
-<div class="text-muted" style="font-size: 13px;"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;Trending Post</div>
+<div class="text-muted" style="font-size: 13px;"><a data-tooltip title="Trending"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle"></span></a>&nbsp;Trending</div>
 
 <?php
 }
 ?>
 
+        <div style="display: inline-block;">
+        
+        <?php 
+if(!empty($row['image'])) {
+?> 
+        
+   <img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="<?php echo $row["image"]; ?>">
 
-        <h5 class="card-title">
-        <img width="35px" height="35px" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+<?php } else {?>
+
+<img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="image/unknown2.png">
+
+<?php
+} ?>
+
         
-        &nbsp;<a href="profile_view.php?name=<?php echo $username; ?>"><?php echo $row["name"];?></a><span style="font-size: 12px;"><?php echo $position; ?></span></h5>
+        <h5 class="card-title" style="margin-left: 40px;">
+
+        &nbsp;
+
+        <a class="name" style="color: black; font-size: 17px;" href="profile_view.php?name=<?php echo $username; ?>" title="
         
-        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
         
-        <hr class="my-8">
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
         
-        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+        <?php }?>
         
-    <p class="card-text" style="font-size: 15px; margin-left: 12px;">
-    
-    
-    <?php echo $row["post"]; ?>
+        
+        
+        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php echo $row["position"]."<i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?>">
+         
+         <?php echo $row["name"];?></a><span class="text-muted" style="font-size: 11px;">
+        
+         &nbsp; <?php echo "@".$row["name"]; ?></span>
+        
+
+        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo $position; ?></div>
+
+        <div class="text-muted" style="font-size: 11px; margin-left: 7px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+    </h5>
+
+</div>
+        
+        
+        
+        <a style="color: black; font-size: 20px; text-decoration: none;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+
    
-    </p>
+   <!---<?php echo substr($row["post"],0,300)."..."; ?>--->
+    
                 
         <hr class="my-8">
 <ul class="nav">
 <li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
-<li><div style="font-size: 12px;" class="text-muted"><?php echo $row["name"]." confessed this "; ?></div></li>
 
-<!-- Post Time read estimator-->
+<?php 
+if(!empty($row['image'])) {
+?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
 <?php
-if ($len > 200 && $len < 400) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 2 Mins read</div></li>
- <?php 
-}elseif ($len > 400 && $len < 600) {
- ?>
- <li><div style="font-size: 12px;" class="text-muted"> • 4 Mins read</div></li>
-<?php 
-}elseif ($len > 800 && $len < 1500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 6 Mins read</div></li>
-<?php 
-}elseif ($len > 1500 && $len < 3500) {
- ?>
-<li><div style="font-size: 12px;" class="text-muted"> • 8 Mins read</div></li>
-<?php 
-}elseif ($len > 3500 && $len < 5500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 10 Mins read</div></li>
-<?php 
-}elseif ($len > 5500 && $len < 8500) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 12 Mins read</div></li>
-<?php 
-}elseif ($len > 10000) {
-?>
-<li><div style="font-size: 12px;" class="text-muted"> • 18 Mins read</div></li>
-<?php }?>
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown2.png"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php
+} ?>
+
+
+
+
+
+
+<?php if($views > 2 && $post_perf > 10) { ?>
+
+
+<li><a data-tooltip title="Good Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: green;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-up"></i></span></div></a></li>
+
+
+<?php } elseif ($views > 2) { ?>
+
+<li><a data-tooltip title="Low Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: red;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-down"></i></span></div></a></li>
+
+<?php } else echo ""; ?>
+
+
+
+<a class="confessionicon" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-tooltip title="Make Confession"><div style="font-size: 12px; border-color: #f6f6f6; border-radius: 50%; float: right;" class="text-muted">&nbsp;•&nbsp;<i class="fas fa-quote-right"></i></div></a>
+
+
+
 
 
 </ul>
+
+
+<ul class="nav">
+
+
+<?php if($views > 2) { ?>
+
+
+<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 2";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameimage = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+<?php 
+if(!empty($row['image'])) {
+?> 
+
+<li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"></a></div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown2.png"></a></div></li>&nbsp;
+
+<?php
+} ?>
+
+
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+
+
+
+<?php $sql6 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY RAND() desc LIMIT 1";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameview = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+
+
+<?php if($views == 2) { ?>
+
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>"><?php
+
+
+ echo $nameview; ?>
+ 
+ 
+ </a> viewed this</div></ul></li>
+
+<?php } else {?>
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $nameview; } ?>
+
+</a> and <?php echo $views-1 ?> others viewed this</div></ul></li>
+
+<?php }?>
+
+
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+<?php } else echo ""; ?>
+
       </div>
+      
+      
+      
+      
+      
     </div>
     <br>
 <?php 
@@ -859,12 +1125,12 @@ if ($len > 200 && $len < 400) {
     
 <div class="card">
   <div class="card-body">
-<p style="font-size: 14px; line-height: 1px;"><i style="color: blue;" class="fas fa-bolt"></i>&nbsp;What People are talking about<i style="color: blue; float: right; data-toggle="tooltip" data-placement="top" title="These confessions are selected based on the maximum interaction among the users."" class="fas fa-info-circle"></i></p>
+<p style="font-size: 14px; line-height: 1px;"><i style="color: blue; font-size: 16px;" class="fas fa-users"></i>&nbsp;People you may know</p>
 <hr>
 <ul class="nav flex-column">
 
 
-<?php $sql6 = "SELECT * FROM posts ORDER BY views desc LIMIT 6";
+<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 6";
 $result6 = $conn->query($sql6);
 
 if ($result6->num_rows > 0) {
@@ -873,11 +1139,8 @@ if ($result6->num_rows > 0) {
 
       $id = $row['id'];
       $name = $row['name'];
-      $title = $row['title'];
-      $post = $row['post'];
-      $views = $row['views'];
-      $time = $row['time'];
-      $len = strlen($row['post']);
+      $position = $row['position'];
+      
 
    ?>
 
@@ -887,10 +1150,51 @@ if ($result6->num_rows > 0) {
 
 
 
-    <span style="content: '';"><a style="color: black; line-height: 1px;" href="post_view.php?id=<?php echo $id; ?>"><i style="font-size: 12px; color: #699cff;" class="fas fa-circle"></i>&nbsp;<span style="font-size: 16px;"><?php echo substr($title, 0, 24)."..."; ?></span></a>
-    <br style="">
-   <span class="text-muted" style="font-size: 13px; padding-left: 16px;"><?php echo time_ago_in_phppeople($time); ?> • <?php echo $views." readers"; ?></span></span>
+    <div style="display: inline-block;">
+    
+    
+        
+        <?php 
+if(!empty($row['image'])) {
+?> 
+        
+   <img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="<?php echo $row["image"]; ?>">
 
+<?php } else {?>
+
+<img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="image/unknown2.png">
+
+<?php
+} ?>
+
+        
+        <h5 class="card-title" style="margin-left: 40px;">
+
+        &nbsp;
+
+        <a class="name" style="color: black; font-size: 15px;" href="profile_view.php?name=<?php echo $row["name"]; ?>" title="
+        
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
+        
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
+        
+        <?php }?>
+        
+        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php echo $row["position"]."<i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?>"><?php echo $row["name"];?></a>
+
+        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo substr($position, 0, 25)."..."; ?></div>
+
+        
+    </h5>
+
+</div>
+
+<hr>
     
 </li>
 
@@ -1012,96 +1316,7 @@ if ($result6->num_rows > 0) {
 
 
 
-<!-- Your Blogs Section-->
 
-<br>
-
-<div class="card">
-  <div class="card-body">
-    
-    <span style="margin-top: 2px; font-size: 14px;"><div class="dropdown"><img width="20px" height="20px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png">&nbsp;<span style="font-size: 17px; line-height: 1px;">Your Blogs</span> &nbsp;<a class="dropdown" data-toggle="dropdown" href="#" data-toggle="tooltip" data-placement="top"><i class="fas fa-caret-down"></i></a>
-  <ul class="dropdown-menu dropdown-menu-left" >
-  
-
-<?php $sql = "SELECT * FROM blogpost WHERE name = '$username'ORDER BY id DESC";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-
-      $id = $row['id'];
-      $username = $row['name'];
-      $btitle = $row['btitle'];
-      $bpost = $row['bpost'];
-      $btime = $row['btime'];
-
-   ?>
-
-
-    <a class="dropdown-item" href="blog_view.php?id='<?php echo $id; ?>'"><img width="15px" height="15px" src="https://png.icons8.com/color/48/000000/hashtag-activity-grid-2.png"><?php echo $row["btitle"]; ?></a>
-
-
-<?php 
-    
-            }
-} else {
-    echo "No blogs posted yet.<br> You can start writing your blogs!";
-}
-?>
-
-
-    
-    </ul>
-  </div>
-</span>
-<hr>
-
-
-
-<ul class="nav flex-column">
-
-
-<?php $sql = "SELECT * FROM blogpost WHERE name = '$username' ORDER BY id DESC LIMIT 4";
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-
-      $id = $row['id'];
-      $username = $row['name'];
-      $btitle = $row['btitle'];
-      $bpost = $row['bpost'];
-      $btime = $row['btime'];
-
-   ?>
-
-<li class="nav-item" style="line-height: 30px;">
-
-
-
-    <a style="color: black; font-size: 25px;" href="blog_view.php?id='<?php echo $id; ?>'"><img height="20px" width="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAG2SURBVGhD7dk/T8JAGMdx3pluRjd1VF+Gg6OJWBGEwVUTQETxz4hDOzr4BoyDsVUcnZztUO+HNNbmqbkrd9wTck/yXbC93Cfo8ceKGzdu3MzHBGHc8qOvgFPY02R78uNH8X0QxQmnsKfJ9uTHQQzmINRiNrMGaQxGye7Js3KnwQe5njVI/+EzWdkKkoXVoVI7x0/ketYgqAyGJQQBs7wpj2ELQcAsbfjkxvOxhrRu35PF9Tty4/nYQpo38gjEEtK8HikhEDtIY/CmjECsIHgxLINAbCD1S4FYk0MAmz/NWEB+EH83WxQQOM3yrzPWIfUL8TehghAHQXpv9h2AVUjt/FUJcXT1i0hLMdYgtZ4iQvz6UesgYPbaL+TPjEK8XiSPEAcATjNqnWx+WPC4KYjXVUEMxwcBtY5sRiCqiENxEFDrqKQdUu2EM0cgrRB8DFVC9PUgkPZnZLv1SG48GxAH4kim7i+bdgj6DzNGiCOZum+ajEAQhQHCO4vI66fNGARlMUDsd0PyOh0ZhSBggKi2zSGQcQgq+lJNZzOBzCIHoRazmYNQi9msFGRu/hnqxo0bNwynUvkGoyOViE1rERQAAAAASUVORK5CYII=">&nbsp;<span style="font-size: 15px;"><?php echo substr($btitle, 0, 18)."..."; ?></span></a>
-   
-
-    
-</li>
-
-<?php 
-    
-            }
-} else {
-    echo "No blogs posted yet.<br> You can start writing your blogs!";
-}
-?>
-
-
-
-
-
-
-  </div>
-</div>
 
 
 

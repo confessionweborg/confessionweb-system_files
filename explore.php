@@ -738,7 +738,7 @@ if ($gendercheck == "Male") {
 <br><br>
 
 
-<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY posts.views DESC";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY posts.views DESC LIMIT 8";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -860,7 +860,14 @@ if ($len > 200 && $len < 400) {
 ?>
 
 
+<?php if (empty(session_status())) {
+ ?>
 
+<center><button style="margin-right: 100px;" type="button" class="btn btn-primary btn-sm" >Sign in to read more</button></center>
+
+<br>
+
+<?php }?>
 
   </div>
 
