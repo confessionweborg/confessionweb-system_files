@@ -25,12 +25,15 @@ $username=$_SESSION['name'];
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-	<title>CW Policy - ConfessionWeb</title>
+	<title><?php echo $username."'s Activity " ?> - ConfessionWeb</title>
 
 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
 
-
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
@@ -237,9 +240,104 @@ p {
     }
 }
 
+
+.tabs {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+#tab-button {
+  display: table;
+  table-layout: fixed;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+#tab-button li {
+  display: table-cell;
+  width: 20%;
+}
+#tab-button li a {
+  display: block;
+  padding: .5em;
+  background: white;
+  border: 1px solid #ddd;
+  text-align: center;
+  color: #000;
+  text-decoration: none;
+}
+#tab-button li:not(:first-child) a {
+  border-left: none;
+}
+#tab-button li a:hover,
+#tab-button .is-active a {
+  border-bottom-color: transparent;
+  background: #fff;
+}
+.tab-contents {
+  padding: .5em 2em 1em;
+  border: 1px solid #ddd;
+  background-color: white;
+}
+
+
+
+.tab-button-outer {
+  display: none;
+}
+.tab-contents {
+  margin-top: 20px;
+}
+@media screen and (min-width: 640px) {
+  .tab-button-outer {
+    position: relative;
+    z-index: 2;
+    display: block;
+  }
+  .tab-select-outer {
+    display: none;
+  }
+  .tab-contents {
+    position: relative;
+    top: -1px;
+    margin-top: 0;
+  }
+}
 </style>
 
+<script type="text/javascript">
+  $(function() {
+  var $tabButtonItem = $('#tab-button li'),
+      $tabSelect = $('#tab-select'),
+      $tabContents = $('.tab-contents'),
+      activeClass = 'is-active';
 
+  $tabButtonItem.first().addClass(activeClass);
+  $tabContents.not(':first').hide();
+
+  $tabButtonItem.find('a').on('click', function(e) {
+    var target = $(this).attr('href');
+
+    $tabButtonItem.removeClass(activeClass);
+    $(this).parent().addClass(activeClass);
+    $tabSelect.val(target);
+    $tabContents.hide();
+    $(target).show();
+    e.preventDefault();
+  });
+
+  $tabSelect.on('change', function() {
+    var target = $(this).val(),
+        targetSelectNum = $(this).prop('selectedIndex');
+
+    $tabButtonItem.removeClass(activeClass);
+    $tabButtonItem.eq(targetSelectNum).addClass(activeClass);
+    $tabContents.hide();
+    $(target).show();
+  });
+});
+</script>
 
 
 
@@ -498,7 +596,6 @@ echo $rowcountsmentions;
 <a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
 
     <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
-    <a class="dropdown-item" href="analytics.php"><img width="25px" height="25px" src="https://png.icons8.com/color/96/000000/combo-chart.png">&nbsp;Analytics</a>
     <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
     <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
 
@@ -741,16 +838,23 @@ echo $rowcountsdiscussions;
 
     ?></span></a>
   </li>
-  
-  
-  <li class="nav-item">
+
+
+
+<li class="nav-item">
     <a id="hover" class="nav-link text-muted" href="events.php"><img width="20px" height="20px" src="https://png.icons8.com/color/96/000000/event-accepted.png">&nbsp;Events</a>
   </li>
-  
-  
-  <li class="nav-item">
+
+
+<li class="nav-item">
     <a id="hover" class="nav-link text-muted" href="activity.php"><img height="20px" width="20px" src="https://png.icons8.com/color/96/000000/hashtag-activity-feed.png">&nbsp;Activity</a>
   </li>
+
+
+
+
+  
+  
   
  <li class="nav-item">
     <a id="hover" class="nav-link text-muted" href="cwrank.php"><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAQLSURBVGhD7ZnLaxNRFMaLr4U7Xyt1bx/a6uSOFQrBmVK6cKdFraBIRRfiTqi4cWe7UARbqI+FgkgXUqGodesDhbpT6x+g1o1VqU2TtCHt9XzTkzRtzkzvZJK4yQc/CJl7zvnuzJ17b27qaqqppujSXV3rk+1266xjXyVGZl31hfiTcO0MwOdZ157wrlEbtNXX6tZx+P9TqiO2mwz2Jxz1gwzqMCRcNYnYZNzexemqp5m4tT3h2PeIeclcGJCDOjKEnJy+sqI71z3rqN+SmYhMITeXKb90V8MmulP3hcJlhTpxR1vWRi5bHukj1mYyPyYVrATUiReoyeWjie981cznoE6MluVJRBk26XOWh3TNBAwntlGaKMEpKbEp2eEmD+maKQk3dpzthNNMZ8sOWnR+SUlNSPcc0PrDHg98ltoYMvXXVdvYlrnw+IRkxmQfN+U7gM9SG3PUINsyk7fCRlikUmetvPkc+E5qawK8JJ3WnWxvbdGL2y8lMiX7aPnu58B3UltTqBN9bC9Y2GTR8JmUkpiQOlN893PgmhRjAnXgm9EGMOWqQ1ICIzrku5/DewrURow1IOlYNtv0l7clFoLztFOio0qnz1t6/mqLztxq9owtvGzQerxeNL4CaoO2iEEsciAXciK3WDNHu7rCNv1F4/+pGEykTlt68bVgqkwgN2pItZdQT9imv6jhRHHgMumLNL+/N7jTYaGcyC3VzOPYn9mmv/jXk5yASV+gF/WdYKJUKBdySrVWQAsr2/SX6fyf7qHh9Db6k0AO5JJqrAbe2Ka/TDsAsDgtvim9E4gNs8AZdcBkCBXivdivwncCMcEvrIDJEMKLIgYHMNe7XzQZBGKkXIE46hPb9Bd1YEQMDiDT1yyaDAIxUq5gTKbRtRYygewD/9XXD8RIuQJxVC/b9Jd3QCUFB7AwRquwYDIIxEi5gki6McU2/cWbue9SApFO5b+FGGfEa/VerJhTwHgzB1HjPimJBGaSYnM0RB7u1anumAc+Sx0JMwslHHWd7a0tHPeZrgdzl1fOQNnhRnFux3e4VtgWsavbSZCXuVA/aCDa1A1JyVaTubE0Ay2MNBptB9AGbRGDWKlNMWqAbZkLP6SxcMgJl8nc3KfTl2gTttZWuBBqixjEitcLceyf0x2tW9lWOCUO2yfFpFWEhk8X2ylN9PLclRJXBce+zTZK19LRohoVC1QQ1MQfJ2wjmrzDXUc9lwpVAho2z8p2uJsTDlqjHnaZoQZ0PL6By5ZfCefgCSo0VVw4MlMzjn2My1RW3hTrqkHTxS4ILFK469NtbVs4ffXEK3Yf8VUyFwRisD0IvcJWQthk4dAJ5zbYs+OHB/5HwxMCS/+pqY98rRe7SuONWU011RSgurp/bE7IYetvMB4AAAAASUVORK5CYII=">&nbsp;CW Rank</a>
@@ -920,84 +1024,315 @@ elseif ($perf <= 60 && $perf >= 20) {
 
 
     <div class="col-md-7 col-md-offset-3">
+
+<div style="max-width: 640px;" class="card">
+  <div class="card-body">
+    <h4><?php echo $username."'s Activity"; ?></h4>
+  </div>
+</div>
+
+      
+<div class="tabs">
+  <div class="tab-button-inner">
+  <div class="tab-button-inner">
+    <ul id="tab-button">
+      <li><a href="#tab01"><i class="far fa-handshake"></i>&nbsp;Posts</a></li>
+      <li><a href="#tab02"><i class="fas fa-rss-square"></i>&nbsp;Blogs</a></li>
+      <li><a href="#tab03"><i class="fas fa-at"></i>&nbsp;Mentions</a></li>
+    </ul>
+  </div>
+  <div class="tab-select-outer">
+    <select id="tab-select">
+      <option value="#tab01">Posts</option>
+      <option value="#tab02">Blogs</option>
+      <option value="#tab03">Mentions</option>
+    </select>
+  </div>
+
+  <div id="tab01" class="tab-contents">
+    
+
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.name = '$username' ORDER BY posts.time DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $usernameposts = $row['name'];
+      $title = $row['title'];
+      $post = $row['post'];
+      $views = $row['views'];
+      $time = $row['time'];
+      $post_perf = ($views/122.2)*100;
+
+   ?>
+
+
+
+<a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMdSURBVHhe7Z0/j0xhHIVHJESj0tFqNLo1d6ZQSdSS+QAS7jRW+Ag6rco3kNgSee9EJxF/EvGvUSplG4VoJGLdy1m/F4fdsXNeyb3nSZ7Gzux57zO7ZqK4RsYYY4wxxhhjjDHG7MTsxMaBi1VzuZ6kp/MqfZxPmq1B2V1z1TzpGnQtkKUM8/Hdo3WVXtKDDdGqedE1QR4t62fTwXb09W+HGLjdD2TXBpl0dL9y7AC2fREmaR2ZdHR/77Fx2/0WNI+RSccg33B3a9V8QCYddNj+EJl0sFEbIpMONmpDZNLBRm2ITDrYqA2RSQcbtSEy6WCjNkQmHWzUhsikg43aEJl0sFEbIpMONpr76uFmr2XXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42mss+uvVJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKO57KNbSdmZSopMOthoLotSUnamkiKTDjaay6KUlJ2ppMikg43msiglZWcqKTLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjVrom3X8X8vcroYMWzhdXEImHXTYfrtvXJGb99HxgVtPmufFbtrHDjBI2zfceZUedX/tFL1tJT3MUqYbo9HWPnw7syw86u5sPyVcw7cx/woLu7PpSz1OV/AtzF7ggf9i1Xyuq8V5PN3sFRr5z36qp805PNWsAhKZ291fdLo4g6eZVUFj/2L7Zvu+/Wxc4SlmlbDguW34d+1P/kk83KwaFn3bepLezk/dP46HGgUs/HfTmwtr6RgeZlSw+HWVntWn7xzBQ4wS8gI8WF9Lh/Flo+bn+One1fHtQ/iSKcF2/PYN91bx/7zG4AWo0s3ZbGM//siUpH0Brvufk40xxhhjjDHGGGOMWZbR6CvL66KIrCkasQAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["title"]; ?></p></a>
+
+
+
+
+
+
+<ul class="nav">
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
+
+<?php 
+if(!empty($row['image'])) {
+?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown2.png"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php
+} ?>
+
+
+
+
+
+
+<?php if($views > 2 && $post_perf > 10) { ?>
+
+
+<li><a data-tooltip title="Good Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: green;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-up"></i></span></div></a></li>
+
+
+<?php } elseif ($views > 2) { ?>
+
+<li><a data-tooltip title="Low Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: red;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-down"></i></span></div></a></li>
+
+<?php } else echo ""; ?>
+
+
+
+
+
+</ul>
+
+
+<ul class="nav">
+
+
+<?php if($views > 2) { ?>
+
+
+<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 2";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameimage = $row['name'];
+      $position = $row['position'];
       
 
-<div style="width: 100%;" class="shadow-none card">
-      <div class="card-body">
-        <center><h5 style="font-size: 25px;" class="card-title"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAOFSURBVGhD7ZlNaBNBFMcril94EEVBERHBiyge/OjOtho/LtWTHnpQ0SKaTW1pQXsRBK0epfVoPYioh4pVWynNbJq0TVFBa1NUUGhBRA+m9GRV/Ky6vpe82ja+Dc3sbhIhf/iRsJl57z+z87E7KSqooIK8kjUjoMsG4Axd+H90Qrs1z9Blc0A3rSTyPDaIfs5vHS/tWA2GBybMJzF083qFLzqXiuWnwPhBMPoh1fxfhPk0UBxeQ8XzR4FicxWYa2dNp2AI+QkaefKsLzqLqudOR7XQIjBeD4a+cGbTAnfD0EJlFCq7onHeACY+suYyAYeVMPcbG9vnU3h3VVMm5/i3msvg1u8yhHkOPp+xRpwi5FeIH4TPKn9pR/GRUrmkfG3LbLKhLjZZFiEb6oKh8oMLnCW+kw11QQNGmcBpqdvdZbU1DVn93fEE9y4PWaf2Rtmy6ZGjZENdsMK84YPzoPm+cNx6/nBkCk8i76y6Pd1sHTswN9lQFzwS9HHB7cCeTzU/TuulQbaOHZibbKgLeuE2F9yOWM8wax6JdcXZOnbAineHbKgLlrVGLrgd7jbAvEg21OUXZi0X3A6csJx5JNMhhLnJhroM0bGNC24HrjY4YVPN48TOdBL79dAOsqEu3OJhLI5xCezAlQh7G4dMfyRu3YXvCivQrypfdAHZcCZoQIxL4ilCvqD0zgXBmtgkniKvUnrnqhTmIT7Jv9QfuG81N760elvfWrHocAL8jtfwN64OB9x1g9I7V6XoXAqPvD+5ROPU7owkxnrq5E0F5waW5WJMxiiJrKT07gga8IBLhFRv77TCN1+zhjmwLNbhYiWRA5TWPcG2XsMnMxO9yhlNB94tLlYSeZrSuqfqzZHFsDN+4xJyBqcDFwuXz2Nb5ApK666mnvVMwJmbDlws6H2T0rkvQw9u4pO6h+cv+thDXGI3wA2T0ngnGKMCGvGbM+AYTe6jNN4K5sIN1oAThOyh8N6LNrb3rBEF8GERYq6j8NlRQAse5syogafXORDsC1d4QxnRW17eMpNCZlf0rqB8UgdzaaRaDy+ncLkRHgFCIwY5g+mRo34tuJ7C5Fa49cOkfsUbZflcWSI1qp4fwqEAjXjMmJ2KkHE8vKVq+SX8CwkacY01DuBO69mDmpvCNzicoJOMj0HPX/DsPwAvVOFrW4jv0rDUPgqUhDbQ5YIKKshVFRX9AavkgRv3yp02AAAAAElFTkSuQmCC">&nbsp;
-ConfessionWeb Policy & Rules</h5></center>
+   ?>
+
+<?php 
+if(!empty($row['image'])) {
+?> 
+
+<li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"></a></div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown2.png"></a></div></li>&nbsp;
+
+<?php
+} ?>
+
+
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+
+
+
+<?php $sql6 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY RAND() desc LIMIT 1";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameview = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+
+
+<?php if($views == 2) { ?>
+
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>"><?php
+
+
+ echo $nameview; ?>
+ 
+ 
+ </a> viewed this</div></ul></li>
+
+<?php } else {?>
+<div style="font-size: 12px; margin-top: 5px;" class="text-muted"><a data-tooltip 
+
+title="<?php echo $row['name']; ?>
+
+
+" class="text-muted" href="profile_view.php?name=<?php echo $nameview; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $nameview; } ?>
+
+</a> and <a class="text-muted" href="#" data-tooltip data-html="true" 
+
+title="
+<?php
+
+$sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 5";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $name = $row['name'];
+      $position = $row['position'];
+
+  ?>
+ 
+ 
+ <?php echo $row["name"];  ?><br>
+ 
+ <?php
+}} ?>
+
+
+and <?php echo $views-1 ?> others...
+
+">
+
+<?php echo $views-1 ?> others</a> viewed this&nbsp;• <?php echo time_ago_in_phpviews($time);?></div></ul></li>
 
 <hr>
-<center><p style="font-size: 25px;">Be Respectful</p></center>
 
-<center><img src="data:image/png;base64,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"></center>
 
-<br>
+<?php }?>
 
-<p>ConfessionWeb is a platform for people and by the people. Community develops from the people and we want to make this platform more open and secure to everyone. So, we make sure that our users are always be respectful to the other confessors and not invade thier privacy or disrespect them in any other way.</p>
 
-<hr>
-<center><p style="font-size: 25px;">How to choose Confessions?</p></center>
-
-<center><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAARrSURBVHhe7ZpdaBxVGIZXBalFRCgVLW0VKSKlSaDJTEJvlswWus1u9ifNonghYi+KQsGi2AvBXLZQaAr1qr1pb5Ta7G4UiqAUCr1pC4IgBJXQ+kPUhkJMJhGSSqff2f12nGS/mTmzm+zF5H3gJdk5P5y879mTc85uAgAAAAAAAAAAAAAAAAAAAAAAAAAAtEOmXNyXrRS+S18Z3c6PQKfITeb2Zqv52Wy14NDPHxBCB8lOjLxOpv9VN78hhNARDlcKr2UqhZnV5iOEUA5X812Zav5DftkSw18N7yGT/5DNJ1UKD4fKxTRXBw2U+WRcfb2uFMb4cSQyEyOv0sz/vcl0FoX7X6ZSLHF10IBmbbdrfkMRQ8hX869QH7+u6sMjZT6Vv8HVQQPaJvY0md+QZghk/i6a+XfFPkhs/ltcHXghc65LprkKCSFdLu4kc6fFtqTasjOZe5urg7WoHQkZOCWZ58onBNrn76C2v4htSMr84Wr+Ha4O/DhULr5ERv4smehqTQhDX5ZepGXnJ7GuUqXwiMrf5eranLuz7MRZ47dX3uM/dTVhS0lNHEKxXHwh8F1D5tPMP1rrOCLSoOMk3wAU2a+zu2nW3hNNZVH5GTL/R6msJjKfyo9xl5GRBh0nBQagUHt5MtD/IBWkuvnvc1ctIQ06TgoNQKFOszTTfa4SfETmD1Xzx7mLlpEGHSdpBaBQl2kUwt+i2YJox/MBN20LadBxknYAitpdvt8hzavJ3Alu0jbSoOOkSAEoOIQ118pe5T/iquuCNOg4KXIACr5e/m2t+bTmn+QqYKMZmhh5mWb7/+eESuETLgKdgq8epsj8T/kR6DSjV0af4V8BAAAAAABYT+zUQNeiZX7MLyOh2tqW0dZ3izY1bP7sYsp07JR5mh9r4W1LP7W+UQE82FZ/t2ugK2PcSSSe4Cq+iG0Rgj6Lg2ZPs/kNGZ8FhSAHx0II4dxPJp+ldXtGNJBlW+YFZyzxJDdxCTSfZaf68I24MBZS/UfI5GXJwIYopMtOqfQUN9Eyn8rLTmnv09wEBKETAi1Hn6sQgpcsFsyPjt47wfwG5m8geu+EALVhvvQxXpyk/ZHkwsG+kZZCaHPmS4OOkyJ9Jhw5hHVYdqRBx0mRP5TXDmGd1nxp0HFS5ACWBvtzegEYE94taqtIg46TIgVAW850tP8DxhfthiANOk7SDoBOrwftlPGvbLS/KLBL0olZF2nQcZJWALTuJ8nIJclgHdkp86LOBZ6ENOg4KTSA+cG+A7SU2JKxHk2TySvCc4+M862GsGlZsnpN2s38IxtaFy1L38+njG1ahzXLOMtdgzAWrYH9ZNpck4kekfm35pI9z3MT3WuLU1wd+FG/jjb/lAx0ZRk3H6TN57iJi14I/W9ydeBHoJGWeUOFxFWbCGmLSzldZCONb51s71au4ot4Yob50fEaSWv+NSeZ3MJFoawKAea3jjKSZv7VVgzktnQihvkAAAAAAAAAAAAAAAAAAAAAAAAAAJuNROIxpDVAVLRFbdQAAAAASUVORK5CYII="></center>
-
-<br>
-<p>Choosing what to post on a platform which is full of people with integrety and that should not hurt anyone. Taking care of this, we have enabled the option under the clicking to post link on the home page states <b>"Looking for Confessions?"</b>. Clicking upon it will show you bunch of confession options to choose from and use those in your to state your confessions. It is not mandatory to choose those following options, but those are just to guide you through the entire process of making trustworthy and safe confessions.</p>
-
-<hr>
-<center><p style="font-size: 25px;">What if I see a confession which is not appropriate for the CW Community?</p></center>
-
-<center><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAANJSURBVHhe7Z0xbhRBEEUXEZCQEZJCTjILCbI0YyQkx064ATfgBtyAG3ADTuALkBOTIJHYM0gEyEuX1eGXyuxWV1U3/0kvLG39trQs/tPrHSGEEEIIIYQQQgghhBBrtmV/UTwk96KuOxa3b5892ubpGwicy7Kj7FrXHoftfPoAA2e07FrXHoNf86un2zKtMGxKp1V2ruv3zzbvP+OgiS071/X75mbev16X/S0MmVjZWXavMfrkcHn5cJ33X1HAHpTdJUON0x83y/QeBetJyVDj9MX1Mj0p76M/UaiuLBkkS43VD2XxTzBQj5YsNVYfbG+mF+s8/YFhOvQuS8lU4+XmsNs9KJ+jr1CQvp2uJFuNmZd1md7hAP0r2WrMnPw4O3tclvyOlh9BySYZa9x8lM/NH9HilmqgGUslY42bi+vzl8/Lcr/R0pZqoBlLJaNkrbHzUD4pfEELW6uBZqyVrDV2DspSbkWLBpppZI7ixrto0UAzTcxS3HgXLRpoppnRxU1E0aKBZtoZXNxIaYEXa6cGmmlqVHETVbRooJmWhhQ3kUWLBppprZyFa3ETWbRooBkP3Yqb6KJFA8246FXcSDkBF3BSA8242bq4yVC0aKAZL5sWN1mKFg0042uj4iZL0aKBZrw1L24yFS0aaMZb8+JGSgj0QhFqoJkI5czq8Z2GV9FyXzXQTIRyZibFjVfRcl810EyUJsUNfwDHa/ID4FvQcZq9BQnyDwp6kQg10EyEcmb1+E6HH0P/TfOPoYL85wK9mLcaaMZbOat6bHbwVxH3teEzpKM99Wzt3dm0foo6+tfRqfW4RzDMzRdrPW/SjHD3y1rXu2S93360Vs7C/TZlr/d/rQ29T1ze9/hgVuSNej6amOA7JfhwbjB8PD0BZSFe0IjGq7jRQDPWmhQt1ngVNxpoxlLJaFa0WCMlBFraUg00Y6lkrHHzkam4aWGTosWaLMVNC5sULdZkKW7s7eTLOoTRihuXosUaKSdQmC71KFqsGaa48SxarBmhuHEtWqzpvbiR3d2LFmt6LW5CixZrpLRAIVMbWbRYE1HcnOZgX94teBc3J5mhaLHGu7g52kxFizUlIP+ECSGEEEIIIYQQQgghhPyH7HZ/Adxj1glgZJCcAAAAAElFTkSuQmCC"></center>
-
-<center><b><p>Report it</p></b></center>
-
-<p>Reporting the inappropriate content on this platform to us is the best thing you can do. Because there is no option yet to report the spam, you can just email us at <a href="mailto:info@confessionweb.com">info@confessionweb.com</a> here the title of the confession, copy and paste the link of that post, your name and your email address. We will review your request. If we find anything inappropriate with the request you made, action will taken within 24 hours.</p>
-
-<hr>
-<center><p style="font-size: 25px;">What does appropriate Confession looks like?</p></center>
-
-<center><img src="data:image/png;base64,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"></center>
-
-<center><b><p>Authentic</p></b></center>
-
-<p>There is not one factor to consider a right or appropriate confession, but there are many factors involved in determining the right confession.<br>
-
-<li>Always be authentic.</li>
-<li>Never judge anyone ever.</li>
-<li>Always be true to yourself because that's why you are here on the first place.</li>
-<li>Never hurt anyone or anyone's feelings.</li>
-<li>Be Nice and Be Trustwoorty.</li>
-
-</p>
+<?php 
+    
+            }
+} else {
+    echo "";
+}
+?>
+<?php } else echo ""; ?>
 
 
 
-<hr>
-<center><p style="font-size: 25px;">Why there are so many policies on this platform?</p></center>
 
-<center><img src="data:image/png;base64,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"></center>
 
-<center><b><p>Safety and Trust</p></b></center>
+   <?php 
+    
+            }
+} else {
+    echo "No Confessions yet.<br> Start making confessions!";
+}
 
-<p>CW is a place for people who trust our services and this platform. We started this to give people a centralized platform to oepn themselves and be confident about them. We want to make sure that we always keep this platfrom clean, trustworthy, authentic and safe for everyone from 13 year old kid to 70 year old person. People love to hear about others and get inspired from them. That's what we are trying to do and make this world a better place to live and Confess.</p>
+?>
 
+
+
+
+
+
+
+
+
+
+
+
+  </div>
+
+  <div id="tab02" class="tab-contents">
+    
+
+<?php $sql = "SELECT * FROM signup INNER JOIN blogpost ON signup.name = blogpost.name WHERE blogpost.name = '$username' ORDER BY blogpost.id DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $username = $row['name'];
+      $btitle = $row['btitle'];
+      $bpost = $row['bpost'];
+      $btime = $row['btime'];
+      $image = $row['image'];
+
+   ?>
+
+<div class="shadow-none card rounded">
+      <div style="width: 100%;" class="card-body">
+        
+        <a style="color: black; font-size: 25px;" href="blog_view.php?id='<?php echo $id; ?>'"><p class="card-text" >
+
+<img width="35px" height="35px" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white; background-color: white;" src="<?php echo $row["image"]; ?>">
+
+          &nbsp;<?php echo $row["btitle"]; ?></p></a>
+        
+        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($btime);?></div>
+        
       </div>
     </div>
-
-<br>
-
-
-
-
-  </div>
-
-      
-      
-      
-      
-      
-    </div>
     <br>
+<?php 
+    
+            }
+} else {
+    echo "No blogs posted yet.<br> You can start writing your blogs!";
+}
+?>
+  </div>
 
 
 
@@ -1005,25 +1340,91 @@ ConfessionWeb Policy & Rules</h5></center>
 
 
 
-
-
-
-
-
-
-    </div>
 
 
 
 
 
   </div>
+
+  <div id="tab03" class="tab-contents">
+    
+
+
+
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.post LIKE '%$username%' ORDER BY posts.id DESC";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+      $id = $row['id'];
+      $usernameposts = $row['name'];
+      $title = $row['title'];
+      $post = $row['post'];
+      $views = $row['views'];
+      $time = $row['time'];
+
+   ?>
+
+
+
+<?php
+
+if ($views >= 50) {
+
+ ?>
+
+<div class="text-muted" style="font-size: 13px;"><span style="font-size: 13px; color: #6666FF;" class="fas fa-check-circle" data-toggle="tooltip" data-original-title="Verified"></span>&nbsp;Trending Post</div>
+
+<?php
+}
+?>
+
+        <h5 class="card-title"><img width="35px" height="35px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white;" src="<?php echo $row["image"]; ?>">&nbsp;&nbsp;<a href="profile_view.php?name=<?php echo $username; ?>"><?php echo $usernameposts; ?></a> mentioned you in <a style="color: black; font-size: 20px; color: #3d99ff;" href="post_view.php?id=<?php echo $id; ?>"><?php echo $row["title"]; ?></a></h5>
+
+        <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
+
+<ul class="nav">
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views"?></div></li>&nbsp;
+
+
+</ul>
+
+<hr class="my-8">
+      
+<?php 
+    
+            }
+} else {
+    echo "No Confessions yet.<br> Start making confessions!";
+}
+
+?>
+  </div>
+
+
+
+
+
+
+
+
+  </div>
+</div>
+
+
   </div>
 </div>
 
 
 
-
+<script>
+  $( function() {
+    $( "#tabs" ).tabs();
+  } );
+  </script>
 
 
 

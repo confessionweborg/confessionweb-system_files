@@ -39,7 +39,8 @@ $position=isset($_SESSION['position']);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
 
-
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
 <style type="text/css">
 	nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
@@ -79,27 +80,26 @@ nav.navbar-findcond span.badge.new { background: rgba(255, 0, 0, 0.8); color: #f
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);" class="navbar navbar-expand-lg">
-  <a style="display: inline; padding-right: 70px;" class="navbar-brand" href="home.php"><img width="30px" height="30px" src="data:image/png;base64,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"></a>
+<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 100%; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
+  <a style="display: inline; padding-right: 70px; color: red; font-family: 'Anton', sans-serif; padding-left: 10px;" class="navbar-brand" href="home.php">ConfessionWeb</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
+    <i style="color: red; font-size: 30px;" class="fas fa-caret-square-down"></i>
   </button>
 
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li style="display: inline; padding-right: 40px;" class="nav-item">
-        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/40/000000/news.png" width="30px" height="30px">&nbsp;<span style="color: white;">Feed</span> <span class="sr-only">(current)</span></a>
+      <li style="display: inline; padding-right: 50px;" class="nav-item">
+        <a  style="font-size: 20px; color: black;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: black;">Feed</span> <span class="sr-only">(current)</span></a>
       </li>
-      
-     <!--Notification system starts-->
+      <!--Notification system starts-->
 
-      <li style="display: inline-block; padding right: 30px" class="nav-item dropdown">
-
+      <li style="display: inline-block; padding right: 50px" class="nav-item dropdown">
 
 
-        <a style="font-size: 20px; color: #545454; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white">Updates</span>
+        <a style="font-size: 20px; color: black; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: black;">Update</span>
         </a>
 
 
@@ -125,7 +125,7 @@ echo $rowcounts;
 <hr>
 <ul>
 
-<?php $sql = "SELECT * FROM posts ORDER BY time desc LIMIT 5";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY time DESC LIMIT 5";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -144,7 +144,84 @@ if ($result->num_rows > 0) {
 
 
           <li style="min-width: 400px; max-height:150px;
-  overflow: auto;"><i style="font-size: 18px; color: blue;" class="fas fa-portrait"></i>&nbsp;&nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
+  overflow: auto;">
+  
+  
+
+  <?php if(!empty($row["image"])) { ?>
+
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+
+  <?php } else { ?>
+  
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="image/unknown2.png">
+  
+  <?php } ?>
+
+
+
+  &nbsp;<a href="profile_view.php?name=<?php echo $uname; ?>" title="
+        
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
+        
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
+        
+        <?php }?>
+        
+        
+        
+        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php echo $row["position"]."<hr><i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?><br>
+        
+        
+        
+      <i class='fas fa-rss-square'></i>&nbsp; Blogs:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+echo $rowcountsblog;
+
+    ?><br>
+        
+     <i class='far fa-handshake'></i>&nbsp; Confessions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+echo $rowcounts;
+
+    ?> <br>
+        
+      <i class='fas fa-at'></i>&nbsp; Mentions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.post LIKE '%$username%'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcountsmentions = mysqli_num_rows($result2);
+
+echo $rowcountsmentions;
+
+    ?><br>
+    
+    
+    <center><a style='background-color: #e4e4e4; border-radius: 4px; line-height: 12px;' href='profile_view.php?name=<?php echo $username; ?>'>View profile</a></center>
+     
+        ">
+        
+        
+        <?php echo $uname; ?></a> recently posted <a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
           
           
           
@@ -165,21 +242,10 @@ if ($result->num_rows > 0) {
 
 <!----Notification system ends-->
       
-      
-      <li style="display: inline; padding-right: 90px; padding-top: 8px; padding-left: 40px;" class="nav-item">
+      <li style="display: inline; padding-right: 150px; padding-top: 8px;" class="nav-item">
         <form action="search.php" method="GET" class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="text" name="query" placeholder='Search <?php 
-$id = isset($_SESSION['id']);
-
-$sql2 = "SELECT * FROM posts";
-$result2 = mysqli_query($conn, $sql2);
-
-$rowcounts = mysqli_num_rows($result2);
-
-echo $rowcounts;
-
-    ?> confessions by title, post or user...' style="width: 470px; height: 33px;">
-  <input type="submit" name="search" class="btn btn-primary btn-sm" style="background-color: blue;" value="Search">
+  <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search confessions by title, post or user..." style="width: 400px; height: 33px;">
+  <input type="submit" name="search" class="btn btn-danger btn-sm" style="background-color: red;" value="Search">
 </form>
       </li>
 
@@ -203,8 +269,13 @@ echo $rowcounts;
 <?php
 
 }
-             } else {
-            echo "0 results";
+             } else { ?>
+             
+             <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/unknown2.png">
+        </a>
+             
+             <?php
            }
 
  ?>
@@ -229,11 +300,11 @@ echo $rowcounts;
         </div>
       </li>
     </ul>
-    <button style="margin-right: 150px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
+    <button style="margin-right: 100px;" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
   </div>
 </nav>
 
-<br>
+<br><br><br><br>
   
 
 <div style="padding-left: 40px; padding-right: 30px;" class="row">
@@ -319,7 +390,68 @@ if ($result->num_rows > 0) {
 <div class="row">
   <div class="col-sm-8">
     
-        <h1 style="font-family: 'Song Myung', serif; font-weight: bold;"><?php echo $username; ?></h1>
+        <h1 style="font-family: 'Song Myung', serif; font-weight: bold;"><?php echo $username; ?>
+        
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+
+    <i data-tooltip title="Authenticate Profile" style="color: blue; font-size: 15px;" class="far fa-check-circle"></i>
+
+  <?php } else { 
+
+if ($rowcounts > 50) {
+  } ?>
+
+  <i data-tooltip title="Verified Profile" style="color: blue; font-size: 15px;" class="fas fa-check-circle"></i>
+
+<?php } ?>
+        
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20) {
+    ?>
+    
+    <span style="font-size: 15px; font-family: 'Roboto', sans-serif; vertical-align: middle;
+    line-height: 1em; display: inline-block;
+  overflow: hidden;" class="badge badge-primary">PRO</span>
+
+  
+  <?php } ?>
+  
+  <span class="badge" style="font-size: 13px;"><?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+if ($rowcountsblog > 1) {
+    ?>
+
+<span style="font-size: 15px; font-family: 'Roboto', sans-serif; display: inline-block;
+  overflow: hidden; margin-right: 10px;" class="badge badge-warning">BLOGGER</span>
+
+<?php } ?>
+        
+        
+        </h1>
         <h2 style="font-size: 15px;"><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAPRSURBVHhe7ZrLblNnFIUPSDAAxrRMCZNyaaVKMEMmiTILV6mMoSLhImBU4CVAMIYn4BHgFdIACQy4TDrBEagjmsopAQ57O2tAzbK9s33kY8j6pE9Icbx+9B3bx4MUQgghhBBCCCGEEEIIIeqk0WjsGB8fv2bOm8sTExPlesRz5nxjenp6G2ZFBIs2Zr7sjDqAzycnJ3djXvRiampquwV71RFwYO2CvtA7IYDFutEZryrtIvyBY0Q3LNRcR7j7dj/4EQ+H8ef4czu25vCw6Ia9Sv93w7WPpJ14aN3Y83/4csu38ZDoxpfBXPw4TdV73z1VB6t6r3b+PbPnaGtm/6P3Fw6tfLx8uCyvHtnQegNv0Tq3f97bIFP1vLm0d0dr5sBCebVB/yPSvNIo241md1X7ddfj/3f+17/pofIrvZU3Q77BsY+cRXaQ7K41e4x8g/Hu3NhxfewktI+jSu4JfsOlB8i+tmb2/YmMefwOz8Zlf1cvHWohYx77mvWJjcv+ejtkzMOGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGZVxkzMNGa/He9bJsLpTlP3/11n/Hf5dt1CAy5mGjtbj0lAdnLi3yjRpExjxstBZZ6F6yjRpExjxstBZZ5F6yjRpExjyfRuWv31jkXrKNIevtkDHP6sWDdHzossi9ZBtD1tshY57l3/fQ8aHrN1YWmtl8wjeG7PLZscEvwNvT221sBP4wK/w11OLfHYGvoVca5dvT2wa/AM2ThV3JEXkXfEP6q9/bIWMeH1k6tblcmf2FHiS/dmX253azyi7AmpvW3gn21mKHStParL3yN6FZpRdgTb8n+CF+hx+Zr6g16g28hTfxNp29kDFP56Bcn8iYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiYh43KuMiY5/XJ4h0blv31dsiY5/WJ4hkbl/21dk+RMU/zRHGbjcv+2gW4iYx5mseKvTb0gR0gu2sfP6v24v0JGQfDBu90HiB7axfgFvINzrPfiq12NR+ygyT1gTdDvmooZ4stNnyn/dbih254vY2/8r0VslVP+55gh/gd3v7d8F9RvUG7hd1wvQ0yCSGEEEIIIYQQglAUnwHh5Oyb9puTIwAAAABJRU5ErkJggg=="><?php echo $row["position"];; ?></h2>
       <a style="font-size: 15px;" class="text-muted" data-toggle="modal" data-target="#exampleModal1" data-whatever="@mdo" href="#">Edit</a>
 
@@ -497,6 +629,11 @@ if ($views >= 50) {
 }
 ?>
 
+
+<div style="font-size: 12px;" class="text-muted"><i style="color: #2b6dad;" class="fas fa-user-tag"></i> <a class="text-muted" href="profile_view.php?name=<?php echo $row["name"]; ?>"><?php echo $row["name"];?></a> mentioned you</div>
+
+
+
         <h5 class="card-title">
         
         <?php 
@@ -510,7 +647,64 @@ if(!empty($row['image'])) {
 } ?>
         
         
-        &nbsp;&nbsp;<a href="profile_view.php?name=<?php echo $row["name"]; ?>"><?php echo $row["name"];?></a></h5>
+        &nbsp;&nbsp;<a href="profile_view.php?name=<?php echo $row["name"]; ?>"><?php echo $row["name"];?></a>
+        
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+
+    <i data-tooltip title="Authenticate Profile" style="color: blue; font-size: 15px;" class="far fa-check-circle"></i>
+
+  <?php } elseif ($rowcounts > 50) { 
+ ?>
+
+  <i data-tooltip title="Verified Profile" style="color: blue; font-size: 15px;" class="fas fa-check-circle"></i>
+
+<?php } ?>
+        
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20) {
+    ?>
+<span style="font-size: 10px; vertical-align: middle;
+    line-height: 1em;" class="badge badge-primary">PRO</span>
+
+  
+  <?php } ?>
+    
+    <?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+if ($rowcountsblog > 1) {
+    ?>
+
+<span style="font-size: 10px; vertical-align: middle;
+    line-height: 1em;" class="badge badge-warning">BLOGGER</span>
+
+<?php } ?>
+        
+        
+        </h5>
 
         <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
 

@@ -6,6 +6,7 @@ include("conn.php");
 
 $username=$_GET['name'];
 $position=isset($_SESSION['position']);
+$confessor=$_SESSION['name'];
 ?>
 
 
@@ -39,7 +40,12 @@ $position=isset($_SESSION['position']);
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
 <script src="https://cdn.ckeditor.com/ckeditor5/10.0.1/classic/ckeditor.js"></script>
 
+<link href="https://fonts.googleapis.com/css?family=Merriweather" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
 
+<script src="js/popover.js"></script>
+<script src="js/tooltip.js"></script>
+<script src="js/readmore.js"></script>
 
 <style type="text/css">
 	nav.navbar-findcond { background: #fff; border-color: #ccc; box-shadow: 0 0 2px 0 #ccc; }
@@ -110,6 +116,31 @@ p {
     height: 25px;    
     background: white;
 }
+
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+
+
 </style>
 
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -125,27 +156,26 @@ p {
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19);" class="navbar navbar-expand-lg">
-  <a style="display: inline; padding-right: 70px;" class="navbar-brand" href="home.php"><img width="30px" height="30px" src="data:image/png;base64,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"></a>
+<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 100%; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
+  <a style="display: inline; padding-right: 70px; color: red; font-family: 'Anton', sans-serif; padding-left: 10px;" class="navbar-brand" href="home.php">ConfessionWeb</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
+    <i style="color: red; font-size: 30px;" class="fas fa-caret-square-down"></i>
   </button>
 
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
-      <li style="display: inline; padding-right: 40px;" class="nav-item">
-        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/40/000000/news.png" width="30px" height="30px">&nbsp;<span style="color: white;">Feed</span> <span class="sr-only">(current)</span></a>
+      <li style="display: inline; padding-right: 50px;" class="nav-item">
+        <a  style="font-size: 20px; color: black;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: black;">Feed</span> <span class="sr-only">(current)</span></a>
       </li>
-      
-     <!--Notification system starts-->
+      <!--Notification system starts-->
 
-      <li style="display: inline-block; padding right: 30px" class="nav-item dropdown">
-
+      <li style="display: inline-block; padding right: 50px" class="nav-item dropdown">
 
 
-        <a style="font-size: 20px; color: #545454; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white;">Updates</span>
+        <a style="font-size: 20px; color: black; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
+          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: black;">Update</span>
         </a>
 
 
@@ -171,7 +201,7 @@ echo $rowcounts;
 <hr>
 <ul>
 
-<?php $sql = "SELECT * FROM posts ORDER BY time desc LIMIT 5";
+<?php $sql = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name ORDER BY time DESC LIMIT 5";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -190,7 +220,84 @@ if ($result->num_rows > 0) {
 
 
           <li style="min-width: 400px; max-height:150px;
-  overflow: auto;"><i style="font-size: 18px; color: blue;" class="fas fa-portrait"></i>&nbsp;&nbsp;<?php echo $uname." recently posted "; ?><a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
+  overflow: auto;">
+  
+  
+
+  <?php if(!empty($row["image"])) { ?>
+
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+
+  <?php } else { ?>
+  
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="image/unknown2.png">
+  
+  <?php } ?>
+
+
+
+  &nbsp;<a href="profile_view.php?name=<?php echo $uname; ?>" title="
+        
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
+        
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
+        
+        <?php }?>
+        
+        
+        
+        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php echo $row["position"]."<hr><i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?><br>
+        
+        
+        
+      <i class='fas fa-rss-square'></i>&nbsp; Blogs:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+echo $rowcountsblog;
+
+    ?><br>
+        
+     <i class='far fa-handshake'></i>&nbsp; Confessions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+echo $rowcounts;
+
+    ?> <br>
+        
+      <i class='fas fa-at'></i>&nbsp; Mentions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.post LIKE '%$username%'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcountsmentions = mysqli_num_rows($result2);
+
+echo $rowcountsmentions;
+
+    ?><br>
+    
+    
+    <center><a style='background-color: #e4e4e4; border-radius: 4px; line-height: 12px;' href='profile_view.php?name=<?php echo $username; ?>'>View profile</a></center>
+     
+        ">
+        
+        
+        <?php echo $uname; ?></a> recently posted <a style="color: blue; font-size: 15px; width: 20px;" href="post_view.php?id=<?php echo $id; ?>">"<?php echo $title; ?>"</a> <span style="font-size: 12px;">(<?php echo $views." Views"; ?>)</span>
           
           
           
@@ -211,26 +318,14 @@ if ($result->num_rows > 0) {
 
 <!----Notification system ends-->
       
-      
-      <li style="display: inline; padding-right: 90px; padding-top: 8px; padding-left: 40px;" class="nav-item">
+      <li style="display: inline; padding-right: 150px; padding-top: 8px;" class="nav-item">
         <form action="search.php" method="GET" class="form-inline my-2 my-lg-0">
-  <input class="form-control mr-sm-2" type="text" name="query" placeholder='Search <?php 
-$id = isset($_SESSION['id']);
-
-$sql2 = "SELECT * FROM posts";
-$result2 = mysqli_query($conn, $sql2);
-
-$rowcounts = mysqli_num_rows($result2);
-
-echo $rowcounts;
-
-    ?> confessions by title, post or user...' style="width: 470px; height: 33px;">
-  <input type="submit" name="search" class="btn btn-primary btn-sm" style="background-color: blue;" value="Search">
+  <input class="form-control mr-sm-2" type="text" name="query" value="<?php echo $username; ?>" style="width: 400px; height: 33px;">
+  <input type="submit" name="search" class="btn btn-danger btn-sm" style="background-color: red;" value="Search">
 </form>
       </li>
 
-
-<?php 
+      <?php 
           $username=$_SESSION['name'];
 
            $sql = "SELECT * FROM signup where name='$username'";
@@ -244,35 +339,48 @@ echo $rowcounts;
            ?>
 
 <li class="nav-item dropdown">
-        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-color: 3px 3px white;" src="<?php echo $location; ?>">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="<?php echo $location; ?>">
         </a>
 
 <?php
 
 }
-             } else {
-            echo "";
+             } else { ?>
+             
+             <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/unknown2.png">
+        </a>
+             
+             <?php
            }
 
  ?>
 
 
 
-        <div style="background-color: #f1f1f1;" class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+
+<img width="40px" height="40px" src="https://png.icons8.com/color/96/000000/user-male-circle.png"><span style="font-size: 15px; font-weight: bold;"><?php echo $username; ?></span>
+
+<center><a class="dropdown-item" href="profile.php">View Profile</a></center>
+<hr>
 <a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
 
     <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
     <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
     <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
 
+
+
         </div>
       </li>
     </ul>
-    <button style="margin-right: 100px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Confess to <?php echo $_GET['name']; ?></button>
+    <button style="margin-right: 100px;" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
   </div>
 </nav>
 
-<br>
+<br><br><br><br>
   
 
 <div style="padding-left: 40px; padding-right: 30px;" class="row">
@@ -297,6 +405,7 @@ echo $rowcounts;
                while($row = $result->fetch_assoc()) {
            $location= $row["image"];
 
+
            ?>
 
 
@@ -310,7 +419,7 @@ echo $rowcounts;
 }
              } else {
             ?>
-            <img src="image/unknown.png" width="200px" height="200px;" style="border-radius: 50%; border: 3px solid white; -webkit-box-shadow: 0 8px 6px -6px black;
+            <img src="image/unknown2.png" width="200px" height="200px;" style="border-radius: 50%; border: 3px solid white; -webkit-box-shadow: 0 8px 6px -6px black;
        -moz-box-shadow: 0 8px 6px -6px black;
             box-shadow: 0 8px 6px -6px black;">
             
@@ -348,7 +457,60 @@ if ($result->num_rows > 0) {
         <h1 style="font-family: 'Song Myung', serif; font-weight: bold;"><?php echo $username; ?>
         
         
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+
+    <i data-tooltip title="Authenticate Profile" style="color: blue; font-size: 22px;" class="far fa-check-circle"></i>
+
+  <?php } elseif ($rowcounts > 50) { 
+ ?>
+
+  <i data-tooltip title="Verified Profile" style="color: blue; font-size: 22px;" class="fas fa-check-circle"></i>
+
+<?php } ?>
         
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20) {
+    ?>
+    
+    <span style="font-size: 15px; font-family: 'Roboto', sans-serif; vertical-align: middle;
+    line-height: 1em; display: inline-block;
+  overflow: hidden;" class="badge badge-primary">PRO</span>
+
+  
+  <?php } ?>
+  
+  <span class="badge" style="font-size: 13px;"><?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+if ($rowcountsblog > 1) {
+    ?>
+
+<span style="font-size: 15px; font-family: 'Roboto', sans-serif; display: inline-block;
+  overflow: hidden; margin-right: 10px;" class="badge badge-warning">BLOGGER</span>
+
+<?php } ?>
         
         
         
@@ -361,17 +523,43 @@ if ($result->num_rows > 0) {
       
   </div>
   <div class="col-sm-4">
+  
+  
+  <?php if(!empty($row['sex'])) { ?>
       
         <p><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAc1SURBVHhe7ZtdbNtUGIazTfwIJLZurBUw4iQrWdeKf4kBQkIiBSYm7rYxLtjgAgm2G1AvuIIAEjcMaXSLnaZp6YCBRCRIOtCAC8QKgg1YezExbmDALtCE6GhjZx0SJeY7znGWJp/jY+fHyfI90qs09ndOpve1j8+xPR9BEARBEARBEARBNBzdt22F7vMt41/bj0T/Yf/YhoxeN4XTZ3jXDYeZn++OvJXvHhyrJQTez4v56yNr+Kbm0a4B6L7ocma+3jOoM0EI425CMEM0+ugZnGl6CO0YQLn5bkMoNb/YR7NDaLcArMw3JRoCZn6xj2aG0G4B5FdvvgZMnsaMM2UXQjXzTbE+eHljaXQAKV9qBf+zbuTXPbTabQiC5n+vdw2u5E0ai2gAyQ3pfLIv87xy8ydd1ZQIpYr/8AkpvQraHU/2Te7im+qGeAjR5bxJ65nPcHIGsBDg8xnetCrM/LFw5kShXWaxESHo/i1doiG0pPkMp0OQSAil5l9s52UID8JaITKB7TPlifkMqwDAMGZ0xXamaiFg5pvyMoRq8sx8RpUANPj8s3y7KSwEdg2wMt8UtBvl5XWFhaB3R05gBleTp+YzqgxB86MbJwfgUygEIfPD6fFoyUWx3jgNwXPzGdUCYPtFQgANeW2+SWE4itgORy1hPsMuAIZ9CPh2U8x83ac7vk/jBmO20zN4CDO9VPm1UNOEA8IWkQAYdiFYCcIZa6r5NlPNUhm1XocgGgDDaQitbL4pz0NwEgCjEEL6L6S+XMlWN9+UpyE4DSDZ/8FquOieQuqLgv36eDizhzdpKIIr3GnQDLbPVCGEbXW/b2WLkwAM88PpaaS2QsYUNZzezZtWcF1CvyooZx8NKtpoUNa+DSrq70FZvQDf50A/BWT1i4CiRv0Hcnf4dPxMEjTfmO3oK+9fBbU/YDWmPAlBNAB+5M8gdZbCQggn1GvB6H2g82C0LiRZOx1Qcrt8Ub04TDgxnzfxtWwIdrgx31QxBDiKwcyhgKJlKwwWFJwRP0oj2XvcmG/SdiGImD9+02QKPi1nR/GBw/lNr549gZnqVBDCP8NbR77GjDNlZb6JUAg9kSQv9463+z5aY3vkhzMJNtsZ7830w/eKEOIDH+v3Rv9AzaxF+7eP4sYJrnBZjVUIYP4iLOae4qXewB6siJrPm/jKQ0j2ZfTNQ7+iBtaqkKzqhyOvLDVO0HwTLISWMJ/BHiUmw5mJotnlCmdGsHl+aQi7dp5EzTMFw8m/8JkKxLXt/v1zQWlCv1LaN7cKLrq3wPYhuFDPlNaXq394Vj9169OuzDcpDaFlzDexCgGmovFqiywWwut3fTbbeyCLGsc1JcnqRt4EBy7cAVl7DAI5h7Q3tOOF467NNzFC6IkcaynzTcpDsDPfZGDvuUnMMEOyerA/pV/OS23pHZlfD0H8gvYFuu+101t5qWta4sacFSwEmEoeFDV/vbxwIyys/sPMYgssX0p3PMWTEmofhDCP9Qma4mWXLiwEEfMZcITvRkwCqQvr4udv4GWOsexXVhd7h9W1vIwAoz+3MGofL3HFnQn9MjiDzmB9GytlogAYMltuEFMglt3ES1wDIQ6jfctqjJd0Nr3D+StQg2AFW3ovxy3BmLoV71/7kJd0NlJ8LoAZBFPJ33hJTUhK9m6L/o/xks6GAvAYGoJaADga/8ZMYkcvL3ENXYQFsJyGKuqbvMQVNA0VBIx+FjOp5oWYou2p7BMEC7GQonXzMsLuVgQ7knmpMB1/K8IpcFS+gxhVEOxjF2teaotxM07Rfkb7AoXiuUd4KWESiC1IbOaDGcYEhn7jj6v9vBxH15eFYtrjcFG3vB0NOsqriXIggChiWImMYSolKdoOvzIfYg9k4LMLDC88kFHU6aX1ZZLV81Isdxv/OaIC9kAF5ueoebVKVvPs7OC/RFhhvIClaMcrDKxVsvYy/wnCDja0wOznPdRIh2LXFSmWfZJ3TQgDwxGM9c+BiezVQ9RcO4H5J9mLWbxHwg3s1UQ4G96Aa4OGmYyKvZoo53bW414SwWHDUlDObgnJuUOo6Yp6AYJ6SVJyt/MmRCMIJRb8WADsng8vIRoJBeAxFIDHUAAeQwF4DAXgMRRAgwgp2gMwl/+U3Qvim1BqCSCg5J6A1fG7bt41vaQxzL/4n/CmevaevZrvqsBtAMx8+I1Fo1ZR36cQOGXmm7IMwU0ApeYX6ykES/NNoSE4DQAzv9im00NgYz5mTIkqQnASQDXzC1IXOvreEX/4MlVpzBItCUE0ABHzoeZhXt65OA1BJAAy3yFOQrALgMx3iUgIAVn7Stqv9uH71DNkfo0IhaBo36HbZXWWzK8DPISjlQbaSFbx7YbIfEe4DgEVme+K+oRA5tdEbSGQ+XXBXQhkfl1xFgKZ3xDEQiDzG0r1EMj8pmCEIKtfkvkesjQEMt8TeAhHyHyCIAiCIAiCIAiCaA98vv8BZzzkHa+LBNEAAAAASUVORK5CYII=">&nbsp;<?php echo $row['sex']; ?></p>
+        
+        <?php } else {}?>
+        
+        <?php if(!empty($row['number'])) { ?>
+        
         <p><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAR3SURBVHhe7dxLiBxVFAbgikYXwXciRgSF7BRdCCKKREJAyUJ04UJ0J4Ju1IW4EZVCme5zx0RDSJ/b00x8bRRnoQiKb3yDgvjaCAYXPoIbTQz4NnE8t+ZM5lEnqVtdt8xM9//BTzNM3xrq767uetyaDAAAAAAAAAAAAAAq7aZLMu9eyzz9Lo+zQ4XdL/L4dDbdOUeXClF62y/Q8uxia4d+zKYmztWlQyXvnimX2DT0gi4dKoV3rFlik8hHGUQyC0wQiGSVlyIQySovRSCSVV6KQCSrvBSBSFZ5KQKRrPJSBCJ5d7hUXopApKSnIRYFInn3Xam8FIFITB+bBTYNRGJ6ziywaSASu45ZYNNAJE83mgU2DUTytMkssGmghjb2hKAGT0+YJQ4bdvfpkiEKd28yi6wbpn/l8W5dKkTr5acUlxGtUmPDdEje+bfpEqE2ds+bxcaE6e+s171ZlwRD8ZPXm+VWhv7MenSDLgWGludrpcx9dslHCbvf5PvjWl0CNOZdXir56DkoW81mHQlJ7Nx5xlyxZuELYfo5m5q8TEdBUp66ZulL86A+G5Lb1TlbXoRfjdIXwu4NfTa0wrvHSqWXQpfqsyG5MMXc0wG7+PnQO9ns7BodAckx3WUXvyjsbtVnQ3IzMyfKu/wzs/iFyB4TbdIRkNxU90o9wWaVP5+Pspn8ZB0BybF73Ch9eZ7UZ0Ny04+eJVvBt0bpS8PuXh0ByfXoankRDpnFz6f4/eR1OgKSY3rYLH5xwiy7cMcltCDsFbH7wCx+Sej74s5LaEEotvIArche3KraFk9bZUv4yyh9WejLbLBjg46CpDzdbpe+LGHe6cCdrqMgKU/bzdLLeTfbM3mqjoJkii9letEovJywJYTjCUhskK+TLeFDs/RS5Duh98hGHQnJhM/42HsMmL5OuovK7v6FZcuOAbv9Rr4pxdMXMuaTudD78vhQ8WZatcK1ZHafHinjWAmnNdhdqCOHF2bgWcsfNuy+khfjTF36KhR2OcPHjLVyy1O8MxtMZwkz8KrP0tYPu2n9C6tUuJ7M7nNz5cr5R1J/HmmYgVd1XmroyEHmqrcrP01ehLfsFTTCbpANBifp6GMLM/DCNEhrOakyEsIFGqZnzRW0wvSefJmfr6NtfXeNvFgRR+ANMzLCBfuo2RXzCeeY6BYdvVSYgRemQZrjEmfk9N2dtT42mF7P+p2LdHQYf7mU387N5FZGUr9zlZT4g7nCVsIeDtOrskU8ID//VPp9mxlZ4Sg4zCWyVnolZaSFKfDsdhTvcGvlV0LGQrFHE3Gh/3hkbMwdL0yvuK1h7PS622TF2/mPLcNkLM3dpTkhaXanZoqMtXA0HP6V8vH8WALh3RWyNURe6EkcWKRPW+SFeOl/3SLAEGbbMT0lafdMKLs/9C+CaXd3vRxD3CFFvS2FtfDfHulN/UtQqT9xnrwQ90hxr8hj85N14d3vOxfr0qGWPD+hKK+YMEZ7dAvZK4/75WOr4uoZHZDnvYxJxQAAAAAAAAAAAADVsuw/6RBJCIYTwhEAAAAASUVORK5CYII=">&nbsp;<?php echo $row['number']; ?></p>
+        
+        <?php } else {} ?>
+        
+        <?php if(!empty($row['email'])) { ?>
+        
         <p><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAXOSURBVHhe7ZztU5RVGMb9VP+L1fcWzMjJxpzeG22qmXKaZA1QFE3URE3QwReUEAR868W0AhXJaVcQgzDNVCoVSOW/aJrxS3U613ozLrvXwsO9zy4I92/mN8Msz7nPORfsOc/LzDPHMAzDMAzDMAzDMAzDMAzDMAzDMAzDMEZZ/vQPTxUXxOqLI/GhaCT2d7Qg7ma1yCASG0QmKyJdT0pM4bNyUezx4oJ4k/dfOhDTPcgm1rhkbttjEls4oKAvfpF1alJ7Qv0j+K9XC+nEHEesFhJfdmBds2VHYST+z4eF8SckRj01718+XfLMed6JmVFkVr3sSrvEqOfk3qH7Xrdu8UXakZnuWp/ViT2D7uTewfsSo56Olrv/nTs64jpb77qdH1ymHZoP3eEzOuuzQmbITmLUg0LJHq763a18rot2PpstK+p2h7b8MSYrKDHqSS0I2xv+dJve7KMDmY1ueqPPtflMWFYSo57t7/3sOpoffKWS/f7IPVdXds2tKOSDmg1i7nVlvyaySM0HmSE7iVEPOlqzqMcdr72d1gn8auctt/qFHjrAmezqhRfcl37uLBNkhcxwnMSoZ7TDj+bFXX35dXeO/LXPNN9xn757acwAZ7Lb/Fwx59QckA0yQlajx0qMepI7hpuX9LlTB/h6d7BywJXMn7kbNObWtH6Azh2ZIJvUNhKjntSCcNWCbnd0W/qOD7+pG3brX/4xrc2j7scvXfRzG6JzRhbIhLWTGPWwohAbUO3yK67zcPqShM/wu5mwQWc7T4lRDyuaLP7b8V+fOjh4ZNvNjP8Zj4KJb/rWm3RuQb/pEqMeVjRVrI1Y/9lAM62N012Mub2RbLTeyex1EqMeVjSTkzk7mK5ijPvLr2U828McWbtMSox6WNHxxDUBrg1SBw9xflwh58fTUYzteO0gHbv2ekdi1MOKTuSDK8Rr414hsnZTaXWOrvglRj2saFBxvwj3jVInBVs2/uZKi6b+mqH02a7EWNgYw7jnJTHqYUUnY9mCrsQdVDbB7/YPu8pXe2m7fFj5Sm9iDGxsGDPGztpNRolRDyuqEc8S8EwhdaKdh0fc7ugvLlqYx6duvi/0ib7TxhPycw+JUQ8rqhVP1fB0LXXS8Nj2W27V8xdouzBFH59X85OEXDz5kxj1sKLZiGeljetu0ABONd1xVW/103ZhWLW0P9EH6xtjysWzb4lRDysahlve7ndnmthZx4hrqLjhz8fDCwO1UBO1U/vDGDAW1i4MJUY9rGhYli+84L7YwZeDE7sH3drF2V8zoAZqsT7QN8bA2oWlxKiHFQ1VvyHuKcFTpfSA8HC7Zpl+Q0Tbjtb0axH0hT7zsfFLjHpY0Vy44bVe11bPrxkObfanhEXBb+olHpD7NqwW+kBfrF0ulBj1sKK5ssxfmLV+wi+K2j4bdhtfnzg4HINjWQ3URh+sXa6UGPWworkWS8fZDEtHXelVt4IsHfgMv+NL2b2slrJslBj1sKL5sOLFHvf1rgybZ83YzTOxmfvP2LGogVrJtfOpxKiHFc2XidPHNdcznj5ufedSwoyns75tmKezGiVGPaxovq1a+pM7neHhCBPHog2rlW8lRj2s6FSIWwjHtvPHg8nimHzc0giqxKiHFZ0qcU9+V/Qqv4nmP8PvtPftc6XEqIcVnWpxG/nbfQ9PNfEzPmPHTrUSox5WdDpYMv+8a94wkBA/s2OmgxKjHlbUDK7EqIcVNYMrMephRc3gSox6WFEzuBKjHlbUDK7EqIcVNYMrMephRc3gSox6WFEzuBKjHlbUDK7EqCcaif/FCpsB9NlJjHrwMiJa3JzQ4oLYbYlRD94ExYqbE1scie+TGPXY62qUhvW6GuCLHaSdmJmNxBskvuzB67d80Z60TkxqcSTWnZP3xuGFdLYcjaNfdnz4B0IPP5novNhcbC7Y4XGaRQcym/QZIAtkgmwkJsMwDMMwDMMwDMMwDMMwDMMwDMMwDGPWM2fO/9Np1nHeTEuuAAAAAElFTkSuQmCC">&nbsp;<a href='mailto:<?php echo $row['email']; ?>'><?php echo $row['email']; ?></p></a>
         
+        <?php } else {} ?>
+        
+        <?php if(!empty($row['state']) && !empty($row['country'])) { ?>
+        
         <p><img width="20px" height="20px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAc0SURBVHhe7ZxbbBRVGMePKKghEh80Gi8vClQBXzT60BaLElCRkGjEgEQxEmOMkhC0GjDRmBijibC7gkQexKTRtOWu5ZJivDxA262FqjRGaxAvRcVo8UHsTIUZ/9/sV7Mp32x3dndmtmfOL/mn2+6c7/KfM2dmZ3erDAaDwWAwGAwGg8FgMBgMhmrCuU1NcerVQme2eh1qg76BBqFhFj2mv7W5s9Vrzu1qgVOrLuHhhlJwlZoAIxfB+N2QBWPdIKIx2CE7KQbF4rCGsYBZ58G45TSjJWNLEXbG14i3jGJzGoMEZutNMKpTMrESwo44RDk4nSEfGP8UDBqSjKukKAf0JKc1uIvV+TB/s2RWmELOTZSby0gmbP42yaAo5OVO6k7gk+0WyZgoRUcfl5QssA6vlgyJQ6hlJZeVDHAlcitmni2ZEYeoFuhmLk9v3AZ1AZrtlYyIWT2JOB/QJaDQfFUItT3OZeqJO0NNQpM/Sc0XI2+pqFet0BKnVtU489RkT/S4Xi31nitjacP44+4taiKXqx8wZ5nUeDHC2G0w+noO5YvToKbCyO1SjGKE89NDHEo/YMzHUtOFhDFnYP6zHKJoaAyNlWIWEsa0cwi9cO5UV8CUs1LThYQZ+QyHCAzyNUoxC8mrsUFdxiH0ATNridRwIcGMbTy8ZBBjlxS7oOrVYh6uD9gBG8VmfQTjbBhxHQ8vGTpvINawlMNP2P5NHq4P2AGB1n9s38JDywbxto6OX0jIfYCH6gOa+l5q1k/YfikPLRvM6EBXX9j+GA/VBywnf0nN+gk7YDoPLRuKJeXwFWrlofqAWRXoCqiSb6pTLCmHn6hWHqoPaOp3qVk/xbwDTvJQfUBTX0jN+qmiS1CtqpFy+Am19vJQfUBTzVKzfqrkLQHkDnoSbuah+oCmnpCa9ROOgFYeWjbIHehtT6qVh+pD0CsRmGBj6Rjz5ttYeDfngr4Qq+DyV1WgsaNSw37C9jt4aMkgxgdSbD9RjTxUP5w69bzUdCFh9ga+EzoCzHxOillINIaH6wfMvBYK9nogdzu6kUMUDRlJY6WYfqLasGRdwyH0BKbslpofSzBnF63nHMYXXvM/lGKMJaqNw+iLW6fmSM0XIxhLbzduxc9lboO6YeQtSe9x7lKTniv90xaojcvUG8y0I6IBMYpq4vL0By+yHpRMiFNUE5enP96XL+rVV5IRccirJWlf4kDTD0hmxCGqhctKDt6Hc6vgXIAaDif2mzNofq5kSpSiGricZAID9krGRCHKzWUkF6dOzYQR/0oGhSnKSbm5jGQDM1KSSWGKcnJ6g/dF7NlqQDIqDFEuysnpDQRmZOBPzpUqysVpDflgZn4kGVZJUQ5OZxgNZuZ0KPC/JShWFJtycDqDBGboK5J5lRDF5jSG0azrcC5OdVs1W/Z9u8CaN+U3ycByRDEpNuWgXJw2mazrOH11OmsthBkvprL2bujHdLftjmhryyeu0zBBNLIUUSyKmZ+Dcnq5UcP6LuveDYdPX8Xl6UfmiHM5mn0U2p7qtn/NN8JPvWufFs0sRRRLyjFaVJtXI2qlmrn88QkampXuttZihnVitp8d3exYeuvgoHvqvqmioUFEMSiWlKOgULNXO3rA77O4rerm3U/di9Jd9goU33VOQyWo3KVIWnpKFe0MHCGPZfqdC7nd6oGMT2Wt1ems/YtUfDkqZykqdukJqAHsjFUv9bmTuP14oZMpjP9OKLQiouVj8P5posGFRGNKWnqKFXrOZIfuZhuih2YATlYbxOIqrOYdh9yzcyaKRkuibWmMFKuSwlHvwIP1m3vcaL/cnbtmt/dLRYWljldfFs2WRNtKMUJT1t4X6bkBe75ZLCREZbL/uCeW14mG54u2oW2lGOHKeo/tCRecgBbJBYSvLe39rjX/UtF4Ej1H20hjoxC9oGObwgNr3gEpeVTa/3aTaD6JnpPGRCUsy+H/mwMcAYNS8ih1tHHFOebT36Rto5X1J9sUHtWwAzYePOX+sXjm/+bTY/qbtG20imIHxLwEjahpz5fu8NzJnuixtE3UoitDtik86EQjJY9D7Zve8SQ9F4ciOQkTWIbelwpIsnBp3sT2hA+96KAXH1IhCdWeyO8NUULshBS9HBcKSoRiuxWRTyo7dFeYN+OqVTjh9me6huazDfHi3ZjrtlahsIHRheomGP9zJju0smpuR+fDy9JyXA93SMWPZ2G5OUS9VaXxEpkuawaOijVUOH6ekZqqZlHNXPuaVKd1I7c1PvHelO+yH0EzrThpnZAarhINpLNWS6bbfviNHle//5w4wsbs31emP7cWYIa9gDV1J3bKD4IZYet4LjfVYN1DNXF5ycR7Q7/TmoYrizvoaMl9GsHaBJPaYNJnMKkHv/dhHT4G807i90Hv0xa5Ty/Q/amTueesPto2N8ZuoxgUi2Y1xaYclIvTGgwGg8FgMBgMBoPBYDAYDBGh1H8XI7u+Z2wdYwAAAABJRU5ErkJggg==">&nbsp;<?php echo $row['state'].", ".$row['country']; ?></p>
+        
+        <?php } else {}?>
       
+   <?php if(!empty($row['facebook'])) { ?>
  
  <a href="<?php echo $row['facebook']; ?>"><p><i class="fab fa-facebook-square"></i>&nbsp;Facebook</p></a>
+ 
+ <?php } else {} ?>
+ 
+       <?php if(!empty($row['linkedin'])) { ?>
       
-      <a href="<?php echo $row['linkedin']; ?>"><p><i class="fab fa-linkedin"></i>&nbsp;Linkedin</p></a>   
+      <a href="<?php echo $row['linkedin']; ?>"><p><i class="fab fa-linkedin"></i>&nbsp;Linkedin</p></a>  
+      
+      <?php } else {} ?> 
   </div>
 </div>
 
@@ -386,9 +574,18 @@ if ($result->num_rows > 0) {
 
 <div id="js_sel1" style="display: inline-block;" class="clearfix">
 
-<p><img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAgOSURBVHhe7ZxrTFNnGMcx88OWfVmWbcni4vbFxSxZjMmy6aYUKBTLtUXQaMSwqehMvBvRaDYiXiIiKhvq0KlxzvuiQFtAnGxeELzNG0Pj0JnoprtpRLxs2GfvW59iOefBtrQ979ty/skvadr3XP6/5/TQYiRKjx49evTo0aNHjxZZdfwRyMnDz/EUIzt0eVnoAUOgi8tEhA+BLi2O6qvtxPMRPAR1WbFca3P2rCGoi4qFD6BHDUFdUizuAfSYIagLisVzAD1iCOpyYlEOIOKHoC4mFmoAnIgdgrqUWCj5biJyCOpCYqHEexJxQ1CXEQslXUlEDUFdRCyUcIqIGYK6hFgo2V0REUNQFxALJfpZhP0Q1CcvFkqyN8J6COoTFwsl2BfCdgjqkxYLJddXqCFgTXmjPGHRUGL9QTkErClvPE82EsGa8oY66UgCa8ob6qQjCawpb6iTjiSwprxxn2jR4dswZ0Mt5OQVQsbYSTAs1QrGBBPExcV1IiHRDIV1f6iKygrWlDdLa2/AuPkrwWROVsnuitz8UrKsjGBN+ZKVlfUck5nHr2ilYG+E07sA68oVk8n0cmxs7EFKrq9YRo+DiQVlUFBxiSwuC1hZngwZMuRVJrBZKTQQssZPg/y9F0gBosHacsRgMDzPrvzTlMRAiWc/sKeXfEdKEAlWlyNMVKlSXDAxGo0wddVuUoQosLr4xMTEpFPSgg0fwoIdJ0gZIsD6YsNuPb2ZnF+UskJF6ohsWFHfSgrRGlQgNuy+n02JCiUzS8tJIVqDCsSGDaCJkuQvlmQjFE4zwbEvzdD0dRKkmo3kOg7/Nk0J0RpUIC7s9tOfEuQrGSlGKJ6RCCfXJkG7PRWg6inn1ieD2URvx1lSfY2UoiWoQVyYiFlKMd7ISjNCyexEOFOWBI8dnaUraShNAlM8vZ9Z6+ykFC1BDeLCbj+VlBwlo63xsGaOCS5sSAInIfpZfF9shnijep+fzCsipWgJahAXJuKMUoyb7OHxUDY3ES5uSganlyvdGxVLzewjaOf9j8idSUrREtQgLuwdcMtTSk6mETbOT4SWLcmkyEDYlj+s0wBSs8aQUrQENYgLE+H0lEKJCyaexzIlpZJStAQ1iIunEA4lLZh4Hov/2pqSoiWoQVw8hXAoacFEeTxKipagBnFRCqGkBRPl8SgpWoIaxCU+LmahpxClsLOrP4LF1r4u+GPl60q8rfc81uQlG0gpWoIaxMW5rd/CzbPf63IAi5jIuYmvu1iU0Vf1uhJv693H4cdsqC4mpWgJahAX5/Z+N2D727B5QSI9ACbRLXRxxpuq15V4W++Sz47Fj9m6eygpRUtQg7i4B8DluMQohHXcUpjMcyV+3IK6WN9xDH0AT8JvQa4BOFJUskIGPxY7pn4LYoE6Q28+BKfd/B8pKwQ8tidBQ81KKDl+n5SiJahBfJyOlKOUrFBw48AcUoYIsL74OKtSiylZoeBUXRkpQwRYX3yctrRoSlYo2F3/EylDBFhffGBX1nPsXXCdEhZMWmtyYHXjQ1KGCLC+HHFWpYynpAWT2sMOUoQosLoccX0iqkpposQFg7/2T4bVxx+QIkSB1eWJ057+LvtE1EoJDIRH1SNha/1lUoJIsLZccValpbF3Qjslsjs4q9Kh4shRUoBosLJ8Ye+CVDaEu5RQf+BXvqzyOVhXzjgdae9AuYEU6xPl0bDlWAtZXBawqryBdb0Atr4BUGmkJVPwtd/0Ab4tVVomsKa8gXVRTCSy8SWAHf0B9n4IUBEL4Eh6An+8d/CT1/gaj22o0jKBNeWNp8zuQJWWCawpbyip/kCVlgmsKVOglyG9MsZgsZdGW+y/nmr8Gf4+uw+gLgfg27dIyZ3ga9havs2pxmYYObsBZqy/AssP3SMFiAZLi8+gzJ0vRFtsuUz6eYPVDm7yi05Dp9y9CnBx09OBoHDXc/w1j/Bt3fuJG1kNOQvPQoHjH1KEKLC+2DDp5mir7bKn+A5xmQ64+ed9VNo5t9audUGFb8O3Ve4vJsPhGkThD/r/kIkabK15jYnfo5SkZM3mZtT6NFz8+QEDXFBD4NtQ+3KTMGo/TPuqBVY20mK0AlVon6GWyvfZlX+dkqMkecx+aL33L6rtLJ8aAl/Lt6H2pWRU3glYfriNlKMFqEPbDLXa49iVf48S0hU79rW45FLy3biHwNdS++iK9EmHYFmdmFsSKtEuMWm2D1jpNqUEb4yYcBDa251eB8DX8LXUPp5F8vg6WCbg5wJq0SZxmZV9oq32m5QAXzh45DfXFU4NwX318zXUtr6QOb0eio9p++8FqEabGKy2Gqq4r3yad9Qluf3OHdUA+HM8fA21ra9MWKbt35RANaGPIcOWTRX2l6ZLt+H+uXOqAfDn+GvUNv7AP6Z+tk+7P3WDekIbg6GuN/tm20IV9hf+5eq23a4aAH/O84tXIGRMrSdlhQJUFNoYLLYxVNHuwL9cXVnxhWoA/Dnqi1d3mb/nJiks2KCi0IZ95DxAlewu5VOKVAPgz1FrA2Annn54x5BS8Qr7wtVOFOw2w0eVw4VBgzvk88f8OWptALQlJNS8iDXCN9EZ9tFEuYD5MXdexwD4Y2pNwKTbLVgjfMOu/uVkuQCZNHYXnB840AV/TK0JFPadpQBrhG/YAGqpcsHg5MdTXFCvBQebA2uEb1iJS3S5wMmfuNUF9VowYBdPM9YI3wTyqwfRsAH8jjXCN9EW2wOqXDjAzx1r6NGjR48ePXr06BGYqKj/AePof8EAISLlAAAAAElFTkSuQmCC"><span style="font-size: 25px; font-weight: bold;">Intro</span><?php echo $row["bio"];; ?></p>
+<p><img width="30px" height="30px" src="https://png.icons8.com/color/50/000000/resume.png"><span style="font-size: 25px; font-weight: bold;">Intro</span>
 
+<?php if(!empty($row["bio"])) { ?>
 
+<?php echo $row["bio"]; ?></p>
+
+<?php } else { ?>
+
+<br><br>
+<center><img width="30px" height="30px" src="https://png.icons8.com/color/50/000000/resume.png"><?php echo $username; ?> has not filled her bio yet!</center>
+
+<?php } ?>
 
 </div>
 
@@ -413,7 +610,21 @@ $rowcounts = mysqli_num_rows($result2);
 
 echo $rowcounts;
 
-    ?> Confessions</p>
+    ?> Confessions <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE pin = 1 && name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts) {
+
+echo "• ".$rowcounts." Pinned";
+
+} else {}
+
+    ?></p>
 
 
     
@@ -438,6 +649,7 @@ if ($result->num_rows > 0) {
       $post = $row['post'];
       $views = $row['views'];
       $time = $row['time'];
+      $post_perf = ($views/122.2)*100;
 
    ?>
 
@@ -456,67 +668,228 @@ if ($views >= 50) {
 }
 ?>
 
-        <h5 class="card-title">
+<?php if ($row['pin'] == 1) {
+   ?>
+
+
+<div style="font-size: 12px; line-height: 4px;" class="text-muted"><i class="fas fa-thumbtack"></i> Pinned Confession</div>
+
+
+ <?php } else {} ?>
+
+        
 
 
           <?php 
 if(!empty($row['image'])) {
-?>     
+?> 
         
-        <img width="35px" height="35px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
-     <?php } else {?>
-        <img width="35px" height="35px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white;" src="image/unknown.png">
-        <?php
+   <img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white;" src="<?php echo $row["image"]; ?>">
+
+<?php } else {?>
+
+<img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white;" src="image/unknown2.png">
+
+<?php
 } ?>
 
 
 
-          <a href="profile_view.php?name=<?php echo $username; ?>"><?php echo $row["name"];?></a></h5>
+          <a href="profile_view.php?name=<?php echo $username; ?>" title="
+        
+        <?php if(!empty($row['image'])) { ?>
+         
+        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
+        <?php } else { ?>
+        
+        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
+        
+        <?php }?>
+        
+        
+        
+        <a href='profile_view.php?name=<?php echo $username; ?>'><?php echo $row["name"];?></a>" data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php
+        
+        
+        
+         echo $row["position"]
+         
+         ."<hr><i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?><br>
+        
+        
+        
+      <i class='fas fa-rss-square'></i>&nbsp; Blogs:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+echo $rowcountsblog;
+
+    ?><br>
+        
+     <i class='far fa-handshake'></i>&nbsp; Confessions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+echo $rowcounts;
+
+    ?> <br>
+        
+      <i class='fas fa-at'></i>&nbsp; Mentions:  <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM signup INNER JOIN posts ON signup.name = posts.name WHERE posts.post LIKE '%$username%'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcountsmentions = mysqli_num_rows($result2);
+
+echo $rowcountsmentions;
+
+    ?><br>
+    
+    <?php if(!empty($row['state']) && !empty($row['country'])) { ?>
+    
+    <i class='fas fa-map-marker-alt'></i>&nbsp; Lives in <?php echo $row['state'].", ".$row['country']; ?><br>
+    
+   <?php } else {} ?>
+    
+    
+    <center><a style='background-color: #e4e4e4; border-radius: 4px; line-height: 12px;' href='profile_view.php?name=<?php echo $username; ?>'>View profile</a></center>"><?php echo $row["name"];?></a>
+    
+    
+    <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+
+    <i data-tooltip title="Authenticate Profile" style="color: blue; font-size: 15px;" class="far fa-check-circle"></i>
+
+  <?php } elseif ($rowcounts > 50) { 
+ ?>
+
+  <i data-tooltip title="Verified Profile" style="color: blue; font-size: 15px;" class="fas fa-check-circle"></i>
+
+<?php } ?>
+    
+    
+    <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20) {
+    ?>
+<span style="font-size: 10px; vertical-align: middle;
+    line-height: 1em;" class="badge badge-primary">PRO</span>
+
+  
+  <?php } ?>
+    
+    <?php 
+$id = isset($_SESSION['id']);
+
+$sql3 = "SELECT * FROM blogpost WHERE name = '$username'";
+$result3 = mysqli_query($conn, $sql3);
+
+$rowcountsblog = mysqli_num_rows($result3);
+
+if ($rowcountsblog > 1) {
+    ?>
+
+<span style="font-size: 10px; vertical-align: middle;
+    line-height: 1em;" class="badge badge-warning">BLOGGER</span>
+
+<?php } ?>
+    
+    
+    
+    </h5>
 
         <div class="text-muted" style="font-size: 13px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
 
-        <hr class="my-8">
+        
 
-        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $id; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMdSURBVHhe7Z0/j0xhHIVHJESj0tFqNLo1d6ZQSdSS+QAS7jRW+Ag6rco3kNgSee9EJxF/EvGvUSplG4VoJGLdy1m/F4fdsXNeyb3nSZ7Gzux57zO7ZqK4RsYYY4wxxhhjjDHG7MTsxMaBi1VzuZ6kp/MqfZxPmq1B2V1z1TzpGnQtkKUM8/Hdo3WVXtKDDdGqedE1QR4t62fTwXb09W+HGLjdD2TXBpl0dL9y7AC2fREmaR2ZdHR/77Fx2/0WNI+RSccg33B3a9V8QCYddNj+EJl0sFEbIpMONmpDZNLBRm2ITDrYqA2RSQcbtSEy6WCjNkQmHWzUhsikg43aEJl0sFEbIpMONpr76uFmr2XXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42mss+uvVJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKO57KNbSdmZSopMOthoLotSUnamkiKTDjaay6KUlJ2ppMikg43msiglZWcqKTLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjVrom3X8X8vcroYMWzhdXEImHXTYfrtvXJGb99HxgVtPmufFbtrHDjBI2zfceZUedX/tFL1tJT3MUqYbo9HWPnw7syw86u5sPyVcw7cx/woLu7PpSz1OV/AtzF7ggf9i1Xyuq8V5PN3sFRr5z36qp805PNWsAhKZ291fdLo4g6eZVUFj/2L7Zvu+/Wxc4SlmlbDguW34d+1P/kk83KwaFn3bepLezk/dP46HGgUs/HfTmwtr6RgeZlSw+HWVntWn7xzBQ4wS8gI8WF9Lh/Flo+bn+One1fHtQ/iSKcF2/PYN91bx/7zG4AWo0s3ZbGM//siUpH0Brvufk40xxhhjjDHGGGOMWZbR6CvL66KIrCkasQAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["title"]; ?></p></a>
-        <div class="b-description_readmore js-description_readmore">
-        <p><?php echo $row["post"]; ?></p>
-        </div>
-
-
-        <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
-<script src="scripts/jquery.morelines.js"></script>
-<script>
-    $(function() {
-      $('.js-description_readmore').moreLines({
-        linecount: 5, 
-        baseclass: 'b-description',
-        basejsclass: 'js-description',
-        classspecific: '_readmore',    
-        buttontxtmore: "<a style='color:blue;'>...(Read more)</a>",               
-        buttontxtless: "<a style='color:blue;'>(Read less)</a>",
-        animationspeed: 250 
-      });
-    });
-  </script>
-  <script type="text/javascript">
-
-  var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36251023-1']);
-  _gaq.push(['_setDomainName', 'jqueryscript.net']);
-  _gaq.push(['_trackPageview']);
-
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
-</script>
+        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $row["id"]; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGAAAABgCAYAAADimHc4AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAMdSURBVHhe7Z0/j0xhHIVHJESj0tFqNLo1d6ZQSdSS+QAS7jRW+Ag6rco3kNgSee9EJxF/EvGvUSplG4VoJGLdy1m/F4fdsXNeyb3nSZ7Gzux57zO7ZqK4RsYYY4wxxhhjjDHG7MTsxMaBi1VzuZ6kp/MqfZxPmq1B2V1z1TzpGnQtkKUM8/Hdo3WVXtKDDdGqedE1QR4t62fTwXb09W+HGLjdD2TXBpl0dL9y7AC2fREmaR2ZdHR/77Fx2/0WNI+RSccg33B3a9V8QCYddNj+EJl0sFEbIpMONmpDZNLBRm2ITDrYqA2RSQcbtSEy6WCjNkQmHWzUhsikg43aEJl0sFEbIpMONpr76uFmr2XXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOthoLjt0n2TXnItMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42mss+uvVJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjeayQ/dJds25yKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKO57KNbSdmZSopMOthoLotSUnamkiKTDjaay6KUlJ2ppMikg43msiglZWcqKTLpYKM2RCYdbNSGyKSDjdoQmXSwURsikw42akNk0sFGbYhMOtioDZFJBxu1ITLpYKM2RCYdbNSGyKSDjVrom3X8X8vcroYMWzhdXEImHXTYfrtvXJGb99HxgVtPmufFbtrHDjBI2zfceZUedX/tFL1tJT3MUqYbo9HWPnw7syw86u5sPyVcw7cx/woLu7PpSz1OV/AtzF7ggf9i1Xyuq8V5PN3sFRr5z36qp805PNWsAhKZ291fdLo4g6eZVUFj/2L7Zvu+/Wxc4SlmlbDguW34d+1P/kk83KwaFn3bepLezk/dP46HGgUs/HfTmwtr6RgeZlSw+HWVntWn7xzBQ4wS8gI8WF9Lh/Flo+bn+One1fHtQ/iSKcF2/PYN91bx/7zG4AWo0s3ZbGM//siUpH0Brvufk40xxhhjjDHGGGOMWZbR6CvL66KIrCkasQAAAABJRU5ErkJggg==">&nbsp;<?php echo $row["title"]; ?></p></a>
+        
+        
+        
         <hr class="my-8">
 <ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views"?></div></li>&nbsp;
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
+
+
+<?php 
+if(!empty($row['image'])) {
+?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="<?php echo $row["image"];?>"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php } else {?>
+
+<li><div style="border-radius: 50%; font-size: 12px;" class="text-muted"><img widh="15px" height="15px" style="border-radius: 50%; height: 15px; width: 15px;" src="image/unknown2.png"> <a class="text-muted" data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $row["name"]; ?>">
+
+<?php
+
+if($_SESSION["name"] == $row["name"]) {
+
+ echo "You"; } else { echo $row["name"]; } ?>
+
+
+</a> confessed this</div></li>&nbsp;
+
+<?php
+} ?>
+
+
+
+<?php if($views > 2 && $post_perf > 10) { ?>
+
+
+<li><a data-tooltip title="Good Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: green;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-up"></i></span></div></a></li>
+
+
+<?php } elseif ($views > 2) { ?>
+
+<li><a data-tooltip title="Low Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: red;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-down"></i></span></div></a></li>
+
+<?php } else echo ""; ?>
+
 
 </ul>
+
+
+
+
+
+
+
       </div>
     </div>
     <br>
@@ -663,7 +1036,7 @@ number_format($perf, 2)."%" ?></span></a>
 if ($perf == 90) {
 ?>
 
-<span style="font-size: 15px;">A</span>&nbsp;<i style="color: blue; font-size: 13px;" class="fas fa-chevron-circle-up"></i>
+<span style="font-size: 15px;">A</span>&nbsp;<i data-tooltip title="Top Performer" style="color: blue; font-size: 13px;" class="fas fa-chevron-circle-up"></i>
 
  <?php
 
@@ -671,7 +1044,7 @@ if ($perf == 90) {
   
 ?>
 
-<span style="font-size: 15px;">D</span>&nbsp;<i style="color: red; font-size: 13px;" class="fas fa-chevron-circle-down"></i>
+<span style="font-size: 15px;">D</span>&nbsp;<i data-tooltip title="Lower Performer" style="color: red; font-size: 13px;" class="fas fa-chevron-circle-down"></i>
 
 <?php
 } 
@@ -679,13 +1052,13 @@ elseif ($perf <= 60 && $perf >= 20) {
   ?>
 
 
-<span style="font-size: 15px;">C</span>&nbsp;<i style="color: blue; font-size: 13px;" class="fas fa-chevron-circle-up"></i>
+<span style="font-size: 15px;">C</span>&nbsp;<i data-tooltip title="Average Performer" style="color: blue; font-size: 13px;" class="fas fa-chevron-circle-up"></i>
   
   <?php
 }elseif ($perf <= 80 && $perf >= 40) {
 ?>
 
-<span style="font-size: 15px;">B</span>&nbsp;<i style="color: red; font-size: 13px;" class="fas fa-chevron-circle-down"></i>
+<span style="font-size: 15px;">B</span>&nbsp;<i data-tooltip title="Good Performer" style="color: red; font-size: 13px;" class="fas fa-chevron-circle-down"></i>
 
 
 <?php
@@ -714,7 +1087,7 @@ elseif ($perf <= 60 && $perf >= 20) {
   <br>
   <a style="display: inline; font-size: 13px; color: black;">ConfessionWeb © 2018</a>
   
-<br><br><br>
+
   
 
 
@@ -779,10 +1152,50 @@ if ($result->num_rows > 0) {
 
 <center><button style="margin-right: 150px; width: 100%;" type="button" class="btn btn-outline-primary" data-toggle="modal" data-target="#exampleModalCenter"><span style="font-family: 'Roboto', sans-serif;"><?php echo "Confess to ".$username; ?></span></button></center>
     
+    <br>
+   
+   <center><p style="font-size: 20px; color: #6b85ff;"><i class="fas fa-users"></i>&nbsp;Recent Viewers on the posts</p></center><br>
+
+
+<ul class="nav">
+
+<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 6";
+$result6 = $conn->query($sql6);
+
+if ($result6->num_rows > 0) {
+    // output data of each row
+    while($row = $result6->fetch_assoc()) {
+
+      $id = $row['id'];
+      $nameimage = $row['name'];
+      $position = $row['position'];
+      
+
+   ?>
+
+<?php 
+if(!empty($row['image'])) {
+?> 
+
+<center>
+<li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="45px" height="45px" style="border-radius: 50%; height: 45px; width: 45px;" src="<?php echo $row["image"];?>"></a></div></li></center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<?php } else {?>
+
+<center><li><div style="border-radius: 50%;"><a data-tooltip title="<?php echo $row["name"]; ?>" class="text-muted" href="profile_view.php?name=<?php echo $nameimage; ?>"><img title="<?php echo $nameimage;?>" widh="45px" height="45px" style="border-radius: 50%; height: 45px; width: 45px;" src="image/unknown2.png"></a></div></li></center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+<?php
+} ?>
+
+
+<?php 
     
-
-
-
+            }
+} else {
+    echo "";
+}
+?>
+</ul>
 
 
 <!--<script>
@@ -1050,7 +1463,7 @@ if ($gendercheck == "Male") {
           <a class="dropdown" data-toggle="dropdown"><img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px;" src="image/avatar_female.png"></a>
 
 
-<?php }?><?php echo "Confess to ".$username; ?></h5>
+<?php }?><?php echo $confessor." confessing to ".$username; ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>

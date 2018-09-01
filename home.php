@@ -48,8 +48,9 @@ $username=$_SESSION['name'];
 <script src="js/popover.js"></script>
 <script src="js/tooltip.js"></script>
 
+<script src="js/readmore_bio.js"></script>
 
-
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
 
 
 <style type="text/css">
@@ -215,10 +216,29 @@ p {
   cursor: pointer;
 }
 
+
+/* For desktop: */
+.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+@media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
 </style>
-
-
-
 
 
 <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
@@ -264,16 +284,18 @@ $(function(){ /* to make sure the script runs after page load */
 </head>
 <body style="background-color: #f6f6f6;">
 
-<nav style="background-color: #283e4a; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 100%; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
-  <a style="display: inline; padding-right: 70px; color: white; font-family: 'Anton', sans-serif; padding-left: 10px;" class="navbar-brand" href="home.php">ConfessionWeb</a>
+<div class="topnav">
+
+<nav style="background-color: white; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2), 0 1px 1px 0 rgba(0, 0, 0, 0.19); width: 100%; position: fixed; z-index: 1;" class="navbar navbar-expand-lg">
+  <a style="display: inline; padding-right: 70px; color: red; font-family: 'Anton', sans-serif; padding-left: 10px;" class="navbar-brand" href="home.php">ConfessionWeb</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <i style="color: blue; font-size: 30px;" class="fas fa-caret-square-down"></i>
+    <i style="color: red; font-size: 30px;" class="fas fa-caret-square-down"></i>
   </button>
 
   <div style="color: grey;" class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li style="display: inline; padding-right: 50px;" class="nav-item">
-        <a  style="font-size: 20px; color: #545454;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: white;">Feed</span> <span class="sr-only">(current)</span></a>
+        <a style="font-size: 20px; color: black;" class="nav-link" href="home.php"><img src="https://png.icons8.com/office/30/000000/news.png">&nbsp;<span style="color: black;">Feed</span> <span class="sr-only">(current)</span></a>
       </li>
       <!--Notification system starts-->
 
@@ -281,9 +303,9 @@ $(function(){ /* to make sure the script runs after page load */
 
 
 
-        <a style="font-size: 20px; color: #545454; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        <a style="font-size: 20px; color: black; display: inline-block;" class="nav-link text-muted" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
-          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: white;">Updates</span>
+          <img width="30px" height="30px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAHDSURBVGhD7ZhLTsMwEIbDBrasoahO1RXiCCw4BYdggcRFQBV1cgZ6CXY8FpUQHIEDRLKJxKphJkwqy3iTeOwqwp/0L5qJfs+0foybJRKJhDeiULdZ0+zRx/GRF7rJpXqYLzYH9GhctAX8FvE4vasO6fF42BYAElJ9zBf1hELjwCygLaJQn7NCn1GYh9NVsy8KfS2kfoVBvuxBA6ialvqChvdjUtbHMD/fHIMEFfwS36LUl5TGMHBnAKN31wBRJNUmX+obSqc/OG2cxrHkWwCYvPwxjSSWKQRGMRasSzyL2GHcarZU5/SKN7Y36zZqm3eiMAumL/tBZpqbojALW98QrYSZtCkKs9B6hmrm7MQ7UZgFmPPjbqcTiUSiJ7DltVsfI66tGkVhPvCwwUOH29xOvBOFecBjHo/7EOZm0qYo7A82WNhoBTEHTF9TFPYDW1tscYOYA9ia296d6JXh4KUCjCrbOIaE1IrSGAZe5/Ba5zKPIqmfKZX+4EW6vVC7jGNJqitKpz+7L0Ct8c80SmcYu5tCan1yXx9RGn7EWsS4YGHOP+G08f7mbUJvo1EIfZBFIWQrEY1QzVxcArTTiUTiX5JlPzGGXbXGQvRnAAAAAElFTkSuQmCC">&nbsp;<span style="color: black;">Update</span>
         </a>
 
 
@@ -329,8 +351,18 @@ if ($result->num_rows > 0) {
 
           <li style="min-width: 400px; max-height:150px;
   overflow: auto;">
+  
+  
+
+  <?php if(!empty($row["image"])) { ?>
 
   <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="<?php echo $row["image"]; ?>">
+
+  <?php } else { ?>
+  
+  <img class="img-fluid" style="border-radius: 50%; width: 30px; height: 30px; border-width: 4px; border-color: white;" src="image/unknown2.png">
+  
+  <?php } ?>
 
 
 
@@ -419,7 +451,7 @@ echo $rowcountsmentions;
       <li style="display: inline; padding-right: 150px; padding-top: 8px;" class="nav-item">
         <form action="search.php" method="GET" class="form-inline my-2 my-lg-0">
   <input class="form-control mr-sm-2" type="text" name="query" placeholder="Search confessions by title, post or user..." style="width: 400px; height: 33px;">
-  <input type="submit" name="search" class="btn btn-primary btn-sm" style="background-color: blue;" value="Search">
+  <input type="submit" name="search" class="btn btn-danger btn-sm" style="background-color: red;" value="Search">
 </form>
       </li>
 
@@ -453,6 +485,8 @@ echo $rowcountsmentions;
            }
 
  ?>
+ 
+ 
 
 
 
@@ -466,6 +500,7 @@ echo $rowcountsmentions;
 <a class="dropdown-item" href="profile.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/handshake.png">&nbsp;Confessions</a>
 
     <a class="dropdown-item" href="user_blog.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/rss.png">&nbsp;Blogs</a>
+    <a class="dropdown-item" href="analytics.php"><img width="25px" height="25px" src="https://png.icons8.com/color/96/000000/combo-chart.png">&nbsp;Analytics</a>
     <a class="dropdown-item" href="settings.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/settings.png">&nbsp;Settings</a>
     <a class="dropdown-item" href="logout.php"><img width="25px" height="25px" src="https://png.icons8.com/color/48/000000/shutdown.png">&nbsp;Sign out</a>
 
@@ -474,9 +509,10 @@ echo $rowcountsmentions;
         </div>
       </li>
     </ul>
-    <button style="margin-right: 100px;" type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
+    <button style="margin-right: 100px;" type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">Add Confession</button>
   </div>
 </nav>
+</div>
 
 
 
@@ -583,11 +619,15 @@ $sum = $row['totalsum'];
 
   
 
-<div style="width: 100%; min-height: 200px;">
-  <div class="Div1">
- 
 
+<div class="container">
+  <div class="row">
+    <div class="col-md-3.5 col-md-offset-3">
+      
 
+<div class="card" style="max-width: ;">
+  <div class="card-body">
+    
 
 
 <span class="text-muted" style="margin-top: 2px; font-size: 14px;"><div class="dropdown">
@@ -651,7 +691,7 @@ $sum = $row['totalsum'];
     <a id="hover" class="nav-link text-muted" href="trending.php"><i style="color: blue;" class="fas fa-check-circle"></i>&nbsp;Trending<span class="badge"><?php 
 $id = isset($_SESSION['id']);
 
-$sql5 = "SELECT * FROM posts WHERE views >= '20'";
+$sql5 = "SELECT * FROM posts WHERE views >= '50'";
 $result5 = mysqli_query($conn, $sql5);
 
 $rowcountstrending = mysqli_num_rows($result5);
@@ -688,6 +728,33 @@ $rowcounts = mysqli_num_rows($result2);
 echo $rowcounts;
 
     ?></span></a>
+  </li>
+  
+  
+  <li class="nav-item">
+    <a id="hover" class="nav-link text-muted" href="discussions.php"><img height="20px" width="20px" src="https://png.icons8.com/color/96/000000/chat.png">&nbsp;Discussions<span class="badge"><?php 
+$id = isset($_SESSION['id']);
+
+$sql5 = "SELECT * FROM discussions WHERE name = '$username'";
+$result5 = mysqli_query($conn, $sql5);
+
+$rowcountsdiscussions = mysqli_num_rows($result5);
+
+echo $rowcountsdiscussions;
+
+    ?></span></a>
+  </li>
+  
+  
+  <li class="nav-item">
+    <a id="hover" class="nav-link text-muted" href="events.php"><img width="20px" height="20px" src="https://png.icons8.com/color/96/000000/event-accepted.png">&nbsp;Events</a>
+  </li>
+  
+  
+  
+  
+  <li class="nav-item">
+    <a id="hover" class="nav-link text-muted" href="activity.php"><img height="20px" width="20px" src="https://png.icons8.com/color/96/000000/hashtag-activity-feed.png">&nbsp;Activity</a>
   </li>
   
  <li class="nav-item">
@@ -747,6 +814,9 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 
+$perf = $sum/$rowcounts;
+
+
       ?>
       
 <li class="nav-item">
@@ -765,12 +835,12 @@ if ($perf == 90) {
 
  ?>
 
-<i style="color: blue; font-size: 14px;" class="fas fa-chevron-circle-up"></i>
+<i style="color: green; font-size: 14px;" class="fas fa-chevron-circle-up"></i>
 
  <?php
 
 }elseif ($perf <= 20 && $perf >= 1) {
-  echo "D";
+  echo "<span style='font-size: 12px;'>D</span>";
 ?>
 
 <i style="color: red; font-size: 14px;" class="fas fa-chevron-circle-down"></i>
@@ -778,7 +848,7 @@ if ($perf == 90) {
 <?php
 } 
 elseif ($perf <= 60 && $perf >= 20) {
-  echo "C";
+  echo "<span style='font-size: 12px;'>C</span>";
   ?>
 
 
@@ -837,26 +907,36 @@ elseif ($perf <= 60 && $perf >= 20) {
 
 </ul>
 
+
+
+
+
+
+
   </div>
+</div>
 
 
 
+    </div>
+
+<br>
 
 
 
+    <div class="col-md-7 col-md-offset-3">
+      
 
 
-  <div class="Div2">
-    
-
-
-<div style="width: 100%; height: 100%;" class="shadow-none card">
-      <div class="card-body">
+<div style="width: 100%; display:inline-block;
+  padding:0px;
+  margin:0px;" class="shadow-none card">
+      <div class="card-body" >
         <h5 style="font-size: 15px;" class="card-title">
 
 
 
-<div style="display: inline-block;">
+<div>
 
         
         <b><p class="card-text text-muted"><a style="text-decoration: blue; font-size: 20px; font-family: 'Work Sans', sans-serif;" href="" data-toggle="modal" data-target="#exampleModalCenter">
@@ -893,10 +973,9 @@ elseif ($perf <= 60 && $perf >= 20) {
         
         
         
-        <span style="font-family: 'Merriweather', serif;" class="text-muted" style="margin-top: 5px;">Want to confess something, <?php echo $username."?"; ?></span></a></p></b>
+        <span style="font-family: 'Roboto Slab', serif;" class="text-muted" style="margin-top: 5px;">Want to confess something, <?php echo $username."?"; ?></span></a></p></b>
         
-    </div>    
-      </div>
+  </div></div>
     </div>
 
 <div class="hr-sect">
@@ -934,6 +1013,7 @@ if ($result->num_rows > 0) {
       $time = $row['time'];
       $position = $row['position'];
       $len = strlen($row['post']);
+      $lenbio = strlen($row['position']);
       $post_perf = ($views/122.2)*100;
       $share_link = 'http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF'];
 
@@ -993,9 +1073,39 @@ if(!empty($row['image'])) {
         
         
         
-        <a href='profile_view.php?name=<?php echo $username; ?>'><?php echo $row["name"];?></a>" data-toggle="popover" data-trigger="hover" 
+        <a href='profile_view.php?name=<?php echo $username; ?>'><?php echo $row["name"];?></a>
         
-        data-content="<?php echo $row["position"]."<hr><i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?><br>
+        
+        <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+<i data-tooltip title='Authenticate Profile' style='color: blue; font-size: 13px;' class='far fa-check-circle'></i>
+
+  
+  <?php } elseif ($rowcounts > 50) { ?>
+  
+  <i data-tooltip title='Verified Profile' style='color: blue; font-size: 13px;' class='fas fa-check-circle'></i>
+
+<?php } ?>
+        
+        
+        
+        " data-toggle="popover" data-trigger="hover" 
+        
+        data-content="<?php
+        
+        
+        
+         echo $row["position"]
+         
+         ."<hr><i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?><br>
         
         
         
@@ -1045,12 +1155,52 @@ echo $rowcountsmentions;
     <center><a style='background-color: #e4e4e4; border-radius: 4px; line-height: 12px;' href='profile_view.php?name=<?php echo $username; ?>'>View profile</a></center>">
          
          <?php echo $row["name"];?></a><span class="text-muted" style="font-size: 11px;">
-        
-         &nbsp; <?php echo "@".$row["name"]; ?></span>
+         
+      
+      
+      
+      <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20 && $rowcounts < 50) {
+    ?>
+<i data-tooltip title="Authenticate Profile" style="color: blue; font-size: 13px;" class="far fa-check-circle"></i>
+
+  
+  <?php } elseif ($rowcounts > 50) { ?>
+  
+  <i data-tooltip title="Verified Profile" style="color: blue; font-size: 13px;" class="fas fa-check-circle"></i>
+
+<?php } ?>
+      
+      
+      
+      
+         <?php 
+$id = isset($_SESSION['id']);
+
+$sql2 = "SELECT * FROM posts WHERE name = '$username'";
+$result2 = mysqli_query($conn, $sql2);
+
+$rowcounts = mysqli_num_rows($result2);
+
+if ($rowcounts > 20) {
+    ?>
+<span style="font-size: 10px; vertical-align: middle;
+    line-height: 1em;" class="badge badge-primary">PRO</span>
+
+  
+  <?php } ?>
         
 
-        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo $position; ?></div>
-
+        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo $position;
+          ?></div>
+      
         <div class="text-muted" style="font-size: 11px; margin-left: 7px;"><i class="far fa-clock"></i>&nbsp;<?php echo time_ago_in_php($time);?></div>
     </h5>
 
@@ -1058,15 +1208,28 @@ echo $rowcountsmentions;
         
         
         
-        <a style="color: black; font-size: 20px; text-decoration: none;" href="post_view.php?id=<?php echo $row["id"]; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
+        <a style="color: black; font-size: 20px;" href="post_view.php?id=<?php echo $row["id"]; ?>"><p class="card-text" ><img width="25px" height="25px" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAF7SURBVGhD7ZixSsNQGIUjguDi5NjVxQeopotPkTeQZHLwKVJ8Ad9AsKPIFdyEji5Ojk4KPkW90SPozxlOAul/W+4H36CN536x1SFFJpPJpEl1vNhrynBVl+G9mT2sPMTZ864FWTrxB9u/Y862yNKJv/0PMuRi904gS4cNeYosHTbiKbJ02IinyNJhI54iS4eNeIosHTvwsvxcq/Z8ZOnYAXbImNrzkaVjB7xFlg4b8RRZOmzEU2Tp2AH2OR1Tez6ydOwAO2RM7fnI0rED3iJLh414iiwdNuIpsnTsAPuc9tHu9RVZOnaARfXR7vUVWTpsxFNk6bART5Glw0Y8RZYOG/EUWTpsxFNk6bARL7fhscqAB1t8aK3i0WI79NEiHe2sZ+GtOXk8wqVpwsJ/DK/n0zDBZenC4uNb+lyf3R3ikrQhN/B0MQ0HeDl9/seH+8vT2328tBn8xsc/2JtB/wW8+b6BMlxX1WIX39os4g3Mi2K1gy8zmUwmQyiKL02QMia4BytsAAAAAElFTkSuQmCC"><?php echo $row["title"]; ?></p></a>
 
    
-   <!---<?php echo substr($row["post"],0,300)."..."; ?>--->
+   <!---<?php
+$str = $post;
+if( strlen( $post) > 50) {
+    $str = explode( "\n", wordwrap( $post, 150));
+    $str = $str[0] . '...';
+}
+
+echo $str;
+
+   ?>--->
     
                 
         <hr class="my-8">
 <ul class="nav">
-<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;<?php echo $views." Views • "?></div></li>&nbsp;
+<li><div style="font-size: 12px;" class="text-muted"><i class="fa fa-eye"></i>&nbsp;
+
+<?php echo $views." Views • "; ?>
+
+</div></li>&nbsp;
 
 <?php 
 if(!empty($row['image'])) {
@@ -1115,55 +1278,6 @@ if($_SESSION["name"] == $row["name"]) {
 <li><a data-tooltip title="Low Performance - <?php echo round($post_perf, 2)."%"; ?>"><div style="font-size: 12px;" class="text-muted"> • <i class="fas fa-chart-line"></i>&nbsp;<span style="color: red;"><?php echo round($post_perf, 2)."%"; ?>&nbsp;<i class="fas fa-chevron-circle-down"></i></span></div></a></li>
 
 <?php } else echo ""; ?>
-
-
-
-<a class="confessionicon" href="#" data-toggle="modal" data-target="#exampleModalCenter" data-tooltip title="Make Confession"><div style="font-size: 12px; border-color: #f6f6f6; border-radius: 50%; float: right;" class="text-muted">&nbsp;•&nbsp;<i class="fas fa-quote-right"></i></div></a>
-
-
-<li><div style="font-size: 14px; float: right;" class="text-muted">&nbsp;• <a class="text-muted" data-toggle="modal" data-target="#exampleModalCenter2" data-tooltip title="Share" href="post_view.php?id=<?php echo $row["id"]; ?>"><i class="fas fa-retweet"></i></a></div></li>
-
-
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Share Confession</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <?php echo "https://www.confessioweb.com/post_view.php?id=".$row['id'];  ?>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-  </div>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 </ul>
@@ -1277,10 +1391,15 @@ if ($result6->num_rows > 0) {
  <?php
 }} ?>
 
+
+and <?php echo $views-1 ?> others...
+
 ">
 
+<?php echo $views-1 ?> others</a> viewed this&nbsp;• <?php echo time_ago_in_phpviews($time);?></div></ul></li>
 
-<?php echo $views-1 ?> others</a> viewed this</div></ul></li>
+
+
 
 <?php }?>
 
@@ -1314,107 +1433,137 @@ if ($result6->num_rows > 0) {
 
 
 
+
+
+
+
+
+
+
+
+
+    </div>
+
+
+
+
+
   </div>
-
-
-
-
-
-
-
-
-
-
-
-  <div class="Div3">
-    
-<div class="card">
-  <div class="card-body">
-<p style="font-size: 14px; line-height: 1px;"><i style="color: blue; font-size: 16px;" class="fas fa-users"></i>&nbsp;People you may know</p>
-<hr>
-<ul class="nav flex-column">
-
-
-<?php $sql6 = "SELECT * FROM signup ORDER BY RAND() desc LIMIT 6";
-$result6 = $conn->query($sql6);
-
-if ($result6->num_rows > 0) {
-    // output data of each row
-    while($row = $result6->fetch_assoc()) {
-
-      $id = $row['id'];
-      $name = $row['name'];
-      $position = $row['position'];
-      
-
-   ?>
-
-
-
-<li class="nav-item" style="line-height: 30px;">
-
-
-
-    <div style="display: inline-block;">
-    
-    
-        
-        <?php 
-if(!empty($row['image'])) {
-?> 
-        
-   <img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="<?php echo $row["image"]; ?>">
-
-<?php } else {?>
-
-<img width="45px" height="45px" style="border-radius: 50%; width: 40px; height: 40px; border-width: 4px; border-color: white; background-color: white; position: absolute; margin-top: 6px;" src="image/unknown2.png">
-
-<?php
-} ?>
-
-        
-        <h5 class="card-title" style="margin-left: 40px;">
-
-        &nbsp;
-
-        <a class="name" style="color: black; font-size: 15px;" href="profile_view.php?name=<?php echo $row["name"]; ?>" title="
-        
-        <?php if(!empty($row['image'])) { ?>
-         
-        <img width='30px' height='30px' style='border-radius: 50%;' src='<?php echo $row["image"]; ?>'>&nbsp;
-        <?php } else { ?>
-        
-        <img width='30px' height='30px' style='border-radius: 50%;' src='image/unknown2.png'>&nbsp;
-        
-        <?php }?>
-        
-        <?php echo $row["name"];?>" data-toggle="popover" data-trigger="hover" 
-        
-        data-content="<?php echo $row["position"]."<i  class='fas fa-envelope'></i>&nbsp;".$row["email"];?>"><?php echo $row["name"];?></a>
-
-        <div class="text-muted" style="font-size: 13px; margin-left: 7px;"><?php echo substr($position, 0, 25)."..."; ?></div>
-
-        
-    </h5>
-
+  </div>
 </div>
 
-<hr>
+
+
+
+
+
+
+  
+
+
+<?php
+          function time_ago_in_phpviews($timestamp){
+  
+  date_default_timezone_set("America/Los_Angeles");         
+  $time_ago        = strtotime($timestamp);
+  $current_time    = time();
+  $time_difference = $current_time - $time_ago;
+  $seconds         = $time_difference;
+  
+  $minutes = round($seconds / 60); // value 60 is seconds  
+  $hours   = round($seconds / 3600); //value 3600 is 60 minutes * 60 sec  
+  $days    = round($seconds / 86400); //86400 = 24 * 60 * 60;  
+  $weeks   = round($seconds / 604800); // 7*24*60*60;  
+  $months  = round($seconds / 2629440); //((365+365+365+365+366)/5/12)*24*60*60  
+  $years   = round($seconds / 31553280); //(365+365+365+365+366)/5 * 24 * 60 * 60
+                
+  if ($seconds <= 60){
+
+    return "Now";
+
+  } else if ($minutes <= 60){
+
+    if ($minutes == 1){
+
+      return "1 min";
+
+    } else {
+
+      return "$minutes"."mins";
+
+    }
+
+  } else if ($hours <= 24){
+
+    if ($hours == 1){
+
+      return "1h";
+
+    } else {
+
+      return "$hours"."h";
+
+    }
+
+  } else if ($days <= 7){
+
+    if ($days == 1){
+
+      return "yesterday";
+
+    } else {
+
+      return "$days"."d";
+
+    }
+
+  } else if ($weeks <= 4.3){
+
+    if ($weeks == 1){
+
+      return "1w";
+
+    } else {
+
+      return "$weeks"."w";
+
+    }
+
+  } else if ($months <= 12){
+
+    if ($months == 1){
+
+      return "1 month";
+
+    } else {
+
+      return "$months months";
+
+    }
+
+  } else {
     
-</li>
+    if ($years == 1){
 
+      return "1y";
 
+    } else {
 
-<?php 
-    
-            }
-} else {
-    echo "No Confessions yet.<br> Start making confessions!";
+      return "$years years";
+
+    }
+  }
 }
 ?>
 
-</div>
-</div>
+
+
+
+
+
+
+
+  
 
 
 
